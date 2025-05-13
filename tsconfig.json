@@ -23,6 +23,16 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "baseUrl": "src",
+
+    "paths": {
+      "@models": [
+        "models/index"
+      ],      
+      "@models/*": [
+        "models/*"
+      ]
+    }
   }
 }

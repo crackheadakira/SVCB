@@ -1,5 +1,5 @@
-import type { Farmer, Gender, Skill } from "./types/base";
-import { Direction, StardewSeason } from "./types/base";
+import type { Farmer, Gender, Skill } from "@models";
+import { Direction, StardewSeason } from "@models";
 
 const parser = new DOMParser();
 

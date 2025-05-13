@@ -1,6 +1,6 @@
-import { jsonToFarmer, parseXML } from "./parse";
-import { deserialize, serialize } from "./serialize";
-import type { Farmer } from "./types/base";
+import type { Farmer } from "@models";
+import { jsonToFarmer, parseXML } from "parse";
+import { deserialize, serialize } from "serialize";
 
 const inputElement = document.getElementById("saveFile") as HTMLInputElement;
 const buttonElement = document.getElementById("saveFileSerialize");
