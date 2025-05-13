@@ -1,0 +1,3581 @@
+{
+  "Farmer": {
+    "$attrs": {
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema"
+    },
+    "name": "akira",
+    "forceOneTileWide": "false",
+    "isEmoting": "true",
+    "isCharging": "false",
+    "isGlowing": "false",
+    "coloredBorder": "false",
+    "flip": "false",
+    "drawOnTop": "false",
+    "faceTowardFarmer": "false",
+    "ignoreMovementAnimation": "false",
+    "faceAwayFromFarmer": "false",
+    "scale": {
+      "float": "1"
+    },
+    "timeBeforeAIMovementAgain": "0",
+    "glowingTransparency": "0.35000002",
+    "glowRate": "0.05",
+    "willDestroyObjectsUnderfoot": "true",
+    "Position": {
+      "X": "1728",
+      "Y": "864"
+    },
+    "Speed": "5",
+    "FacingDirection": "1",
+    "IsEmoting": "true",
+    "CurrentEmote": "24",
+    "Scale": "1",
+    "modData": {
+      "AlternativeTextures.HasConvertedMilkPails": {
+        "string": "True"
+      },
+      "AlternativeTextures.HasFixedBadObjectTyping": {
+        "string": "True"
+      }
+    },
+    "questLog": {
+      "Quest": [
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Demetrius a melon.",
+          "_questDescription": "Demetrius needs a fresh melon for his research.",
+          "_questTitle": "Crop Research",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "104",
+          "moneyReward": "550",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Crop Research",
+          "targetMessage": "This is perfect! It's just what I need for my research. It's going to be hard not to eat it! Thanks a bunch.",
+          "target": "Demetrius",
+          "item": "254",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring George a Hot Pepper.",
+          "_questDescription": "George needs a hot pepper to soothe his aching knee.",
+          "_questTitle": "Knee Therapy",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "105",
+          "moneyReward": "200",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Knee Therapy",
+          "targetMessage": "Took you long enough... hmmph... Well it's good and spicy at least. Thanks.",
+          "target": "George",
+          "item": "260",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Marnie one bunch of amaranth.",
+          "_questDescription": "Marnie wants to give her cows a special treat. She's asking for a single bunch of amaranth.",
+          "_questTitle": "Cow's Delight",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "106",
+          "moneyReward": "500",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Cow's Delight",
+          "targetMessage": "Oh, the amaranth I asked for! Thank you so much... my cows are going to love this!$h",
+          "target": "Marnie",
+          "item": "300",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Willy a squid.",
+          "_questDescription": "Willy is challenging you to catch a squid. He says you can fish them from the ocean on winter nights.",
+          "_questTitle": "Catch A Squid",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "109",
+          "moneyReward": "800",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Catch A Squid",
+          "targetMessage": "Hey, you did it! Not bad. Not bad at all. I'm impressed.#$b#Winter's a good time to break out the old fishing rod, isn't it?",
+          "target": "Willy",
+          "item": "151",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Gus an Albacore.",
+          "_questDescription": "Gus wants to make fish stew, but he needs an albacore.",
+          "_questTitle": "Fish Stew",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "114",
+          "moneyReward": "400",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Fish Stew",
+          "targetMessage": "*sniff*...*sniff*... What's that? Something smells like albacore!#$b#Aha! You brought it! Thanks a million!",
+          "target": "Gus",
+          "item": "705",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Emily an Apricot.",
+          "_questDescription": "Emily wants a taste of spring. She's asking for a fresh apricot.",
+          "_questTitle": "Fresh Fruit",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "115",
+          "moneyReward": "600",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Fresh Fruit",
+          "targetMessage": "Oh... You followed through! Thanks, this looks delicious!$h",
+          "target": "Emily",
+          "item": "634",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Pierre some Sashimi.",
+          "_questDescription": "Pierre will pay \"top coin\" to whoever brings him a plate of sashimi. Apparently he's really craving the stuff.",
+          "_questTitle": "Pierre's Notice",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "117",
+          "moneyReward": "1000",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Pierre's Notice",
+          "targetMessage": "It's about time! I was starting to get the shakes, I wanted this fish so bad. *munch*... Mmm, now that's good.#$b#Thanks, @.$h",
+          "target": "Pierre",
+          "item": "227",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Demetrius a Pufferfish.",
+          "_questDescription": "Demetrius is studying the toxin levels of the local pufferfish. He'd like you to bring him one.",
+          "_questTitle": "Aquatic Research",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "118",
+          "moneyReward": "1000",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Aquatic Research",
+          "targetMessage": "There you are. The specimen looks perfect. I'm going to get it on ice straight away. Thanks, @!",
+          "target": "Demetrius",
+          "item": "128",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Kent a Starfruit.",
+          "_questDescription": "Kent wants to give his wife a starfruit for their anniversary.",
+          "_questTitle": "A Soldier's Star",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "119",
+          "moneyReward": "500",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "A Soldier's Star",
+          "targetMessage": "Hey. Shhh... Don't let Jodi see.#$b#Ah, this looks juicy. She'll love it. Thank you so much.$h",
+          "target": "Kent",
+          "item": "268",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Gus a Lobster.",
+          "_questDescription": "Gus put out a notice requesting a fresh lobster.",
+          "_questTitle": "Wanted: Lobster",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "121",
+          "moneyReward": "500",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Wanted: Lobster",
+          "targetMessage": "Something smells like fresh lobster. Oh, that's good.$h#$b#Take care, friend.",
+          "target": "Gus",
+          "item": "715",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Pam a Battery Pack.",
+          "_questDescription": "Pam's TV Remote is dead. She's having a tough time going back and forth between the couch and the TV dial.",
+          "_questTitle": "Pam Needs Juice",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "122",
+          "moneyReward": "400",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Pam Needs Juice",
+          "targetMessage": "Hey, you pulled through with the battery pack! Thanks, kid... You're a life-saver!$h",
+          "target": "Pam",
+          "item": "787",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ItemDeliveryQuest"
+          },
+          "_currentObjective": "Bring Willy a Lingcod.",
+          "_questDescription": "Willy is challenging you to catch a Lingcod.",
+          "_questTitle": "Catch a Lingcod",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "124",
+          "moneyReward": "550",
+          "questType": "3",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Catch a Lingcod",
+          "targetMessage": "Hey, that's a real lunker! You've certainly got the angler's blood in you.$h",
+          "target": "Willy",
+          "item": "707",
+          "number": "1",
+          "parts": {},
+          "dialogueparts": {}
+        }
+      ]
+    },
+    "professions": {
+      "int": [
+        "1",
+        "18",
+        "24",
+        "13",
+        "4",
+        "21",
+        "26",
+        "6",
+        "16",
+        "8"
+      ]
+    },
+    "newLevels": {},
+    "experiencePoints": {
+      "int": [
+        "196841",
+        "15563",
+        "22602",
+        "35870",
+        "34194",
+        "0"
+      ]
+    },
+    "items": {
+      "Item": [
+        {
+          "$attrs": {
+            "xsi:type": "MeleeWeapon"
+          },
+          "isLostItem": "false",
+          "category": "-98",
+          "hasBeenInInventory": "false",
+          "name": "Galaxy Hammer",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Galaxy Hammer",
+          "Name": "Galaxy Hammer",
+          "Stack": "1",
+          "initialParentTileIndex": "29",
+          "currentParentTileIndex": "31",
+          "indexOfMenuItemView": "29",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "enchantments": [
+            {
+              "$attrs": {
+                "xsi:type": "CrusaderEnchantment"
+              },
+              "level": "1"
+            },
+            {
+              "$attrs": {
+                "xsi:type": "RubyEnchantment"
+              },
+              "level": "1"
+            },
+            {
+              "$attrs": {
+                "xsi:type": "EmeraldEnchantment"
+              },
+              "level": "1"
+            }
+          ],
+          "previousEnchantments": "Crusader",
+          "BaseName": "Galaxy Hammer",
+          "InitialParentTileIndex": "29",
+          "IndexOfMenuItemView": "29",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "type": "2",
+          "minDamage": "77",
+          "maxDamage": "99",
+          "speed": "1",
+          "addedPrecision": "0",
+          "addedDefense": "0",
+          "addedAreaOfEffect": "0",
+          "knockback": "1",
+          "critChance": "0.02",
+          "critMultiplier": "3",
+          "appearance": "-1",
+          "isOnSpecial": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Pickaxe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Pickaxe",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Iridium Pickaxe",
+          "Name": "Iridium Pickaxe",
+          "Stack": "1",
+          "initialParentTileIndex": "154",
+          "currentParentTileIndex": "158",
+          "indexOfMenuItemView": "180",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "4",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Pickaxe",
+          "InitialParentTileIndex": "154",
+          "IndexOfMenuItemView": "180",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "additionalPower": {
+            "int": "0"
+          }
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Axe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Axe",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Iridium Axe",
+          "Name": "Iridium Axe",
+          "Stack": "1",
+          "initialParentTileIndex": "238",
+          "currentParentTileIndex": "242",
+          "indexOfMenuItemView": "264",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "4",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "enchantments": {
+            "$attrs": {
+              "xsi:type": "PowerfulEnchantment"
+            },
+            "level": "1"
+          },
+          "previousEnchantments": [
+            "Powerful",
+            "Efficient"
+          ],
+          "BaseName": "Axe",
+          "InitialParentTileIndex": "238",
+          "IndexOfMenuItemView": "264",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "additionalPower": {
+            "int": "2"
+          }
+        },
+        {
+          "$attrs": {
+            "xsi:type": "MeleeWeapon"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "false",
+          "name": "Golden Scythe",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Golden Scythe",
+          "Name": "Golden Scythe",
+          "Stack": "1",
+          "initialParentTileIndex": "53",
+          "currentParentTileIndex": "50",
+          "indexOfMenuItemView": "53",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Golden Scythe",
+          "InitialParentTileIndex": "53",
+          "IndexOfMenuItemView": "53",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "type": "3",
+          "minDamage": "13",
+          "maxDamage": "13",
+          "speed": "0",
+          "addedPrecision": "0",
+          "addedDefense": "0",
+          "addedAreaOfEffect": "2",
+          "knockback": "1",
+          "critChance": "0.02",
+          "critMultiplier": "4",
+          "appearance": "-1",
+          "isOnSpecial": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Hoe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Hoe",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Iridium Hoe",
+          "Name": "Iridium Hoe",
+          "Stack": "1",
+          "initialParentTileIndex": "70",
+          "currentParentTileIndex": "74",
+          "indexOfMenuItemView": "96",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "4",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Hoe",
+          "InitialParentTileIndex": "70",
+          "IndexOfMenuItemView": "96",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "WateringCan"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Watering Can",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Iridium Watering Can",
+          "Name": "Iridium Watering Can",
+          "Stack": "1",
+          "initialParentTileIndex": "322",
+          "currentParentTileIndex": "322",
+          "indexOfMenuItemView": "345",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "4",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Watering Can",
+          "InitialParentTileIndex": "322",
+          "IndexOfMenuItemView": "345",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "isBottomless": "false",
+          "waterCanMax": "100",
+          "WaterLeft": "77",
+          "IsBottomless": "false"
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-7",
+          "hasBeenInInventory": "true",
+          "name": "Triple Shot Espresso",
+          "parentSheetIndex": "253",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Triple Shot Espresso",
+          "Name": "Triple Shot Espresso",
+          "Stack": "253",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Cooking",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "450",
+          "edibility": "3",
+          "stack": "253",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-26",
+          "hasBeenInInventory": "true",
+          "name": "Cheese",
+          "parentSheetIndex": "424",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Cheese",
+          "Name": "Cheese",
+          "Stack": "358",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Basic",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "230",
+          "edibility": "50",
+          "stack": "358",
+          "quality": "4",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "FishingRod"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "false",
+          "name": "Fishing Rod",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Iridium Rod",
+          "Name": "Iridium Rod",
+          "Stack": "1",
+          "initialParentTileIndex": "11",
+          "currentParentTileIndex": "10",
+          "indexOfMenuItemView": "11",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "3",
+          "numAttachmentSlots": "2",
+          "attachments": {
+            "Object": [
+              {
+                "isLostItem": "false",
+                "category": "-21",
+                "hasBeenInInventory": "true",
+                "name": "Bait",
+                "parentSheetIndex": "685",
+                "specialItem": "false",
+                "SpecialVariable": "0",
+                "DisplayName": "Bait",
+                "Name": "Bait",
+                "Stack": "496",
+                "tileLocation": {
+                  "X": "0",
+                  "Y": "0"
+                },
+                "owner": "0",
+                "type": "Basic",
+                "canBeSetDown": "true",
+                "canBeGrabbed": "true",
+                "isHoedirt": "false",
+                "isSpawnedObject": "false",
+                "questItem": "false",
+                "questId": "0",
+                "isOn": "true",
+                "fragility": "0",
+                "price": "1",
+                "edibility": "-300",
+                "stack": "496",
+                "quality": "0",
+                "bigCraftable": "false",
+                "setOutdoors": "false",
+                "setIndoors": "false",
+                "readyForHarvest": "false",
+                "showNextIndex": "false",
+                "flipped": "false",
+                "hasBeenPickedUpByFarmer": "true",
+                "isRecipe": "false",
+                "isLamp": "false",
+                "minutesUntilReady": "0",
+                "boundingBox": {
+                  "X": "0",
+                  "Y": "0",
+                  "Width": "64",
+                  "Height": "64",
+                  "Location": {
+                    "X": "0",
+                    "Y": "0"
+                  },
+                  "Size": {
+                    "X": "64",
+                    "Y": "64"
+                  }
+                },
+                "scale": {
+                  "X": "0",
+                  "Y": "0"
+                },
+                "uses": "0",
+                "preservedParentSheetIndex": "0",
+                "destroyOvernight": "false"
+              },
+              {
+                "isLostItem": "false",
+                "category": "-22",
+                "hasBeenInInventory": "true",
+                "name": "Barbed Hook",
+                "parentSheetIndex": "691",
+                "specialItem": "false",
+                "SpecialVariable": "0",
+                "DisplayName": "Barbed Hook",
+                "Name": "Barbed Hook",
+                "Stack": "1",
+                "tileLocation": {
+                  "X": "0",
+                  "Y": "0"
+                },
+                "owner": "0",
+                "type": "Basic",
+                "canBeSetDown": "true",
+                "canBeGrabbed": "true",
+                "isHoedirt": "false",
+                "isSpawnedObject": "false",
+                "questItem": "false",
+                "questId": "0",
+                "isOn": "true",
+                "fragility": "0",
+                "price": "500",
+                "edibility": "-300",
+                "stack": "1",
+                "quality": "0",
+                "bigCraftable": "false",
+                "setOutdoors": "false",
+                "setIndoors": "false",
+                "readyForHarvest": "false",
+                "showNextIndex": "false",
+                "flipped": "false",
+                "hasBeenPickedUpByFarmer": "true",
+                "isRecipe": "false",
+                "isLamp": "false",
+                "minutesUntilReady": "0",
+                "boundingBox": {
+                  "X": "0",
+                  "Y": "0",
+                  "Width": "64",
+                  "Height": "64",
+                  "Location": {
+                    "X": "0",
+                    "Y": "0"
+                  },
+                  "Size": {
+                    "X": "64",
+                    "Y": "64"
+                  }
+                },
+                "scale": {
+                  "X": "0",
+                  "Y": "1"
+                },
+                "uses": "14",
+                "preservedParentSheetIndex": "0",
+                "destroyOvernight": "false"
+              }
+            ]
+          },
+          "BaseName": "Fishing Rod",
+          "InitialParentTileIndex": "11",
+          "IndexOfMenuItemView": "11",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Pan"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "false",
+          "name": "Copper Pan",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Copper Pan",
+          "Name": "Copper Pan",
+          "Stack": "1",
+          "initialParentTileIndex": "12",
+          "currentParentTileIndex": "12",
+          "indexOfMenuItemView": "12",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Copper Pan",
+          "InitialParentTileIndex": "12",
+          "IndexOfMenuItemView": "12",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-7",
+          "hasBeenInInventory": "true",
+          "name": "Crab Cakes",
+          "parentSheetIndex": "732",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Crab Cakes",
+          "Name": "Crab Cakes",
+          "Stack": "15",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Cooking",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "275",
+          "edibility": "90",
+          "stack": "15",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-7",
+          "hasBeenInInventory": "true",
+          "name": "Spicy Eel",
+          "parentSheetIndex": "226",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Spicy Eel",
+          "Name": "Spicy Eel",
+          "Stack": "2",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Cooking",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "175",
+          "edibility": "46",
+          "stack": "2",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-18",
+          "hasBeenInInventory": "true",
+          "name": "Rabbit's Foot",
+          "parentSheetIndex": "446",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Rabbit's Foot",
+          "Name": "Rabbit's Foot",
+          "Stack": "1",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Basic",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "565",
+          "edibility": "-300",
+          "stack": "1",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "0",
+          "hasBeenInInventory": "true",
+          "name": "Rain Totem",
+          "parentSheetIndex": "681",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Rain Totem",
+          "Name": "Rain Totem",
+          "Stack": "1",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Crafting",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "20",
+          "edibility": "-300",
+          "stack": "1",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-15",
+          "hasBeenInInventory": "true",
+          "name": "Cinder Shard",
+          "parentSheetIndex": "848",
+          "specialItem": "false",
+          "SpecialVariable": "0",
+          "DisplayName": "Cinder Shard",
+          "Name": "Cinder Shard",
+          "Stack": "15",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Basic",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isHoedirt": "false",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "questId": "0",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "50",
+          "edibility": "-300",
+          "stack": "15",
+          "quality": "0",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "true",
+          "hasBeenPickedUpByFarmer": "true",
+          "isRecipe": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "64",
+            "Height": "64",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "64",
+              "Y": "64"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "preservedParentSheetIndex": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "GenericTool"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "false",
+          "name": "Paint Bucket",
+          "specialItem": "false",
+          "modData": {
+            "item": {
+              "key": {
+                "string": "AlternativeTextures.PaintBucketFlag"
+              },
+              "value": {
+                "string": "True"
+              }
+            }
+          },
+          "SpecialVariable": "0",
+          "DisplayName": "Paint Bucket",
+          "Name": "Paint Bucket",
+          "Stack": "1",
+          "initialParentTileIndex": "6",
+          "currentParentTileIndex": "6",
+          "indexOfMenuItemView": "6",
+          "stackable": "false",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "BaseName": "Paint Bucket",
+          "InitialParentTileIndex": "6",
+          "IndexOfMenuItemView": "6",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "Stackable": "false",
+          "description": "Allows you to apply different textures to supported objects."
+        }
+      ]
+    },
+    "dialogueQuestionsAnswered": {
+      "int": [
+        "22",
+        "28",
+        "9",
+        "32",
+        "77",
+        "59",
+        "208",
+        "51",
+        "20",
+        "28376",
+        "66",
+        "71"
+      ]
+    },
+    "furnitureOwned": {},
+    "cookingRecipes": {
+      "Fried Egg": 0,
+      "Dish o' The Sea": 0,
+      "Stir Fry": 0,
+      "Coleslaw": 0,
+      "Survival Burger": 0,
+      "Miner's Treat": 0,
+      "Roots Platter": 0,
+      "Farmer's Lunch": 0,
+      "Pancakes": 0,
+      "Maki Roll": 0,
+      "Radish Salad": 0,
+      "Bread": 0,
+      "Baked Fish": 0,
+      "Seafoam Pudding": 0,
+      "Tortilla": 0,
+      "Omelet": 0,
+      "Trout Soup": 0,
+      "Glazed Yams": 0,
+      "Artichoke Dip": 0,
+      "Plum Pudding": 0,
+      "Parsnip Soup": 0,
+      "Chocolate Cake": 0,
+      "Squid Ink Ravioli": 0,
+      "Pumpkin Pie": 0,
+      "Cranberry Candy": 0,
+      "Pizza": 0,
+      "Hashbrowns": 0,
+      "Complete Breakfast": 0,
+      "Spaghetti": 0,
+      "Lucky Lunch": 0,
+      "Carp Surprise": 0,
+      "Cheese Cauli.": 0,
+      "Maple Bar": 0,
+      "Fried Mushroom": 0,
+      "Pink Cake": 0,
+      "Algae Soup": 0,
+      "Sashimi": 0,
+      "Triple Shot Espresso": 0,
+      "Roasted Hazelnuts": 0,
+      "Fried Eel": 0,
+      "Fried Calamari": 0,
+      "Eggplant Parm.": 0,
+      "Salmon Dinner": 0,
+      "Salad": 0,
+      "Fruit Salad": 0,
+      "Crispy Bass": 0,
+      "Blackberry Cobbler": 0,
+      "Crab Cakes": 0,
+      "Fiddlehead Risotto": 0,
+      "Poppyseed Muffin": 0,
+      "Vegetable Stew": 0,
+      "Spicy Eel": 0,
+      "Ginger Ale": 0,
+      "Lobster Bisque": 0,
+      "Cookies": 0,
+      "Bruschetta": 0,
+      "Rice Pudding": 0,
+      "Blueberry Tart": 0,
+      "Shrimp Cocktail": 0,
+      "Stuffing": 0,
+      "Ice Cream": 0,
+      "Pale Broth": 0,
+      "Autumn's Bounty": 0,
+      "Chowder": 0
+    },
+    "craftingRecipes": {
+      "Stone Sign": 1,
+      "Wood Sign": 0,
+      "Gravel Path": 4,
+      "Cobblestone Path": 90,
+      "Wood Path": 128,
+      "Campfire": 0,
+      "Torch": 14,
+      "Gate": 15,
+      "Wood Fence": 0,
+      "Chest": 15,
+      "Wild Seeds (Sp)": 10,
+      "Field Snack": 25,
+      "Bait": 785,
+      "Crab Pot": 2,
+      "Cherry Bomb": 0,
+      "Scarecrow": 4,
+      "Basic Fertilizer": 235,
+      "Furnace": 41,
+      "Sturdy Ring": 0,
+      "Bug Steak": 1,
+      "Recycling Machine": 0,
+      "Staircase": 1,
+      "Life Elixir": 0,
+      "Stone Fence": 196,
+      "Mayonnaise Machine": 13,
+      "Sprinkler": 12,
+      "Tapper": 67,
+      "Bee House": 1,
+      "Speed-Gro": 0,
+      "Transmute (Fe)": 0,
+      "Glowstone Ring": 1,
+      "Spinner": 0,
+      "Trap Bobber": 0,
+      "Stone Walkway Floor": 1204,
+      "Iron Fence": 0,
+      "Preserves Jar": 1,
+      "Basic Retaining Soil": 0,
+      "Cork Bobber": 1,
+      "Treasure Hunter": 0,
+      "Warrior Ring": 0,
+      "Charcoal Kiln": 0,
+      "Wild Seeds (Su)": 0,
+      "Hardwood Fence": 63,
+      "Cheese Press": 11,
+      "Quality Sprinkler": 41,
+      "Bomb": 16,
+      "Worm Bin": 0,
+      "Dressed Spinner": 0,
+      "Barbed Hook": 1,
+      "Loom": 0,
+      "Quality Retaining Soil": 2,
+      "Slime Egg-Press": 0,
+      "Oil Of Garlic": 0,
+      "Transmute (Au)": 0,
+      "Grass Starter": 35,
+      "Magnet": 0,
+      "Farm Computer": 1,
+      "Keg": 159,
+      "Oil Maker": 1,
+      "Deluxe Speed-Gro": 0,
+      "Ring of Yoba": 0,
+      "Thorns Ring": 0,
+      "Bone Mill": 3,
+      "Lightning Rod": 48,
+      "Wild Seeds (Fa)": 0,
+      "Warp Totem: Beach": 3,
+      "Seed Maker": 5,
+      "Iridium Sprinkler": 68,
+      "Quality Fertilizer": 1,
+      "Mega Bomb": 0,
+      "Jack-O-Lantern": 0,
+      "Tree Fertilizer": 43,
+      "Wild Seeds (Wi)": 0,
+      "Warp Totem: Mountains": 1,
+      "Slime Incubator": 0,
+      "Explosive Ammo": 0,
+      "Monster Musk": 4,
+      "Crystalarium": 5,
+      "Wood Lamp-post": 0,
+      "Iron Lamp-post": 1,
+      "Iridium Band": 2,
+      "Warp Totem: Farm": 1,
+      "Geode Crusher": 2,
+      "Rain Totem": 6,
+      "Cookout Kit": 0,
+      "Stone Chest": 2,
+      "Ancient Seeds": 0,
+      "Quality Bobber": 0,
+      "Garden Pot": 1,
+      "Fiber Seeds": 112,
+      "Deluxe Scarecrow": 4,
+      "Wooden Brazier": 0,
+      "Wood Floor": 0,
+      "Rustic Plank Floor": 0,
+      "Stone Floor": 1,
+      "Brick Floor": 0,
+      "Stepping Stone Path": 0,
+      "Straw Floor": 0,
+      "Crystal Path": 5,
+      "Cask": 158,
+      "Crystal Floor": 5,
+      "Wicked Statue": 0,
+      "Weathered Floor": 0,
+      "Wild Bait": 0,
+      "Mini-Obelisk": 0,
+      "Warp Totem: Island": 0,
+      "Fairy Dust": 0,
+      "Flute Block": 0,
+      "Drum Block": 0,
+      "Mini-Jukebox": 0
+    },
+    "activeDialogueEvents": {},
+    "eventsSeen": {
+      "int": [
+        "60367",
+        "739330",
+        "0",
+        "1590166",
+        "100162",
+        "992553",
+        "611439",
+        "112",
+        "68",
+        "318560",
+        "706",
+        "3102768",
+        "69",
+        "16253595",
+        "502969",
+        "65",
+        "76",
+        "70",
+        "15389722",
+        "404798",
+        "71",
+        "67",
+        "1",
+        "1053978",
+        "909",
+        "520702",
+        "102",
+        "992559",
+        "63",
+        "707",
+        "3206194",
+        "3131209",
+        "5837189",
+        "900553",
+        "295672",
+        "66",
+        "691039",
+        "2",
+        "8357109",
+        "3872126",
+        "191393",
+        "3333094",
+        "471942",
+        "44",
+        "9348571",
+        "150938",
+        "463391",
+        "25",
+        "17",
+        "93",
+        "95",
+        "96",
+        "529952",
+        "26",
+        "418172",
+        "192393",
+        "963113",
+        "-78765",
+        "-157039427",
+        "-888999",
+        "18",
+        "19",
+        "-666777",
+        "1039573",
+        "558291",
+        "2146991",
+        "611173",
+        "40",
+        "503180",
+        "91",
+        "92",
+        "33",
+        "2120303",
+        "980558",
+        "34"
+      ]
+    },
+    "secretNotesSeen": {
+      "int": [
+        "12",
+        "2",
+        "9",
+        "19",
+        "5",
+        "10",
+        "8",
+        "3",
+        "13",
+        "6",
+        "1001",
+        "17",
+        "4",
+        "1",
+        "20",
+        "16",
+        "18",
+        "23",
+        "1002",
+        "1003"
+      ]
+    },
+    "songsHeard": {
+      "string": [
+        "title_day",
+        "title_night",
+        "CloudCountry",
+        "spring_day_ambient",
+        "spring1",
+        "ocean",
+        "springtown",
+        "spring2",
+        "libraryTheme",
+        "spring3",
+        "spring_night_ambient",
+        "MarlonsTheme",
+        "Upper_Ambient",
+        "Crystal Bells",
+        "Cavern",
+        "Secret Gnomes",
+        "distantBanjo",
+        "communityCenter",
+        "WizardSong",
+        "fallFest",
+        "woodsTheme",
+        "playful",
+        "Frost_Ambient",
+        "Cloth",
+        "Icicles",
+        "XOR",
+        "event1",
+        "marnieShop",
+        "nightTime",
+        "summer1",
+        "summer_day_ambient",
+        "summer2",
+        "summer3",
+        "Lava_Ambient",
+        "event2",
+        "Of Dwarves",
+        "Near The Planet Core",
+        "Overcast",
+        "tribal",
+        "junimoStarSong",
+        "Hospital_Ambient",
+        "fall1",
+        "fall_day_ambient",
+        "fall2",
+        "fall3",
+        "wavy",
+        "tickTock",
+        "spirits_eve",
+        "winter1",
+        "winter_day_ambient",
+        "winter2",
+        "winter3",
+        "christmasTheme",
+        "night_market",
+        "submarine_song",
+        "mermaidSong",
+        "Saloon1",
+        "junimoKart",
+        "jaunty",
+        "AbigailFlute",
+        "sampractice",
+        "SunRoom",
+        "EmilyTheme",
+        "clubloop",
+        "50s",
+        "bugLevelLoop",
+        "movieTheater",
+        "movieScreenAmbience",
+        "movieTheaterAfter",
+        {},
+        "sweet",
+        "tropical_island_day_ambient",
+        "jungle_ambience",
+        "Volcano_Ambient",
+        "VolcanoMines1",
+        "VolcanoMines2",
+        "caldera",
+        "IslandMusic",
+        "sadpiano",
+        "fieldofficeTentMusic",
+        "FrogCave",
+        "grandpas_theme",
+        "shaneTheme"
+      ]
+    },
+    "achievements": {
+      "int": [
+        "27",
+        "24",
+        "0",
+        "20",
+        "25",
+        "1",
+        "29",
+        "18",
+        "2",
+        "28",
+        "21",
+        "19",
+        "6",
+        "3",
+        "11",
+        "32",
+        "12",
+        "7"
+      ]
+    },
+    "specialItems": {
+      "int": [
+        "474",
+        "479",
+        "1298",
+        "1541",
+        "1554",
+        "490",
+        "876",
+        "1545",
+        "463",
+        "1299",
+        "875",
+        "864",
+        "865",
+        "866",
+        "867",
+        "868",
+        "869",
+        "870",
+        "464",
+        "253"
+      ]
+    },
+    "specialBigCraftables": {
+      "int": [
+        "1298",
+        "1541",
+        "1554",
+        "94",
+        "1669",
+        "140",
+        "1299",
+        "1545",
+        "1304",
+        "1671",
+        "1302",
+        "1305",
+        "139",
+        "1303",
+        "131"
+      ]
+    },
+    "mailReceived": {
+      "string": [
+        "button_tut_1",
+        "button_tut_2",
+        "checkedBulletinOnce",
+        "Gus_Introduction",
+        "Pierre_Introduction",
+        "Marnie_Introduction",
+        "Leah_Introduction",
+        "Penny_Introduction",
+        "Elliott_Introduction",
+        "Evelyn_Introduction",
+        "Maru_Introduction",
+        "Linus_Introduction",
+        "Emily_Introduction",
+        "Vincent_Introduction",
+        "Jodi_Introduction",
+        "Caroline_Introduction",
+        "Harvey_Introduction",
+        "spring_2_1",
+        "NOQUEST_13",
+        "artifactFound",
+        "somethingToDonate",
+        "Sam_Introduction",
+        "Willy_Introduction",
+        "Sebastian_Introduction",
+        "BackpackTip",
+        "fishing2",
+        "pierreBackpack",
+        "landslideDone",
+        "robinKitchenLetter",
+        "Abigail_Introduction",
+        "artifactFound",
+        "geodeFound",
+        "copperFound",
+        "guildQuest",
+        "somethingWasDonated",
+        "robinWell",
+        "ccDoorUnlock",
+        "seenJunimoNote",
+        "museum5",
+        "museumCollectedRewardO_474_1",
+        "guildMember",
+        "checkedMonsterBoard",
+        "wizardJunimoNote",
+        "canReadJunimoText",
+        "mom1",
+        "spring_11_1",
+        "Abigail1",
+        "HaleyClothes",
+        "Lewis_cc_Begin",
+        "spring_12",
+        "museum10",
+        "museumCollectedRewardO_479_1",
+        "hatter",
+        "Egg Festival",
+        "beenToWoods",
+        "spring_15_1",
+        "fertilizers",
+        "museumCollectedRewardF_1298_1",
+        "spring_19_1",
+        "museum15",
+        "museumCollectedRewardO_486_1",
+        "mom2",
+        "spring_23",
+        "museum20",
+        "museumCollectedRewardF_1541_1",
+        "fishing6",
+        "summer_3_1",
+        "newsstory",
+        "LinusHeron",
+        "museumCollectedRewardO_326_1",
+        "museum25",
+        "museumCollectedRewardF_1554_1",
+        "mom3",
+        "summer_10",
+        "museumCollectedRewardBO_94_1",
+        "ccBoilerRoom",
+        "summer_14_1",
+        "Clint_cc_Minecart",
+        "JojaGreeting",
+        "museum30",
+        "museumCollectedRewardF_1669_1",
+        "lostBookFound",
+        "summer_20_1",
+        "lb_1",
+        "lb_0",
+        "summer_25_1",
+        "CF_Mines",
+        "summer_28",
+        "fall_3_1",
+        "DemetriusReward",
+        "ccFishTank",
+        "museum35",
+        "museumCollectedRewardO_490_1",
+        "fall_8_1",
+        "Linus_cc_Boulder",
+        "fall_9",
+        "quest10",
+        "mom4",
+        "Gil_Skeleton Mask",
+        "ccVault",
+        "guntherBones",
+        "Pam_cc_Bus",
+        "skullCave",
+        "fall_15",
+        "doorUnlockAbigail",
+        "CF_Fair",
+        "fortuneTeller1",
+        "petLoveMessage",
+        "fall_19_1",
+        "robinDeluxeBed",
+        "marnieAutoGrabber",
+        "QiChallengeComplete",
+        "fall_26",
+        "ccCraftsRoom",
+        "WoodChipper",
+        "winter_2_1",
+        "VisitedQuarryMine",
+        "gotGoldenScythe",
+        "museum40",
+        "museumCollectedRewardBO_140_1",
+        "winter_6_1",
+        "winter_7",
+        "WizardReward",
+        "lb_2",
+        "museumCollectedRewardF_1299_1",
+        "galaxySword",
+        "winter_12_1",
+        "TH_Tunnel",
+        "winter_14",
+        "lb_3",
+        "museumCollectedRewardF_1545_1",
+        "winter_17_1",
+        "winter_18",
+        "Gil_Burglar's Ring",
+        "winter_21_1",
+        "museumCollectedRewardF_1304_1",
+        "clothFound",
+        "winter_24",
+        "winter_26_1",
+        "gusGiantOmelet",
+        "museumCollectedRewardO_463_1",
+        "museum50",
+        "museumCollectedRewardF_1671_1",
+        "spring_1_2",
+        "fertilizers2",
+        "incubator",
+        "spring_6_2",
+        "Gil_Insect Head",
+        "Gil_Vampire Ring",
+        "MarlonRecovery",
+        "Got_Capsule",
+        "spring_15_2",
+        "Capsule_Broken",
+        "spring_21_2",
+        "ClintReward",
+        "georgeGifts",
+        "lb_4",
+        "lb_5",
+        "lb_6",
+        "museumCollectedRewardF_1302_1",
+        "robinResource",
+        "summer_6_2",
+        "museumCollectedRewardO_499_1",
+        "museumCollectedRewardBL_499_1",
+        "willyBugWadCutscene",
+        "hasSeenGrandpaNote",
+        "ccPantry",
+        "summer_15_2",
+        "doorUnlockVincent",
+        "TH_Railroad",
+        "doorUnlockEmily",
+        "museumCollectedRewardF_1305_1",
+        "museumCollectedRewardBO_139_1",
+        "summer_21_2",
+        "linusTrashCleanup",
+        "OpenedSewer",
+        "CF_Sewer",
+        "MSB_Lewis",
+        "ccIsComplete",
+        "ccBulletin",
+        "ccBulletinThankYou",
+        "Caroline1",
+        "Lewis_cc_Complete",
+        "AbigailHAND",
+        "ccBulletinThankYouReceived",
+        "willyBackRoomInvitation",
+        "pierreHours",
+        "emilyStones",
+        "transferredObjectsJojaMart",
+        "fall_6_2",
+        "willyBoatTicketMachine",
+        "willyBoatAnchor",
+        "abandonedJojaMartAccessible",
+        "hasSeenAbandonedJunimoNote",
+        "TH_MayorFridge",
+        "TH_SandDragon",
+        "TH_LumberPile",
+        "RarecrowSociety",
+        "pierreMEGA",
+        "fall_19_2",
+        "pamHouseUpgradeAsked",
+        "krobusUnseal",
+        "witchStatueGone",
+        "Henchman1",
+        "LinusFall1",
+        "henchmanGone",
+        "hasPickedUpMagicInk",
+        "pierreQualityCrops",
+        "ccMovieTheater",
+        "CF_Statue",
+        "winter_5_2",
+        "doorUnlockPierre",
+        "MSB_Pierre",
+        "WizardReward2",
+        "willyBoatHull",
+        "willyHours",
+        "ISLAND_NORTH_DIGSITE_LOAD",
+        "CalderaTreasure",
+        "willyBoatFixed",
+        "seenBoatJourney",
+        "Visited_Island",
+        "lostWalnutFound",
+        "Island_FirstParrot",
+        "sawParrotBoyIntro",
+        "Saw_Flame_Sprite_South",
+        "Saw_Flame_Sprite_North_South",
+        "Saw_Flame_Sprite_North_North",
+        "Saw_Flame_Sprite_Volcano",
+        "reachedCaldera",
+        "volcanoShortcutUnlocked",
+        "winter_13_2",
+        "lb_7",
+        "lb_8",
+        "lb_10",
+        "lb_11",
+        "lb_9",
+        "renovation_southern_open",
+        "birdieQuestBegun",
+        "Island_Turtle",
+        "tigerSlimeNut",
+        "birdieQuestFinished",
+        "gotBirdieReward",
+        "Gil_Slime Charmer Ring",
+        "safariGuyIntro",
+        "addedParrotBoy",
+        "Island_VolcanoBridge",
+        "Island_UpgradeBridge",
+        "islandNorthCaveOpened",
+        "museumCollectedRewardF_1303_1",
+        "museumCollectedRewardO_464_1",
+        "Island_UpgradeHouse",
+        "winter_19_2",
+        "talkedToGourmand",
+        "grandpaPerfect",
+        "SecretNote19_done",
+        "LeahBug",
+        "lewisStatue",
+        "Island_UpgradeHouse_Mailbox",
+        "grandpaPerfect",
+        "pamHouseUpgrade",
+        "lb_19",
+        "lb_20",
+        "lb_18",
+        "lb_16",
+        "lb_15",
+        "lb_17",
+        "lb_12",
+        "lb_13",
+        "lb_14",
+        "grandpaPerfect",
+        "Island_VolcanoShortcutOut",
+        "Pam_pamHouseUpgradeAnonymous",
+        "qiCave",
+        "transferredObjectsPamHouse",
+        "Lewis_pamHouseUpgradeAnonymous",
+        "Robin_pamHouseUpgradeAnonymous",
+        "Gus_pamHouseUpgradeAnonymous",
+        "Penny_pamHouseUpgradeAnonymous",
+        "Shane_pamHouseUpgradeAnonymous",
+        "doorUnlockSam",
+        "doorUnlockLewis",
+        "RobinSeb",
+        "SecretNote16_done",
+        "gotMummifiedFrog",
+        "museum70",
+        "museumCollectedRewardO_253_1",
+        "museumCollectedRewardF_131_1"
+      ]
+    },
+    "mailForTomorrow": {},
+    "mailbox": {
+      "string": "Demetrius"
+    },
+    "timeWentToBed": {
+      "int": "0"
+    },
+    "sleptInTemporaryBed": {
+      "boolean": "false"
+    },
+    "stats": {
+      "seedsSown": "6541",
+      "itemsShipped": "5169",
+      "itemsCooked": "347",
+      "itemsCrafted": "3678",
+      "chickenEggsLayed": "756",
+      "duckEggsLayed": "203",
+      "cowMilkProduced": "771",
+      "goatMilkProduced": "277",
+      "rabbitWoolProduced": "0",
+      "sheepWoolProduced": "0",
+      "cheeseMade": "259",
+      "goatCheeseMade": "83",
+      "trufflesFound": "169",
+      "stoneGathered": "7932",
+      "rocksCrushed": "7777",
+      "dirtHoed": "5791",
+      "giftsGiven": "146",
+      "timesUnconscious": "2",
+      "averageBedtime": "1998",
+      "timesFished": "741",
+      "fishCaught": "493",
+      "bouldersCracked": "1",
+      "stumpsChopped": "222",
+      "stepsTaken": "294048",
+      "monstersKilled": "3681",
+      "diamondsFound": "40",
+      "prismaticShardsFound": "9",
+      "otherPreciousGemsFound": "0",
+      "caveCarrotsFound": "0",
+      "copperFound": "2046",
+      "ironFound": "1635",
+      "coalFound": "0",
+      "coinsFound": "0",
+      "goldFound": "1073",
+      "iridiumFound": "577",
+      "barsSmelted": "0",
+      "beveragesMade": "764",
+      "preservesMade": "1",
+      "piecesOfTrashRecycled": "4",
+      "mysticStonesCrushed": "1",
+      "daysPlayed": "268",
+      "weedsEliminated": "11",
+      "sticksChopped": "0",
+      "notesFound": "20",
+      "questsCompleted": "26",
+      "starLevelCropsShipped": "0",
+      "cropsShipped": "2125",
+      "itemsForaged": "994",
+      "slimesKilled": "1322",
+      "geodesCracked": "169",
+      "goodFriends": "4",
+      "totalMoneyGifted": "0",
+      "individualMoneyEarned": "0",
+      "specificMonstersKilled": {
+        "Bug": 101,
+        "Green Slime": 190,
+        "Big Slime": 177,
+        "Fly": 55,
+        "Rock Crab": 15,
+        "Grub": 135,
+        "Duggy": 4,
+        "Bat": 10,
+        "Stone Golem": 58,
+        "Frost Jelly": 370,
+        "Frost Bat": 207,
+        "Dust Spirit": 665,
+        "Ghost": 66,
+        "Skeleton": 238,
+        "Sludge": 495,
+        "Shadow Brute": 41,
+        "Lava Bat": 63,
+        "Shadow Shaman": 28,
+        "Lava Crab": 10,
+        "Metal Head": 23,
+        "Squid Kid": 11,
+        "Serpent": 296,
+        "Haunted Skull": 32,
+        "Prismatic Slime": 1,
+        "Pepper Rex": 31,
+        "Carbon Ghost": 50,
+        "Mummy": 68,
+        "Iridium Crab": 28,
+        "Iridium Bat": 18,
+        "Tiger Slime": 87,
+        "Magma Sprite": 66,
+        "Hot Head": 18,
+        "False Magma Cap": 4,
+        "Magma Duggy": 3,
+        "Magma Sparker": 12,
+        "Lava Lurk": 1,
+        "Dwarvish Sentry": 2
+      },
+      "stat_dictionary": {
+        "trashCansChecked": {
+          "unsignedInt": "58"
+        },
+        "boatRidesToIsland": {
+          "unsignedInt": "16"
+        },
+        "timesEnchanted": {
+          "unsignedInt": "3"
+        }
+      },
+      "GoodFriends": "4",
+      "CropsShipped": "2125",
+      "ItemsForaged": "994",
+      "GeodesCracked": "169",
+      "SlimesKilled": "1322",
+      "StarLevelCropsShipped": "0",
+      "StoneGathered": "7932",
+      "QuestsCompleted": "26",
+      "FishCaught": "493",
+      "NotesFound": "20",
+      "SticksChopped": "0",
+      "WeedsEliminated": "11",
+      "DaysPlayed": "268",
+      "BouldersCracked": "1",
+      "MysticStonesCrushed": "1",
+      "GoatCheeseMade": "83",
+      "CheeseMade": "259",
+      "PiecesOfTrashRecycled": "4",
+      "PreservesMade": "1",
+      "BeveragesMade": "764",
+      "BarsSmelted": "0",
+      "IridiumFound": "577",
+      "GoldFound": "1073",
+      "CoinsFound": "0",
+      "CoalFound": "0",
+      "IronFound": "1635",
+      "CopperFound": "2046",
+      "CaveCarrotsFound": "0",
+      "OtherPreciousGemsFound": "0",
+      "PrismaticShardsFound": "9",
+      "DiamondsFound": "40",
+      "MonstersKilled": "3681",
+      "StepsTaken": "294048",
+      "StumpsChopped": "222",
+      "TimesFished": "741",
+      "AverageBedtime": "1998",
+      "TimesUnconscious": "2",
+      "GiftsGiven": "146",
+      "DirtHoed": "5791",
+      "RocksCrushed": "7777",
+      "TrufflesFound": "169",
+      "SheepWoolProduced": "0",
+      "RabbitWoolProduced": "0",
+      "GoatMilkProduced": "277",
+      "CowMilkProduced": "771",
+      "DuckEggsLayed": "203",
+      "ItemsCrafted": "3678",
+      "ChickenEggsLayed": "756",
+      "ItemsCooked": "347",
+      "ItemsShipped": "5169",
+      "SeedsSown": "6541",
+      "IndividualMoneyEarned": "0"
+    },
+    "blueprints": {},
+    "biteChime": "-1",
+    "itemsLostLastDeath": {},
+    "movementDirections": {},
+    "farmName": "State",
+    "favoriteThing": "McDonald",
+    "horseName": "Hoshi",
+    "slotCanHost": "false",
+    "userID": {},
+    "catPerson": "true",
+    "whichPetBreed": "0",
+    "acceptedDailyQuest": "false",
+    "mostRecentBed": {
+      "X": "1765.9271",
+      "Y": "864.7244"
+    },
+    "emoteFavorites": [
+      "question",
+      "heart",
+      "yes",
+      "happy",
+      "pause",
+      "sad",
+      "no",
+      "angry"
+    ],
+    "performedEmotes": {},
+    "shirt": "-1",
+    "hair": "11",
+    "skin": "4",
+    "shoes": "7",
+    "accessory": "-1",
+    "facialHair": "-1",
+    "pants": "-1",
+    "hairstyleColor": {
+      "B": "41",
+      "G": "21",
+      "R": "15",
+      "A": "255",
+      "PackedValue": "4280882447"
+    },
+    "pantsColor": {
+      "B": "66",
+      "G": "30",
+      "R": "38",
+      "A": "255",
+      "PackedValue": "4282523174"
+    },
+    "newEyeColor": {
+      "B": "24",
+      "G": "44",
+      "R": "52",
+      "A": "255",
+      "PackedValue": "4279774260"
+    },
+    "hat": {
+      "isLostItem": "false",
+      "category": "-95",
+      "hasBeenInInventory": "false",
+      "name": "Official Cap",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Official Cap",
+      "Name": "Official Cap",
+      "Stack": "1",
+      "which": "5",
+      "skipHairDraw": "false",
+      "ignoreHairstyleOffset": "true",
+      "hairDrawType": "1",
+      "isPrismatic": "false"
+    },
+    "boots": {
+      "isLostItem": "false",
+      "category": "-97",
+      "hasBeenInInventory": "false",
+      "name": "Dark Boots",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Custom-tailored Dark Boots",
+      "Name": "Dark Boots",
+      "Stack": "1",
+      "defenseBonus": "4",
+      "immunityBonus": "4",
+      "indexInTileSheet": "511",
+      "price": "450",
+      "indexInColorSheet": "7",
+      "appliedBootSheetIndex": "514"
+    },
+    "leftRing": {
+      "$attrs": {
+        "xsi:type": "CombinedRing"
+      },
+      "isLostItem": "false",
+      "category": "-96",
+      "hasBeenInInventory": "false",
+      "name": "Combined Ring",
+      "parentSheetIndex": "880",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Combined Ring",
+      "Name": "Combined Ring",
+      "Stack": "1",
+      "price": "100",
+      "indexInTileSheet": "880",
+      "uniqueID": "8142",
+      "combinedRings": {
+        "Ring": [
+          {
+            "isLostItem": "false",
+            "category": "-96",
+            "hasBeenInInventory": "false",
+            "name": "Iridium Band",
+            "parentSheetIndex": "527",
+            "specialItem": "false",
+            "SpecialVariable": "0",
+            "DisplayName": "Iridium Band",
+            "Name": "Iridium Band",
+            "Stack": "1",
+            "price": "2000",
+            "indexInTileSheet": "527",
+            "uniqueID": "8699"
+          },
+          {
+            "isLostItem": "false",
+            "category": "-96",
+            "hasBeenInInventory": "false",
+            "name": "Slime Charmer Ring",
+            "parentSheetIndex": "520",
+            "specialItem": "false",
+            "SpecialVariable": "0",
+            "DisplayName": "Slime Charmer Ring",
+            "Name": "Slime Charmer Ring",
+            "Stack": "1",
+            "price": "700",
+            "indexInTileSheet": "520",
+            "uniqueID": "8692"
+          }
+        ]
+      }
+    },
+    "rightRing": {
+      "$attrs": {
+        "xsi:type": "CombinedRing"
+      },
+      "isLostItem": "false",
+      "category": "-96",
+      "hasBeenInInventory": "false",
+      "name": "Combined Ring",
+      "parentSheetIndex": "880",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Combined Ring",
+      "Name": "Combined Ring",
+      "Stack": "1",
+      "price": "100",
+      "indexInTileSheet": "880",
+      "uniqueID": "5727",
+      "combinedRings": {
+        "Ring": [
+          {
+            "isLostItem": "false",
+            "category": "-96",
+            "hasBeenInInventory": "false",
+            "name": "Iridium Band",
+            "parentSheetIndex": "527",
+            "specialItem": "false",
+            "SpecialVariable": "0",
+            "DisplayName": "Iridium Band",
+            "Name": "Iridium Band",
+            "Stack": "1",
+            "price": "2000",
+            "indexInTileSheet": "527",
+            "uniqueID": "9378"
+          },
+          {
+            "isLostItem": "false",
+            "category": "-96",
+            "hasBeenInInventory": "false",
+            "name": "Burglar's Ring",
+            "parentSheetIndex": "526",
+            "specialItem": "false",
+            "SpecialVariable": "0",
+            "DisplayName": "Burglar's Ring",
+            "Name": "Burglar's Ring",
+            "Stack": "1",
+            "price": "1500",
+            "indexInTileSheet": "526",
+            "uniqueID": "9377"
+          }
+        ]
+      }
+    },
+    "shirtItem": {
+      "isLostItem": "false",
+      "category": "-100",
+      "hasBeenInInventory": "false",
+      "name": "Bomber Jacket",
+      "parentSheetIndex": "1155",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Bomber Jacket",
+      "Name": "Bomber Jacket",
+      "Stack": "1",
+      "price": "50",
+      "indexInTileSheet": "155",
+      "indexInTileSheetFemale": "-1",
+      "clothesType": "0",
+      "dyeable": "false",
+      "clothesColor": {
+        "B": "255",
+        "G": "255",
+        "R": "255",
+        "A": "255",
+        "PackedValue": "4294967295"
+      },
+      "otherData": {},
+      "isPrismatic": "false",
+      "Price": "50"
+    },
+    "pantsItem": {
+      "isLostItem": "false",
+      "category": "-100",
+      "hasBeenInInventory": "false",
+      "name": "Relaxed Fit Pants",
+      "parentSheetIndex": "12",
+      "specialItem": "false",
+      "SpecialVariable": "0",
+      "DisplayName": "Relaxed Fit Pants",
+      "Name": "Relaxed Fit Pants",
+      "Stack": "1",
+      "price": "50",
+      "indexInTileSheet": "12",
+      "indexInTileSheetFemale": "-1",
+      "clothesType": "1",
+      "dyeable": "true",
+      "clothesColor": {
+        "B": "45",
+        "G": "45",
+        "R": "45",
+        "A": "255",
+        "PackedValue": "4281150765"
+      },
+      "otherData": {},
+      "isPrismatic": "false",
+      "Price": "50"
+    },
+    "divorceTonight": "false",
+    "changeWalletTypeTonight": "false",
+    "woodPieces": "0",
+    "stonePieces": "0",
+    "copperPieces": "0",
+    "ironPieces": "0",
+    "coalPieces": "0",
+    "goldPieces": "0",
+    "iridiumPieces": "0",
+    "quartzPieces": "0",
+    "gameVersion": "1.5.6",
+    "gameVersionLabel": "Hotfix #3",
+    "caveChoice": "1",
+    "feed": "0",
+    "farmingLevel": "10",
+    "miningLevel": "10",
+    "combatLevel": "10",
+    "foragingLevel": "10",
+    "fishingLevel": "10",
+    "luckLevel": "0",
+    "newSkillPointsToSpend": "0",
+    "addedFarmingLevel": "0",
+    "addedMiningLevel": "0",
+    "addedCombatLevel": "0",
+    "addedForagingLevel": "0",
+    "addedFishingLevel": "0",
+    "addedLuckLevel": "0",
+    "maxStamina": "406",
+    "maxItems": "36",
+    "lastSeenMovieWeek": "28",
+    "resilience": "4",
+    "attack": "0",
+    "immunity": "4",
+    "attackIncreaseModifier": "0.2",
+    "knockbackModifier": "0",
+    "weaponSpeedModifier": "0",
+    "critChanceModifier": "0",
+    "critPowerModifier": "0",
+    "weaponPrecisionModifier": "0",
+    "clubCoins": "5800",
+    "trashCanLevel": "4",
+    "daysLeftForToolUpgrade": "0",
+    "houseUpgradeLevel": "3",
+    "daysUntilHouseUpgrade": "-1",
+    "coopUpgradeLevel": "0",
+    "barnUpgradeLevel": "0",
+    "hasGreenhouse": "false",
+    "hasUnlockedSkullDoor": "true",
+    "hasDarkTalisman": "true",
+    "hasMagicInk": "true",
+    "showChestColorPicker": "true",
+    "hasMagnifyingGlass": "true",
+    "hasWateringCanEnchantment": "false",
+    "magneticRadius": "384",
+    "temporaryInvincibilityTimer": "0",
+    "currentTemporaryInvincibilityDuration": "1200",
+    "health": "180",
+    "maxHealth": "180",
+    "difficultyModifier": "1",
+    "isMale": "true",
+    "hasBusTicket": "false",
+    "stardewHero": "false",
+    "hasClubCard": "true",
+    "hasSpecialCharm": "false",
+    "basicShipped": {
+      "[object Object]": 4
+    },
+    "mineralsFound": {
+      "[object Object]": 1
+    },
+    "recipesCooked": {
+      "[object Object]": 1
+    },
+    "fishCaught": {
+      "[object Object]": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "-1"
+          ]
+        }
+      }
+    },
+    "archaeologyFound": {
+      "[object Object]": {
+        "ArrayOfInt": {
+          "int": [
+            "2",
+            "2"
+          ]
+        }
+      }
+    },
+    "callsReceived": {},
+    "giftedItems": {
+      "Lewis": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Vincent": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Pam": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Clint": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Jas": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Elliott": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Willy": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Demetrius": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Linus": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Leah": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Marnie": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Alex": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Abigail": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Penny": {
+        "dictionary": {
+          "[object Object]": 3
+        }
+      },
+      "George": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Caroline": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Emily": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Gus": {
+        "dictionary": {
+          "[object Object]": 3
+        }
+      },
+      "Sam": {
+        "dictionary": {
+          "[object Object]": 3
+        }
+      },
+      "Harvey": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "int": "395"
+            },
+            "value": {
+              "int": "2"
+            }
+          }
+        }
+      },
+      "Robin": {
+        "dictionary": {
+          "[object Object]": 2
+        }
+      },
+      "Maru": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Dwarf": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Krobus": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Pierre": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Evelyn": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Jodi": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Kent": {
+        "dictionary": {
+          "[object Object]": 1
+        }
+      },
+      "Sandy": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "int": "424"
+            },
+            "value": {
+              "int": "1"
+            }
+          }
+        }
+      },
+      "Wizard": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "int": "424"
+            },
+            "value": {
+              "int": "1"
+            }
+          }
+        }
+      },
+      "Leo": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "int": "424"
+            },
+            "value": {
+              "int": "3"
+            }
+          }
+        }
+      },
+      "Haley": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Sebastian": {
+        "dictionary": {
+          "[object Object]": 0
+        }
+      },
+      "Shane": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "int": "424"
+            },
+            "value": {
+              "int": "2"
+            }
+          }
+        }
+      }
+    },
+    "tailoredItems": {
+      "C 1057 1": 1,
+      "C 1155 1": 1,
+      "C 12 1": 1,
+      "C 1137 1": 1
+    },
+    "friendshipData": {
+      "Robin": {
+        "Friendship": {
+          "Points": "1694",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "spring",
+            "TotalDays": "235"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Lewis": {
+        "Friendship": {
+          "Points": "2749",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "9",
+            "Season": "spring",
+            "TotalDays": "232"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Gus": {
+        "Friendship": {
+          "Points": "1621",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "9",
+            "Season": "summer",
+            "TotalDays": "260"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Pierre": {
+        "Friendship": {
+          "Points": "1210",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "9",
+            "Season": "summer",
+            "TotalDays": "260"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Marnie": {
+        "Friendship": {
+          "Points": "990",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Leah": {
+        "Friendship": {
+          "Points": "687",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Penny": {
+        "Friendship": {
+          "Points": "595",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "16",
+            "Season": "spring",
+            "TotalDays": "239"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Elliott": {
+        "Friendship": {
+          "Points": "1403",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "summer",
+            "TotalDays": "263"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Evelyn": {
+        "Friendship": {
+          "Points": "1942",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "20",
+            "Season": "winter",
+            "TotalDays": "215"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Maru": {
+        "Friendship": {
+          "Points": "270",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "spring",
+            "TotalDays": "235"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Linus": {
+        "Friendship": {
+          "Points": "1577",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "6",
+            "Season": "summer",
+            "TotalDays": "257"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Emily": {
+        "Friendship": {
+          "Points": "1698",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Vincent": {
+        "Friendship": {
+          "Points": "1769",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "10",
+            "Season": "spring",
+            "TotalDays": "233"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Jodi": {
+        "Friendship": {
+          "Points": "1965",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "10",
+            "Season": "spring",
+            "TotalDays": "233"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Caroline": {
+        "Friendship": {
+          "Points": "2396",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Harvey": {
+        "Friendship": {
+          "Points": "320",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "26",
+            "Season": "summer",
+            "TotalDays": "165"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Willy": {
+        "Friendship": {
+          "Points": "927",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "13",
+            "Season": "summer",
+            "TotalDays": "264"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Sam": {
+        "Friendship": {
+          "Points": "999",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "10",
+            "Season": "spring",
+            "TotalDays": "233"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Sebastian": {
+        "Friendship": {
+          "Points": "138",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Abigail": {
+        "Friendship": {
+          "Points": "1584",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "16",
+            "Season": "spring",
+            "TotalDays": "239"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Clint": {
+        "Friendship": {
+          "Points": "1345",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "22",
+            "Season": "summer",
+            "TotalDays": "161"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Jas": {
+        "Friendship": {
+          "Points": "1174",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Demetrius": {
+        "Friendship": {
+          "Points": "1865",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "spring",
+            "TotalDays": "235"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Wizard": {
+        "Friendship": {
+          "Points": "847",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "23",
+            "Season": "fall",
+            "TotalDays": "190"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Haley": {
+        "Friendship": {
+          "Points": "401",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "summer",
+            "TotalDays": "263"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Alex": {
+        "Friendship": {
+          "Points": "406",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "12",
+            "Season": "summer",
+            "TotalDays": "263"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Shane": {
+        "Friendship": {
+          "Points": "392",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Pam": {
+        "Friendship": {
+          "Points": "2749",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "George": {
+        "Friendship": {
+          "Points": "2022",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "11",
+            "Season": "spring",
+            "TotalDays": "234"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Sandy": {
+        "Friendship": {
+          "Points": "780",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "15",
+            "Season": "fall",
+            "TotalDays": "182"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Dwarf": {
+        "Friendship": {
+          "Points": "1051",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "2",
+            "DayOfMonth": "23",
+            "Season": "fall",
+            "TotalDays": "190"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Kent": {
+        "Friendship": {
+          "Points": "974",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "10",
+            "Season": "spring",
+            "TotalDays": "233"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Krobus": {
+        "Friendship": {
+          "Points": "470",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "10",
+            "Season": "spring",
+            "TotalDays": "233"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Henchman": {
+        "Friendship": {
+          "Points": "0",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Leo": {
+        "Friendship": {
+          "Points": "221",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "3",
+            "DayOfMonth": "20",
+            "Season": "spring",
+            "TotalDays": "243"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      }
+    },
+    "dayOfMonthForSaveGame": "16",
+    "seasonForSaveGame": "1",
+    "yearForSaveGame": "3",
+    "overallsColor": "0",
+    "shirtColor": "0",
+    "skinColor": "0",
+    "hairColor": "0",
+    "eyeColor": "0",
+    "bobber": {},
+    "qiGems": "0",
+    "JOTPKProgress": {
+      "bulletDamage": {
+        "int": "1"
+      },
+      "fireSpeedLevel": {
+        "int": "0"
+      },
+      "ammoLevel": {
+        "int": "0"
+      },
+      "spreadPistol": {
+        "boolean": "false"
+      },
+      "runSpeedLevel": {
+        "int": "0"
+      },
+      "lives": {
+        "int": "1"
+      },
+      "coins": {
+        "int": "8"
+      },
+      "score": {
+        "int": "0"
+      },
+      "died": {
+        "boolean": "true"
+      },
+      "whichRound": {
+        "int": "0"
+      },
+      "whichWave": {
+        "int": "1"
+      },
+      "heldItem": {
+        "int": "-100"
+      },
+      "world": {
+        "int": "0"
+      },
+      "waveTimer": {
+        "int": "75376"
+      },
+      "monsterChances": {
+        "Vector2": [
+          {
+            "X": "0.015000001",
+            "Y": "0.42000002"
+          },
+          {
+            "X": "0",
+            "Y": "0"
+          },
+          {
+            "X": "0",
+            "Y": "0"
+          },
+          {
+            "X": "0",
+            "Y": "0"
+          },
+          {
+            "X": "0",
+            "Y": "0"
+          },
+          {
+            "X": "0",
+            "Y": "0"
+          },
+          {
+            "X": "0.001",
+            "Y": "0.01"
+          }
+        ]
+      }
+    },
+    "hasUsedDailyRevive": "false",
+    "chestConsumedLevels": {
+      "[object Object]": {
+        "boolean": "true"
+      }
+    },
+    "saveTime": "5861805",
+    "isCustomized": "true",
+    "homeLocation": "FarmHouse",
+    "lastSleepLocation": "FarmHouse",
+    "lastSleepPoint": {
+      "X": "28",
+      "Y": "13"
+    },
+    "daysMarried": "0",
+    "movementMultiplier": "0.066",
+    "theaterBuildDate": "196",
+    "deepestMineLevel": "221",
+    "stamina": "406",
+    "totalMoneyEarned": "4065139",
+    "millisecondsPlayed": "242822944",
+    "hasRustyKey": "true",
+    "hasSkullKey": "true",
+    "canUnderstandDwarves": "true",
+    "HasTownKey": "false",
+    "useSeparateWallets": "false",
+    "timesReachedMineBottom": "1",
+    "UniqueMultiplayerID": "-2978660053896710079",
+    "money": "430991"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@types/bun": "^1.2.13"
+  },
+  "scripts": {
+    "start": "bun ./index.html"
+  },
+  "name": "sdv",
+  "type": "module",
+  "private": true,
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

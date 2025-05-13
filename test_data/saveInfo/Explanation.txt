@@ -1,0 +1,211 @@
+  archaeologyFound {
+    itemID: string
+    parentSheetIndex: string
+  }[]
+
+  fishCaught: {
+    itemID: string
+    caught: u16
+    catchSize: u16
+  }[]
+  
+  giftedItems: {
+    recipient: string (Willy)
+    itemID: string
+    value: u16
+  }[]
+
+  friendShipData: {
+    person: string ("Lewis")
+    points: u16
+    giftsThisWeek: u8
+    giftsToday: u8
+    lastGiftDate: {
+      year: u8
+      dayOfMonth: u8
+      season: enum  
+    }
+    talkedToToday: bool
+    proposalRejected: bool
+    status: enum? (friendly)
+    proposer: string (multiplayer UUID of person proposing)
+    roommateMarriage: bool
+  }
+
+  Quest: {
+    type: BuildingQuest
+    objective: string
+    description: string
+    title: string,
+    rewardDescription: string (or -1)
+    accepted: bool
+    completed: bool
+    dailyQuest: bool
+    showNew: bool
+    canBeCancelled: bool
+    destroy: bool
+    id: u16
+    moneyReward: u16,
+    questType: u8
+    daysLeft: u8
+    dayQuestAccepted: i8 (-1)
+    nextQuest: i8[] (-1)
+    questTitle: string
+    buildingType: string? (coop)
+  }
+
+      Quest: {
+        type: resourceCollectionQuest
+        questype: 10
+        target: Clint
+        targetMessage: string
+        numberCollected: u8
+        number: u8
+        reward: u16
+        resource: string
+        <parts>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13647</xmlKey>
+          <param xsi:type="xsd:int">4</param>
+          <param xsi:type="Object">
+            <isLostItem>false</isLostItem>
+            <category>-15</category>
+            <hasBeenInInventory>false</hasBeenInInventory>
+            <name>Copper Ore</name>
+            <parentSheetIndex>378</parentSheetIndex>
+            <itemId>378</itemId>
+            <specialItem>false</specialItem>
+            <isRecipe>false</isRecipe>
+            <quality>0</quality>
+            <stack>1</stack>
+            <SpecialVariable>0</SpecialVariable>
+            <tileLocation>
+              <X>0</X>
+              <Y>0</Y>
+            </tileLocation>
+            <owner>0</owner>
+            <type>Basic</type>
+            <canBeSetDown>true</canBeSetDown>
+            <canBeGrabbed>true</canBeGrabbed>
+            <isSpawnedObject>false</isSpawnedObject>
+            <questItem>false</questItem>
+            <isOn>true</isOn>
+            <fragility>0</fragility>
+            <price>5</price>
+            <edibility>-300</edibility>
+            <bigCraftable>false</bigCraftable>
+            <setOutdoors>false</setOutdoors>
+            <setIndoors>false</setIndoors>
+            <readyForHarvest>false</readyForHarvest>
+            <showNextIndex>false</showNextIndex>
+            <flipped>true</flipped>
+            <isLamp>false</isLamp>
+            <minutesUntilReady>0</minutesUntilReady>
+            <boundingBox>
+              <X>0</X>
+              <Y>0</Y>
+              <Width>0</Width>
+              <Height>0</Height>
+              <Location>
+                <X>0</X>
+                <Y>0</Y>
+              </Location>
+              <Size>
+                <X>0</X>
+                <Y>0</Y>
+              </Size>
+            </boundingBox>
+            <scale>
+              <X>0</X>
+              <Y>0</Y>
+            </scale>
+            <uses>0</uses>
+            <destroyOvernight>false</destroyOvernight>
+          </param>
+          <param xsi:type="DescriptionElement">
+            <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13651</xmlKey>
+          </param>
+        </DescriptionElement>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ItemDeliveryQuest.cs.13607</xmlKey>
+          <param xsi:type="xsd:int">180</param>
+        </DescriptionElement>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13688</xmlKey>
+        </DescriptionElement>
+      </parts>
+      <dialogueparts>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13662</xmlKey>
+        </DescriptionElement>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13658</xmlKey>
+        </DescriptionElement>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13672</xmlKey>
+        </DescriptionElement>
+        <DescriptionElement>
+          <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13673</xmlKey>
+        </DescriptionElement>
+      </dialogueparts>
+      <objective>
+        <xmlKey>Strings\StringsFromCSFiles:ResourceCollectionQuest.cs.13691</xmlKey>
+        <param xsi:type="xsd:int">0</param>
+        <param xsi:type="xsd:int">4</param>
+        <param xsi:type="Object">
+          <isLostItem>false</isLostItem>
+          <category>-15</category>
+          <hasBeenInInventory>false</hasBeenInInventory>
+          <name>Copper Ore</name>
+          <parentSheetIndex>378</parentSheetIndex>
+          <itemId>378</itemId>
+          <specialItem>false</specialItem>
+          <isRecipe>false</isRecipe>
+          <quality>0</quality>
+          <stack>1</stack>
+          <SpecialVariable>0</SpecialVariable>
+          <tileLocation>
+            <X>0</X>
+            <Y>0</Y>
+          </tileLocation>
+          <owner>0</owner>
+          <type>Basic</type>
+          <canBeSetDown>true</canBeSetDown>
+          <canBeGrabbed>true</canBeGrabbed>
+          <isSpawnedObject>false</isSpawnedObject>
+          <questItem>false</questItem>
+          <isOn>true</isOn>
+          <fragility>0</fragility>
+          <price>5</price>
+          <edibility>-300</edibility>
+          <bigCraftable>false</bigCraftable>
+          <setOutdoors>false</setOutdoors>
+          <setIndoors>false</setIndoors>
+          <readyForHarvest>false</readyForHarvest>
+          <showNextIndex>false</showNextIndex>
+          <flipped>false</flipped>
+          <isLamp>false</isLamp>
+          <minutesUntilReady>0</minutesUntilReady>
+          <boundingBox>
+            <X>0</X>
+            <Y>0</Y>
+            <Width>0</Width>
+            <Height>0</Height>
+            <Location>
+              <X>0</X>
+              <Y>0</Y>
+            </Location>
+            <Size>
+              <X>0</X>
+              <Y>0</Y>
+            </Size>
+          </boundingBox>
+          <scale>
+            <X>0</X>
+            <Y>0</Y>
+          </scale>
+          <uses>0</uses>
+          <destroyOvernight>false</destroyOvernight>
+        </param>
+      </objective>
+  }

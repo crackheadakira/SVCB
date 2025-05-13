@@ -1,0 +1,1993 @@
+{
+  "Farmer": {
+    "$attrs": {
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema"
+    },
+    "name": "Morgan",
+    "forceOneTileWide": "false",
+    "isEmoting": "true",
+    "isCharging": "false",
+    "isGlowing": "false",
+    "coloredBorder": "false",
+    "flip": "false",
+    "drawOnTop": "false",
+    "faceTowardFarmer": "false",
+    "ignoreMovementAnimation": "false",
+    "faceAwayFromFarmer": "false",
+    "scale": {
+      "float": "1"
+    },
+    "glowingTransparency": "0.25000027", 
+    "glowRate": "0.016666668",
+    "Gender": "Male",
+    "willDestroyObjectsUnderfoot": "true",
+    "Position": {
+      "X": "576",
+      "Y": "608"
+    },
+    "Speed": "5",
+    "FacingDirection": "1",
+    "IsEmoting": "true",
+    "CurrentEmote": "24",
+    "Scale": "1",
+    "questLog": {
+      "Quest": [
+        {
+          "$attrs": {
+            "xsi:type": "HaveBuildingQuest"
+          },
+          "_currentObjective": "Build a Coop.",
+          "_questDescription": "Robin, the local carpenter, lives north of town. In exchange for raw materials and money, she'll construct new buildings on your farm. You'll need her to build a coop or barn so that you can raise animals.",
+          "_questTitle": "Raising Animals",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "id": "7",
+          "moneyReward": "100",
+          "questType": "8",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "-1"
+          },
+          "questTitle": "Raising Animals",
+          "buildingType": "Coop"
+        },
+        {
+          "_currentObjective": "Reach level 40 in the mines.",
+          "_questDescription": "It seems that the mine elevator is still functional. It will allow you to quickly return to any elevator doors you've discovered. A deeper expedition might be in order.",
+          "_questTitle": "Deeper In The Mine",
+          "rewardDescription": "-1",
+          "accepted": "false",
+          "completed": "false",
+          "dailyQuest": "false",
+          "showNew": "false",
+          "canBeCancelled": "false",
+          "destroy": "false",
+          "id": "17",
+          "moneyReward": "0",
+          "questType": "1",
+          "daysLeft": "0",
+          "dayQuestAccepted": "-1",
+          "nextQuests": {
+            "int": "18"
+          },
+          "questTitle": "Deeper In The Mine"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "ResourceCollectionQuest"
+          },
+          "_currentObjective": "0/4 Copper Ore collected",
+          "_questDescription": "I am looking for someone to bring me 4 Copper Ores, as part of a local geological survey.    -Clint\n\n- 180g on delivery.\n- You can keep the ores after Clint inspects them.",
+          "_questTitle": "Gathering: Copper Ore",
+          "accepted": "true",
+          "completed": "false",
+          "dailyQuest": "true",
+          "showNew": "false",
+          "canBeCancelled": "true",
+          "destroy": "false",
+          "moneyReward": "0",
+          "questType": "10",
+          "daysLeft": "1",
+          "dayQuestAccepted": "6",
+          "nextQuests": {},
+          "questTitle": "Gathering: Copper Ore",
+          "target": "Clint",
+          "targetMessage": "You brought the ores I requested! Great.#$b#These ores look to be of good quality... You can keep them, of course. I just wanted to see how the local geology is doing.#$b#...And here's your payment, as promised.",
+          "numberCollected": "0",
+          "number": "4",
+          "reward": "180",
+          "resource": "(O)378",
+          "parts": {
+            "DescriptionElement": [
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13647",
+                "param": [
+                  "4",
+                  {
+                    "$attrs": {
+                      "xsi:type": "Object"
+                    },
+                    "isLostItem": "false",
+                    "category": "-15",
+                    "hasBeenInInventory": "false",
+                    "name": "Copper Ore",
+                    "parentSheetIndex": "378",
+                    "itemId": "378",
+                    "specialItem": "false",
+                    "isRecipe": "false",
+                    "quality": "0",
+                    "stack": "1",
+                    "SpecialVariable": "0",
+                    "tileLocation": {
+                      "X": "0",
+                      "Y": "0"
+                    },
+                    "owner": "0",
+                    "type": "Basic",
+                    "canBeSetDown": "true",
+                    "canBeGrabbed": "true",
+                    "isSpawnedObject": "false",
+                    "questItem": "false",
+                    "isOn": "true",
+                    "fragility": "0",
+                    "price": "5",
+                    "edibility": "-300",
+                    "bigCraftable": "false",
+                    "setOutdoors": "false",
+                    "setIndoors": "false",
+                    "readyForHarvest": "false",
+                    "showNextIndex": "false",
+                    "flipped": "true",
+                    "isLamp": "false",
+                    "minutesUntilReady": "0",
+                    "boundingBox": {
+                      "X": "0",
+                      "Y": "0",
+                      "Width": "0",
+                      "Height": "0",
+                      "Location": {
+                        "X": "0",
+                        "Y": "0"
+                      },
+                      "Size": {
+                        "X": "0",
+                        "Y": "0"
+                      }
+                    },
+                    "scale": {
+                      "X": "0",
+                      "Y": "0"
+                    },
+                    "uses": "0",
+                    "destroyOvernight": "false"
+                  },
+                  {
+                    "$attrs": {
+                      "xsi:type": "DescriptionElement"
+                    },
+                    "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13651"
+                  }
+                ]
+              },
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ItemDeliveryQuest.cs.13607",
+                "param": "180"
+              },
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13688"
+              }
+            ]
+          },
+          "dialogueparts": {
+            "DescriptionElement": [
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13662"
+              },
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13658"
+              },
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13672"
+              },
+              {
+                "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13673"
+              }
+            ]
+          },
+          "objective": {
+            "xmlKey": "Strings\\StringsFromCSFiles:ResourceCollectionQuest.cs.13691",
+            "param": [
+              "0",
+              "4",
+              {
+                "$attrs": {
+                  "xsi:type": "Object"
+                },
+                "isLostItem": "false",
+                "category": "-15",
+                "hasBeenInInventory": "false",
+                "name": "Copper Ore",
+                "parentSheetIndex": "378",
+                "itemId": "378",
+                "specialItem": "false",
+                "isRecipe": "false",
+                "quality": "0",
+                "stack": "1",
+                "SpecialVariable": "0",
+                "tileLocation": {
+                  "X": "0",
+                  "Y": "0"
+                },
+                "owner": "0",
+                "type": "Basic",
+                "canBeSetDown": "true",
+                "canBeGrabbed": "true",
+                "isSpawnedObject": "false",
+                "questItem": "false",
+                "isOn": "true",
+                "fragility": "0",
+                "price": "5",
+                "edibility": "-300",
+                "bigCraftable": "false",
+                "setOutdoors": "false",
+                "setIndoors": "false",
+                "readyForHarvest": "false",
+                "showNextIndex": "false",
+                "flipped": "false",
+                "isLamp": "false",
+                "minutesUntilReady": "0",
+                "boundingBox": {
+                  "X": "0",
+                  "Y": "0",
+                  "Width": "0",
+                  "Height": "0",
+                  "Location": {
+                    "X": "0",
+                    "Y": "0"
+                  },
+                  "Size": {
+                    "X": "0",
+                    "Y": "0"
+                  }
+                },
+                "scale": {
+                  "X": "0",
+                  "Y": "0"
+                },
+                "uses": "0",
+                "destroyOvernight": "false"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "professions": {},
+    "newLevels": {},
+    "experiencePoints": {
+      "int": [
+        "349",
+        "710",
+        "247",
+        "359",
+        "212",
+        "0"
+      ]
+    },
+    "items": {
+      "Item": [
+        {
+          "$attrs": {
+            "xsi:type": "MeleeWeapon"
+          },
+          "isLostItem": "false",
+          "category": "-98",
+          "hasBeenInInventory": "true",
+          "name": "Wood Club",
+          "itemId": "24",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "24",
+          "currentParentTileIndex": "24",
+          "indexOfMenuItemView": "24",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "637425",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "24",
+          "IndexOfMenuItemView": "24",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "type": "2",
+          "minDamage": "9",
+          "maxDamage": "16",
+          "speed": "-8",
+          "addedPrecision": "0",
+          "addedDefense": "0",
+          "addedAreaOfEffect": "0",
+          "knockback": "1.5",
+          "critChance": "0.02",
+          "critMultiplier": "3",
+          "isOnSpecial": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Pickaxe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Pickaxe",
+          "itemId": "Pickaxe",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "105",
+          "currentParentTileIndex": "107",
+          "indexOfMenuItemView": "131",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "862618",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "105",
+          "IndexOfMenuItemView": "131",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "additionalPower": {
+            "int": "0"
+          }
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Axe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Axe",
+          "itemId": "Axe",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "189",
+          "currentParentTileIndex": "189",
+          "indexOfMenuItemView": "215",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "436773",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "189",
+          "IndexOfMenuItemView": "215",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "additionalPower": {
+            "int": "0"
+          }
+        },
+        {
+          "$attrs": {
+            "xsi:type": "MeleeWeapon"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Scythe",
+          "itemId": "47",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "47",
+          "currentParentTileIndex": "47",
+          "indexOfMenuItemView": "47",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "303994",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "47",
+          "IndexOfMenuItemView": "47",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "type": "3",
+          "minDamage": "1",
+          "maxDamage": "3",
+          "speed": "0",
+          "addedPrecision": "0",
+          "addedDefense": "0",
+          "addedAreaOfEffect": "0",
+          "knockback": "1",
+          "critChance": "0.02",
+          "critMultiplier": "3",
+          "isOnSpecial": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "FishingRod"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Bamboo Pole",
+          "itemId": "BambooPole",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "8",
+          "currentParentTileIndex": "8",
+          "indexOfMenuItemView": "8",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "855321",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {
+            "Object": null
+          },
+          "InitialParentTileIndex": "8",
+          "IndexOfMenuItemView": "8",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "CastDirection": "-1"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "WateringCan"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Watering Can",
+          "itemId": "WateringCan",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "273",
+          "currentParentTileIndex": "275",
+          "indexOfMenuItemView": "296",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "743574",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "273",
+          "IndexOfMenuItemView": "296",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1",
+          "isBottomless": "false",
+          "WaterLeft": "38",
+          "IsBottomless": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Hoe"
+          },
+          "isLostItem": "false",
+          "category": "-99",
+          "hasBeenInInventory": "true",
+          "name": "Hoe",
+          "itemId": "Hoe",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "initialParentTileIndex": "21",
+          "currentParentTileIndex": "23",
+          "indexOfMenuItemView": "47",
+          "instantUse": "false",
+          "isEfficient": "false",
+          "animationSpeedModifier": "1",
+          "swingTicker": "960696",
+          "upgradeLevel": "0",
+          "numAttachmentSlots": "0",
+          "attachments": {},
+          "InitialParentTileIndex": "21",
+          "IndexOfMenuItemView": "47",
+          "InstantUse": "false",
+          "IsEfficient": "false",
+          "AnimationSpeedModifier": "1"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "0",
+          "hasBeenInInventory": "true",
+          "name": "Dwarf Scroll IV",
+          "parentSheetIndex": "99",
+          "itemId": "99",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "1",
+          "SpecialVariable": "0",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Arch",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "1",
+          "edibility": "-300",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "true",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "0",
+            "Height": "0",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "0",
+              "Y": "0"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "destroyOvernight": "false"
+        },
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "0",
+          "hasBeenInInventory": "true",
+          "name": "Geode",
+          "parentSheetIndex": "535",
+          "itemId": "535",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "6",
+          "SpecialVariable": "0",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Basic",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "50",
+          "edibility": "-300",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "0",
+            "Height": "0",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "0",
+              "Y": "0"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "destroyOvernight": "false"
+        },
+        null,
+        {
+          "$attrs": {
+            "xsi:type": "Object"
+          },
+          "isLostItem": "false",
+          "category": "-15",
+          "hasBeenInInventory": "true",
+          "name": "Copper Ore",
+          "parentSheetIndex": "378",
+          "itemId": "378",
+          "specialItem": "false",
+          "isRecipe": "false",
+          "quality": "0",
+          "stack": "4",
+          "SpecialVariable": "0",
+          "tileLocation": {
+            "X": "0",
+            "Y": "0"
+          },
+          "owner": "0",
+          "type": "Basic",
+          "canBeSetDown": "true",
+          "canBeGrabbed": "true",
+          "isSpawnedObject": "false",
+          "questItem": "false",
+          "isOn": "true",
+          "fragility": "0",
+          "price": "5",
+          "edibility": "-300",
+          "bigCraftable": "false",
+          "setOutdoors": "false",
+          "setIndoors": "false",
+          "readyForHarvest": "false",
+          "showNextIndex": "false",
+          "flipped": "false",
+          "isLamp": "false",
+          "minutesUntilReady": "0",
+          "boundingBox": {
+            "X": "0",
+            "Y": "0",
+            "Width": "0",
+            "Height": "0",
+            "Location": {
+              "X": "0",
+              "Y": "0"
+            },
+            "Size": {
+              "X": "0",
+              "Y": "0"
+            }
+          },
+          "scale": {
+            "X": "0",
+            "Y": "0"
+          },
+          "uses": "0",
+          "destroyOvernight": "false"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "dialogueQuestionsAnswered": {},
+    "cookingRecipes": {
+      "Fried Egg": 0,
+      "Stir Fry": 0
+    },
+    "craftingRecipes": {
+      "Wood Fence": 0,
+      "Gate": 0,
+      "Chest": 1,
+      "Torch": 0,
+      "Wood Sign": 0,
+      "Stone Sign": 0,
+      "Text Sign": 0,
+      "Wood Path": 0,
+      "Gravel Path": 0,
+      "Cobblestone Path": 0,
+      "Campfire": 0,
+      "Furnace": 1,
+      "Bait": 0,
+      "Wild Seeds (Sp)": 0,
+      "Field Snack": 0,
+      "Scarecrow": 1,
+      "Basic Fertilizer": 0,
+      "Cherry Bomb": 0,
+      "Sturdy Ring": 0,
+      "Bug Steak": 0
+    },
+    "activeDialogueEvents": {
+      "firstVisit_UndergroundMine20": 3,
+      "achievement_24_memory_oneday": 1,
+      "fishCaught_702_memory_oneday": 1,
+      "firstVisit_FarmCave_memory_oneday": 1,
+      "firstVisit_ScienceHouse_memory_oneday": 1,
+      "firstVisit_UndergroundMine6_memory_oneday": 2,
+      "questComplete_11_memory_oneday": 2,
+      "firstVisit_UndergroundMine5_memory_oneday": 2,
+      "questComplete_14_memory_oneday": 2,
+      "firstVisit_UndergroundMine4_memory_oneday": 2,
+      "firstVisit_UndergroundMine3_memory_oneday": 2,
+      "firstVisit_UndergroundMine2_memory_oneday": 2,
+      "firstVisit_UndergroundMine1_memory_oneday": 2,
+      "mineArea_0_memory_oneday": 2,
+      "firstVisit_Mine_memory_oneday": 2,
+      "eventSeen_100162_memory_oneday": 2,
+      "questComplete_6_memory_oneday": 2,
+      "gotPet_memory_oneday": 2,
+      "eventSeen_1590166_memory_oneday": 2,
+      "cropMatured_24_memory_oneday": 2,
+      "firstVisit_UndergroundMine19": 3,
+      "firstVisit_UndergroundMine18": 3,
+      "firstVisit_UndergroundMine17": 3,
+      "firstVisit_UndergroundMine16": 3,
+      "firstVisit_UndergroundMine15": 3,
+      "firstVisit_UndergroundMine14": 3,
+      "questComplete_15": 3,
+      "firstVisit_UndergroundMine13": 3,
+      "firstVisit_UndergroundMine12": 3,
+      "cc_Begin": 3,
+      "firstVisit_WizardHouse": 3,
+      "eventSeen_112": 3,
+      "questComplete_1": 3,
+      "firstVisit_CommunityCenter_memory_oneday": 3,
+      "questComplete_8_memory_oneday": 3,
+      "eventSeen_611439_memory_oneday": 3,
+      "questComplete_12_memory_oneday": 3,
+      "firstVisit_FarmHouse_memory_oneweek": 3,
+      "firstVisit_Farm_memory_oneweek": 3,
+      "firstVisit_BusStop_memory_oneweek": 3,
+      "eventSeen_60367_memory_oneweek": 3,
+      "Introduction_memory_oneweek": 3,
+      "firstVisit_UndergroundMine14_memory_oneday": 4,
+      "firstVisit_UndergroundMine15_memory_oneday": 4,
+      "firstVisit_UndergroundMine16_memory_oneday": 4,
+      "firstVisit_UndergroundMine17_memory_oneday": 4,
+      "firstVisit_UndergroundMine18_memory_oneday": 4,
+      "firstVisit_UndergroundMine19_memory_oneday": 4,
+      "firstVisit_UndergroundMine20_memory_oneday": 4,
+      "firstVisit_Backwoods_memory_oneweek": 4,
+      "firstVisit_Mountain_memory_oneweek": 4,
+      "firstVisit_ArchaeologyHouse_memory_oneweek": 4,
+      "firstVisit_JoshHouse_memory_oneweek": 4,
+      "firstVisit_Beach_memory_oneweek": 4,
+      "firstVisit_Forest_memory_oneweek": 4,
+      "firstVisit_SamHouse_memory_oneweek": 4,
+      "firstVisit_HaleyHouse_memory_oneweek": 4,
+      "firstVisit_SeedShop_memory_oneweek": 4,
+      "firstVisit_Town_memory_oneweek": 4,
+      "eventSeen_992553_memory_oneday": 0,
+      "fishCaught_137_memory_oneday": 0,
+      "questComplete__memory_oneday": 0,
+      "fishCaught_SeaJelly_memory_oneday": 0,
+      "fishCaught_148_memory_oneday": 0,
+      "firstVisit_ScienceHouse": 0,
+      "firstVisit_FarmCave": 0,
+      "fishCaught_702": 0,
+      "achievement_24": 0,
+      "fishCaught_142": 0,
+      "fishCaught_700": 0,
+      "fishCaught_136": 0,
+      "fishCaught_RiverJelly": 0,
+      "fishCaught_153": 0,
+      "fishCaught_142_memory_oneday": 1,
+      "fishCaught_700_memory_oneday": 1,
+      "fishCaught_136_memory_oneday": 1,
+      "fishCaught_RiverJelly_memory_oneday": 1,
+      "fishCaught_153_memory_oneday": 1,
+      "cropMatured_24": 1,
+      "eventSeen_1590166": 1,
+      "gotPet": 1,
+      "questComplete_6": 1,
+      "eventSeen_100162": 1,
+      "firstVisit_Mine": 1,
+      "mineArea_0": 1,
+      "firstVisit_UndergroundMine1": 1,
+      "firstVisit_UndergroundMine2": 1,
+      "firstVisit_UndergroundMine3": 1,
+      "firstVisit_UndergroundMine4": 1,
+      "questComplete_14": 1,
+      "firstVisit_UndergroundMine5": 1,
+      "questComplete_11": 1,
+      "firstVisit_UndergroundMine6": 1,
+      "firstVisit_UndergroundMine7": 1,
+      "firstVisit_UndergroundMine8": 1,
+      "firstVisit_UndergroundMine9": 1,
+      "firstVisit_UndergroundMine10": 1,
+      "mineArea_10": 1,
+      "firstVisit_UndergroundMine11": 1,
+      "firstVisit_UndergroundMine7_memory_oneday": 2,
+      "firstVisit_UndergroundMine8_memory_oneday": 2,
+      "firstVisit_UndergroundMine9_memory_oneday": 2,
+      "firstVisit_UndergroundMine10_memory_oneday": 2,
+      "mineArea_10_memory_oneday": 2,
+      "firstVisit_UndergroundMine11_memory_oneday": 2,
+      "questComplete_12": 2,
+      "eventSeen_611439": 2,
+      "questComplete_8": 2,
+      "firstVisit_CommunityCenter": 2,
+      "questComplete_16": 3,
+      "firstVisit_AdventureGuild": 3,
+      "eventSeen_prizeTicketIntro": 3,
+      "firstVisit_ManorHouse": 3,
+      "questComplete_15_memory_oneday": 4,
+      "firstVisit_UndergroundMine13_memory_oneday": 4,
+      "firstVisit_UndergroundMine12_memory_oneday": 4,
+      "cc_Begin_memory_oneday": 4,
+      "firstVisit_WizardHouse_memory_oneday": 4,
+      "eventSeen_112_memory_oneday": 4,
+      "questComplete_1_memory_oneday": 4,
+      "questComplete_16_memory_oneday": 4,
+      "firstVisit_AdventureGuild_memory_oneday": 4,
+      "eventSeen_prizeTicketIntro_memory_oneday": 4,
+      "firstVisit_ManorHouse_memory_oneday": 4
+    },
+    "previousActiveDialogueEvents": {
+      "Introduction": 8,
+      "eventSeen_60367": 8,
+      "firstVisit_BusStop": 8,
+      "firstVisit_Farm": 8,
+      "firstVisit_FarmHouse": 8,
+      "firstVisit_Town": 7,
+      "firstVisit_SeedShop": 7,
+      "firstVisit_HaleyHouse": 7,
+      "firstVisit_SamHouse": 7,
+      "firstVisit_Forest": 7,
+      "firstVisit_Beach": 7,
+      "firstVisit_JoshHouse": 7,
+      "firstVisit_ArchaeologyHouse": 7,
+      "firstVisit_Mountain": 7,
+      "firstVisit_Backwoods": 7,
+      "eventSeen_739330": 6,
+      "questComplete_9": 6,
+      "fishCaught_147": 6,
+      "fishCaught_131": 6,
+      "firstVisit_FishShop": 6,
+      "questComplete_25": 6,
+      "fishCaught_129": 6,
+      "firstVisit_Blacksmith": 6,
+      "eventSeen_0": 6,
+      "questComplete_24": 6,
+      "fishCaught_152": 6,
+      "fishCaught_267": 6,
+      "eventSeen_992553": 5,
+      "fishCaught_137": 5,
+      "questComplete_": 5,
+      "fishCaught_SeaJelly": 5,
+      "fishCaught_148": 5,
+      "firstVisit_ScienceHouse": 4,
+      "firstVisit_FarmCave": 4,
+      "fishCaught_702": 4,
+      "achievement_24": 4,
+      "fishCaught_142": 4,
+      "fishCaught_700": 4,
+      "fishCaught_136": 4,
+      "fishCaught_RiverJelly": 4,
+      "fishCaught_153": 4,
+      "cropMatured_24": 3,
+      "eventSeen_1590166": 3,
+      "gotPet": 3,
+      "questComplete_6": 3,
+      "eventSeen_100162": 3,
+      "firstVisit_Mine": 3,
+      "mineArea_0": 3,
+      "firstVisit_UndergroundMine1": 3,
+      "firstVisit_UndergroundMine2": 3,
+      "firstVisit_UndergroundMine3": 3,
+      "firstVisit_UndergroundMine4": 3,
+      "questComplete_14": 3,
+      "firstVisit_UndergroundMine5": 3,
+      "questComplete_11": 3,
+      "firstVisit_UndergroundMine6": 3,
+      "firstVisit_UndergroundMine7": 3,
+      "firstVisit_UndergroundMine8": 3,
+      "firstVisit_UndergroundMine9": 3,
+      "firstVisit_UndergroundMine10": 3,
+      "mineArea_10": 3,
+      "firstVisit_UndergroundMine11": 3,
+      "questComplete_12": 2,
+      "eventSeen_611439": 2,
+      "questComplete_8": 2,
+      "firstVisit_CommunityCenter": 2,
+      "firstVisit_UndergroundMine20": 1,
+      "firstVisit_UndergroundMine19": 1,
+      "firstVisit_UndergroundMine18": 1,
+      "firstVisit_UndergroundMine17": 1,
+      "firstVisit_UndergroundMine16": 1,
+      "firstVisit_UndergroundMine15": 1,
+      "firstVisit_UndergroundMine14": 1,
+      "questComplete_15": 1,
+      "firstVisit_UndergroundMine13": 1,
+      "firstVisit_UndergroundMine12": 1,
+      "cc_Begin": 1,
+      "firstVisit_WizardHouse": 1,
+      "eventSeen_112": 1,
+      "questComplete_1": 1,
+      "questComplete_16": 1,
+      "firstVisit_AdventureGuild": 1,
+      "eventSeen_prizeTicketIntro": 1,
+      "firstVisit_ManorHouse": 1
+    },
+    "triggerActionsRun": {
+      "string": "Mail_Willy_ResendSpring21"
+    },
+    "eventsSeen": {
+      "int": [
+        "60367",
+        "739330",
+        "0",
+        "992553",
+        "1590166",
+        "100162",
+        "611439",
+        "112",
+        "prizeTicketIntro"
+      ]
+    },
+    "secretNotesSeen": {},
+    "songsHeard": {
+      "string": [
+        "title_day",
+        "title_night",
+        "CloudCountry",
+        "grandpas_theme",
+        "spring_day_ambient",
+        "SettlingIn",
+        "spring1",
+        "springtown",
+        "ocean",
+        "libraryTheme",
+        "spring_night_ambient",
+        "spring2",
+        "spring3",
+        "marnieShop",
+        "MarlonsTheme",
+        "Upper_Ambient",
+        "Crystal Bells",
+        "Cavern",
+        "Secret Gnomes",
+        "distantBanjo",
+        "communityCenter",
+        "WizardSong"
+      ]
+    },
+    "achievements": {
+      "int": "24"
+    },
+    "specialItems": {},
+    "specialBigCraftables": {},
+    "mailReceived": {
+      "string": [
+        "button_tut_2",
+        "button_tut_1",
+        "checkedBulletinOnce",
+        "Gus_Introduction",
+        "Pierre_Introduction",
+        "Harvey_Introduction",
+        "Marnie_Introduction",
+        "Leah_Introduction",
+        "Penny_Introduction",
+        "Emily_Introduction",
+        "Vincent_Introduction",
+        "Jodi_Introduction",
+        "Haley_Introduction",
+        "Jas_Introduction",
+        "Elliott_Introduction",
+        "Maru_Introduction",
+        "Evelyn_Introduction",
+        "Caroline_Introduction",
+        "George_Introduction",
+        "Alex_Introduction",
+        "Abigail_Introduction",
+        "Pam_Introduction",
+        "Sam_Introduction",
+        "Robin_Introduction",
+        "Demetrius_Introduction",
+        "Linus_Introduction",
+        "Clint_Introduction",
+        "Sebastian_Introduction",
+        "spring_2_1",
+        "NOQUEST_13",
+        "Willy_Introduction",
+        "geodeFound",
+        "artifactFound",
+        "somethingToDonate",
+        "BackpackTip",
+        "copperFound",
+        "pierreBackpack",
+        "Lewis_Introduction",
+        "completedFirstBillboardQuest",
+        "fishing2",
+        "hatter",
+        "landslideDone",
+        "somethingWasDonated",
+        "robinWell",
+        "guildQuest",
+        "ccDoorUnlock",
+        "Lewis_cropMatured_24",
+        "museum5",
+        "museumCollectedRewardO_474_1",
+        "seenJunimoNote",
+        "wizardJunimoNote",
+        "canReadJunimoText",
+        "guildMember",
+        "checkedMonsterBoard",
+        "Lewis_cc_Begin"
+      ]
+    },
+    "mailForTomorrow": {},
+    "mailbox": {},
+    "locationsVisited": {
+      "string": [
+        "BusStop",
+        "Farm",
+        "FarmHouse",
+        "Town",
+        "SeedShop",
+        "HaleyHouse",
+        "SamHouse",
+        "Forest",
+        "Beach",
+        "JoshHouse",
+        "ArchaeologyHouse",
+        "Mountain",
+        "Backwoods",
+        "FishShop",
+        "Blacksmith",
+        "ScienceHouse",
+        "FarmCave",
+        "Mine",
+        "CommunityCenter",
+        "WizardHouse",
+        "AdventureGuild",
+        "ManorHouse"
+      ]
+    },
+    "timeWentToBed": {
+      "int": "0"
+    },
+    "sleptInTemporaryBed": {
+      "boolean": "false"
+    },
+    "stats": {
+      "specificMonstersKilled": {
+        "Green Slime": 40,
+        "Bug": 15,
+        "Duggy": 3,
+        "Rock Crab": 2,
+        "Fly": 3,
+        "Grub": 1,
+        "Big Slime": 1
+      },
+      "Values": {
+        "stepsTaken": {
+          "unsignedInt": "7997"
+        },
+        "averageBedtime": {
+          "unsignedInt": "2210"
+        },
+        "daysPlayed": {
+          "unsignedInt": "8"
+        },
+        "rocksCrushed": {
+          "unsignedInt": "297"
+        },
+        "stoneGathered": {
+          "unsignedInt": "204"
+        },
+        "dirtHoed": {
+          "unsignedInt": "45"
+        },
+        "seedsSown": {
+          "unsignedInt": "75"
+        },
+        "TreesChopped": {
+          "unsignedInt": "4"
+        },
+        "itemsForaged": {
+          "unsignedInt": "23"
+        },
+        "trashCansChecked": {
+          "unsignedInt": "3"
+        },
+        "itemsShipped": {
+          "unsignedInt": "94"
+        },
+        "timesFished": {
+          "unsignedInt": "46"
+        },
+        "fishCaught": {
+          "unsignedInt": "38"
+        },
+        "PreciseFishCaught": {
+          "unsignedInt": "33"
+        },
+        "giftsGiven": {
+          "unsignedInt": "3"
+        },
+        "FishingTreasures": {
+          "unsignedInt": "1"
+        },
+        "ironFound": {
+          "unsignedInt": "3"
+        },
+        "geodesCracked": {
+          "unsignedInt": "10"
+        },
+        "copperFound": {
+          "unsignedInt": "59"
+        },
+        "itemsCrafted": {
+          "unsignedInt": "3"
+        },
+        "BillboardQuestsDone": {
+          "unsignedInt": "2"
+        },
+        "questsCompleted": {
+          "unsignedInt": "2"
+        },
+        "slimesKilled": {
+          "unsignedInt": "41"
+        },
+        "monstersKilled": {
+          "unsignedInt": "65"
+        },
+        "ArtifactSpotsDug": {
+          "unsignedInt": "1"
+        }
+      },
+      "averageBedtime": null,
+      "beveragesMade": null,
+      "caveCarrotsFound": null,
+      "cheeseMade": null,
+      "chickenEggsLayed": null,
+      "copperFound": null,
+      "cowMilkProduced": null,
+      "cropsShipped": null,
+      "daysPlayed": null,
+      "diamondsFound": null,
+      "dirtHoed": null,
+      "duckEggsLayed": null,
+      "fishCaught": null,
+      "geodesCracked": null,
+      "giftsGiven": null,
+      "goatCheeseMade": null,
+      "goatMilkProduced": null,
+      "goldFound": null,
+      "goodFriends": null,
+      "individualMoneyEarned": null,
+      "iridiumFound": null,
+      "ironFound": null,
+      "itemsCooked": null,
+      "itemsCrafted": null,
+      "itemsForaged": null,
+      "itemsShipped": null,
+      "monstersKilled": null,
+      "mysticStonesCrushed": null,
+      "notesFound": null,
+      "otherPreciousGemsFound": null,
+      "piecesOfTrashRecycled": null,
+      "preservesMade": null,
+      "prismaticShardsFound": null,
+      "questsCompleted": null,
+      "rabbitWoolProduced": null,
+      "rocksCrushed": null,
+      "sheepWoolProduced": null,
+      "slimesKilled": null,
+      "stepsTaken": null,
+      "stoneGathered": null,
+      "stumpsChopped": null,
+      "timesFished": null,
+      "timesUnconscious": null,
+      "totalMoneyGifted": null,
+      "trufflesFound": null,
+      "weedsEliminated": null,
+      "seedsSown": null
+    },
+    "biteChime": "-1",
+    "itemsLostLastDeath": {},
+    "movementDirections": {},
+    "farmName": "Historium",
+    "favoriteThing": "Stardrop",
+    "slotCanHost": "false",
+    "userID": {},
+    "catPerson": null,
+    "canUnderstandDwarves": null,
+    "hasClubCard": null,
+    "hasDarkTalisman": null,
+    "hasMagicInk": null,
+    "hasMagnifyingGlass": null,
+    "hasRustyKey": null,
+    "hasSkullKey": null,
+    "hasSpecialCharm": null,
+    "HasTownKey": null,
+    "hasUnlockedSkullDoor": null,
+    "daysMarried": null,
+    "whichPetType": "Cat",
+    "whichPetBreed": "3",
+    "acceptedDailyQuest": "false",
+    "mostRecentBed": {
+      "X": "613.0542",
+      "Y": "608.12463"
+    },
+    "shirt": "-1",
+    "hair": "13",
+    "skin": "0",
+    "shoes": "2",
+    "accessory": "1",
+    "facialHair": "-1",
+    "pants": "-1",
+    "lastGotPrizeFromGil": {
+      "WorldDate": null
+    },
+    "lastDesertFestivalFishingQuest": {
+      "WorldDate": null
+    },
+    "hairstyleColor": {
+      "B": "27",
+      "G": "45",
+      "R": "104",
+      "A": "255",
+      "PackedValue": "4279971176"
+    },
+    "pantsColor": {
+      "B": "142",
+      "G": "73",
+      "R": "37",
+      "A": "255",
+      "PackedValue": "4287514917"
+    },
+    "newEyeColor": {
+      "B": "51",
+      "G": "119",
+      "R": "85",
+      "A": "255",
+      "PackedValue": "4281562965"
+    },
+    "boots": {
+      "isLostItem": "false",
+      "category": "-97",
+      "hasBeenInInventory": "true",
+      "name": "Leather Boots",
+      "itemId": "506",
+      "specialItem": "false",
+      "isRecipe": "false",
+      "quality": "0",
+      "stack": "1",
+      "SpecialVariable": "0",
+      "defenseBonus": "1",
+      "immunityBonus": "1",
+      "indexInTileSheet": "506",
+      "price": "50",
+      "indexInColorSheet": "2"
+    },
+    "shirtItem": {
+      "isLostItem": "false",
+      "category": "-100",
+      "hasBeenInInventory": "true",
+      "name": "Skull Shirt",
+      "itemId": "1004",
+      "specialItem": "false",
+      "isRecipe": "false",
+      "quality": "0",
+      "stack": "1",
+      "SpecialVariable": "0",
+      "price": "50",
+      "indexInTileSheet": "4",
+      "indexInTileSheetFemale": null,
+      "clothesType": "SHIRT",
+      "dyeable": "false",
+      "clothesColor": {
+        "B": "255",
+        "G": "255",
+        "R": "255",
+        "A": "255",
+        "PackedValue": "4294967295"
+      },
+      "isPrismatic": "false",
+      "Price": "50"
+    },
+    "pantsItem": {
+      "isLostItem": "false",
+      "category": "-100",
+      "hasBeenInInventory": "true",
+      "name": "Farmer Pants",
+      "itemId": "0",
+      "specialItem": "false",
+      "isRecipe": "false",
+      "quality": "0",
+      "stack": "1",
+      "SpecialVariable": "0",
+      "price": "50",
+      "indexInTileSheet": "0",
+      "indexInTileSheetFemale": null,
+      "clothesType": "PANTS",
+      "dyeable": "true",
+      "clothesColor": {
+        "B": "142",
+        "G": "73",
+        "R": "37",
+        "A": "255",
+        "PackedValue": "4287514917"
+      },
+      "isPrismatic": "false",
+      "Price": "50"
+    },
+    "divorceTonight": "false",
+    "changeWalletTypeTonight": "false",
+    "gameVersion": "1.6.15",
+    "bibberstyke": "0",
+    "usingRandomizedBobber": "false",
+    "caveChoice": "0",
+    "farmingLevel": "1",
+    "miningLevel": "1",
+    "combatLevel": "1",
+    "foragingLevel": "1",
+    "fishingLevel": "2",
+    "luckLevel": "0",
+    "maxStamina": "270",
+    "maxItems": "24",
+    "lastSeenMovieWeek": "-1",
+    "clubCoins": "0",
+    "trashCanLevel": "0",
+    "daysLeftForToolUpgrade": "0",
+    "houseUpgradeLevel": "0",
+    "daysUntilHouseUpgrade": "-1",
+    "showChestColorPicker": "false",
+    "hasWateringCanEnchantment": "false",
+    "temporaryInvincibilityTimer": "0",
+    "currentTemporaryInvincibilityDuration": "1000",
+    "health": "105",
+    "maxHealth": "105",
+    "difficultyModifier": "1",
+    "gender": "Male",
+    "basicShipped": {
+      "16": 1,
+      "18": 1,
+      "20": 1,
+      "22": 1,
+      "92": 9,
+      "131": 8,
+      "136": 1,
+      "142": 4,
+      "147": 2,
+      "148": 2,
+      "267": 1,
+      "372": 1,
+      "684": 6,
+      "700": 1,
+      "702": 2,
+      "766": 21,
+      "771": 28
+    },
+    "mineralsFound": {
+      "66": 2,
+      "68": 1,
+      "80": 4,
+      "86": 1,
+      "542": 1,
+      "569": 2
+    },
+    "recipesCooked": {},
+    "fishCaught": {
+      "(O)147": {
+        "ArrayOfInt": {
+          "int": [
+            "5",
+            "21"
+          ]
+        }
+      },
+      "(O)131": {
+        "ArrayOfInt": {
+          "int": [
+            "12",
+            "13"
+          ]
+        }
+      },
+      "(O)129": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "9"
+          ]
+        }
+      },
+      "(O)152": {
+        "ArrayOfInt": {
+          "int": [
+            "5",
+            "-1"
+          ]
+        }
+      },
+      "(O)267": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "10"
+          ]
+        }
+      },
+      "(O)137": {
+        "ArrayOfInt": {
+          "int": [
+            "2",
+            "13"
+          ]
+        }
+      },
+      "(O)SeaJelly": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "-1"
+          ]
+        }
+      },
+      "(O)148": {
+        "ArrayOfInt": {
+          "int": [
+            "2",
+            "50"
+          ]
+        }
+      },
+      "(O)702": {
+        "ArrayOfInt": {
+          "int": [
+            "2",
+            "18"
+          ],
+          "#comment": [
+            {},
+            {}
+          ]
+        }
+      },
+      "(O)142": {
+        "ArrayOfInt": {
+          "int": [
+            "4",
+            "38"
+          ]
+        }
+      },
+      "(O)700": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "24"
+          ]
+        }
+      },
+      "(O)136": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "16"
+          ]
+        }
+      },
+      "(O)RiverJelly": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "-1"
+          ]
+        }
+      },
+      "(O)153": {
+        "ArrayOfInt": {
+          "int": [
+            "1",
+            "-1"
+          ]
+        }
+      }
+    },
+    "archaeologyFound": {
+      "item": {
+        "key": {
+          "string": "99"
+        },
+        "value": {
+          "ArrayOfInt": {
+            "#comment": {},
+            "int": [
+              "1",
+              "1"
+            ]
+          }
+        }
+      }
+    },
+    "callsReceived": {},
+    "giftedItems": {
+      "Willy": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "string": "771"
+            },
+            "value": {
+              "int": "1"
+            }
+          }
+        }
+      },
+      "Linus": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "string": "22"
+            },
+            "value": {
+              "int": "1"
+            }
+          }
+        }
+      },
+      "Lewis": {
+        "dictionary": {
+          "item": {
+            "key": {
+              "string": "68"
+            },
+            "value": {
+              "int": "1"
+            }
+          }
+        }
+      }
+    },
+    "tailoredItems": {},
+    "friendshipData": {
+      "Lewis": {
+        "Friendship": {
+          "Points": "553",
+          "GiftsThisWeek": "1",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "1",
+            "DayOfMonth": "7",
+            "Season": "spring"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Robin": {
+        "Friendship": {
+          "Points": "173",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Gus": {
+        "Friendship": {
+          "Points": "151",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Pierre": {
+        "Friendship": {
+          "Points": "157",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Harvey": {
+        "Friendship": {
+          "Points": "153",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Marnie": {
+        "Friendship": {
+          "Points": "157",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Leah": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Penny": {
+        "Friendship": {
+          "Points": "225",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Emily": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Vincent": {
+        "Friendship": {
+          "Points": "229",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Jodi": {
+        "Friendship": {
+          "Points": "151",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Haley": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Jas": {
+        "Friendship": {
+          "Points": "225",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Elliott": {
+        "Friendship": {
+          "Points": "175",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Maru": {
+        "Friendship": {
+          "Points": "173",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Evelyn": {
+        "Friendship": {
+          "Points": "171",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Caroline": {
+        "Friendship": {
+          "Points": "169",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "George": {
+        "Friendship": {
+          "Points": "149",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Alex": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Abigail": {
+        "Friendship": {
+          "Points": "151",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Pam": {
+        "Friendship": {
+          "Points": "149",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Sam": {
+        "Friendship": {
+          "Points": "171",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Shane": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Demetrius": {
+        "Friendship": {
+          "Points": "169",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Linus": {
+        "Friendship": {
+          "Points": "236",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "1",
+            "DayOfMonth": "4",
+            "Season": "spring"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Clint": {
+        "Friendship": {
+          "Points": "149",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Sebastian": {
+        "Friendship": {
+          "Points": "147",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Willy": {
+        "Friendship": {
+          "Points": "169",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "LastGiftDate": {
+            "Year": "1",
+            "DayOfMonth": "2",
+            "Season": "spring"
+          },
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      },
+      "Wizard": {
+        "Friendship": {
+          "Points": "20",
+          "GiftsThisWeek": "0",
+          "GiftsToday": "0",
+          "TalkedToToday": "false",
+          "ProposalRejected": "false",
+          "Status": "Friendly",
+          "Proposer": "0",
+          "RoommateMarriage": "false"
+        }
+      }
+    },
+    "dayOfMonthForSaveGame": "8",
+    "seasonForSaveGame": "0",
+    "yearForSaveGame": "1",
+    "qiGems": "0",
+    "chestConsumedLevels": {
+      "[object Object]": {
+        "boolean": "true"
+      }
+    },
+    "saveTime": "6776488",
+    "isCustomized": "true",
+    "homeLocation": "FarmHouse",
+    "lastSleepLocation": "FarmHouse",
+    "lastSleepPoint": {
+      "X": "10",
+      "Y": "9"
+    },
+    "disconnectDay": "-1",
+    "disconnectPosition": {
+      "X": "0",
+      "Y": "0"
+    },
+    "movementMultiplier": "0.066",
+    "isMale": null,
+    "deepestMineLevel": "20",
+    "stamina": "270",
+    "totalMoneyEarned": "4619",
+    "millisecondsPlayed": "7134288",
+    "useSeparateWallets": "false",
+    "theaterBuildDate": "-1",
+    "timesReachedMineBottom": "0",
+    "UniqueMultiplayerID": "-4672006011404299154",
+    "money": "449"
+  }
+}

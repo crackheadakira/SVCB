@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+name: string,
+parentSheetIndex: u16
+itemId: u16
+category: i16
+hasBeenInInventory: bool
+-->
+
+<item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <key>
+        <Vector2> <!-- Same as tileLocation -->
+            <X>18</X>
+            <Y>29</Y>
+        </Vector2>
+    </key>
+    <value>
+        <Object>
+            <isLostItem>false</isLostItem>
+            <category>-999</category>
+            <hasBeenInInventory>false</hasBeenInInventory>
+            <name>Stone</name>
+            <parentSheetIndex>450</parentSheetIndex> <!-- position in item type's spritesheet -->
+            <itemId>450</itemId>
+            <specialItem>false</specialItem>
+            <isRecipe>false</isRecipe>
+            <quality>0</quality>
+            <stack>1</stack>
+            <SpecialVariable>0</SpecialVariable>
+            <tileLocation>
+                <X>18</X>
+                <Y>29</Y>
+            </tileLocation>
+            <owner>0</owner>
+            <type>Litter</type>
+            <canBeSetDown>true</canBeSetDown>
+            <canBeGrabbed>true</canBeGrabbed>
+            <isSpawnedObject>false</isSpawnedObject>
+            <questItem>false</questItem>
+            <isOn>true</isOn>
+            <fragility>0</fragility>
+            <price>0</price>
+            <edibility>-300</edibility> <!-- -300 makes inedible, -299 to -1 reduces energy/health, > 0 gives energy -->
+            <bigCraftable>false</bigCraftable> <!-- if is two tiles tall -->
+            <setOutdoors>false</setOutdoors>
+            <setIndoors>false</setIndoors>
+            <readyForHarvest>false</readyForHarvest>
+            <showNextIndex>false</showNextIndex>
+            <flipped>false</flipped>
+            <isLamp>false</isLamp> <!-- a light source? -->
+            <minutesUntilReady>1</minutesUntilReady> 
+            <boundingBox>
+                <X>1152</X> <!-- in-world position of top-left of bounding box? -->
+                <Y>1856</Y>
+                <Width>64</Width> <!-- seems to be equal to Size X, height equal to Size Y -->
+                <Height>64</Height>
+                <Location>
+                    <X>1152</X>
+                    <Y>1856</Y>
+                </Location>
+                <Size>
+                    <X>64</X>
+                    <Y>64</Y>
+                </Size>
+            </boundingBox>
+            <scale>
+                <X>0</X>
+                <Y>0</Y>
+            </scale>
+            <uses>0</uses>
+            <destroyOvernight>false</destroyOvernight>
+        </Object>
+    </value>
+</item>
