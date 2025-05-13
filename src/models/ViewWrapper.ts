@@ -35,7 +35,7 @@ export class ViewWrapper {
         const fnMethod = this.view[method] as (byteOffset: number, value: DataViewParameters<T>[1], littleEndian?: boolean | undefined) => void;
         const fn = fnMethod.bind(this.view);
 
-        if (offset) fn(offset, value, littleEndian);
+        if (offset != undefined) fn(offset, value, littleEndian);
         else {
             fn(this.offset, value, littleEndian);
             this.offset += this.getByteSize(method);
@@ -48,7 +48,7 @@ export class ViewWrapper {
         const o = offset ? offset : this.offset;
         const res = fn(o, littleEndian);
 
-        if (!offset) this.offset += this.getByteSize(method);
+        if (offset == undefined) this.offset += this.getByteSize(method);
 
         return res as ReturnTypeForGetter<T>;
     }
@@ -125,6 +125,26 @@ export class ViewWrapper {
         this.write("setUint8", packed);
     }
 
+    public writeRecord(data: Record<string, number>) {
+        const keys = Object.keys(data);
+        const enc = new TextEncoder();
+
+        // start off with u32
+        const totalEntries = keys.length;
+        this.write("setUint16", totalEntries);
+
+        for (const key of keys) {
+            const value = data[key];
+
+            if (value === undefined) continue;
+
+            const encoded = enc.encode(key);
+            this.write("setUint16", encoded.byteLength);
+            this.writeBytes(encoded);
+            this.write("setUint8", value);
+        }
+    }
+
     public readSkill() {
         return {
             level: this.read("getUint8"),
@@ -141,6 +161,20 @@ export class ViewWrapper {
             combat: this.readSkill(),
             luck: this.readSkill(),
         } satisfies Farmer["skills"];
+    }
+
+    public readRecord() {
+        const totalEntries = this.read("getUint16");
+        const resultingRecord: Record<string, number> = {};
+
+        for (let i = 0; i < totalEntries; i++) {
+            const keyLength = this.read("getUint16");
+            const key = this.readString(keyLength);
+            const value = this.read("getUint8");
+            resultingRecord[key] = value;
+        }
+
+        return resultingRecord;
     }
 
     public readString(length: number, offset: number): string

@@ -1,8 +1,8 @@
-import { binary, ViewWrapper, type Farmer } from "@models";
+import { ViewWrapper, type Farmer } from "@models";
 
 export function serialize(farmer: Farmer) {
     console.log(farmer);
-    const buffer = new ArrayBuffer(1024);
+    const buffer = new ArrayBuffer(8192);
     const writer = new ViewWrapper(buffer);
 
     writer.write("setUint16", farmer.magic);
@@ -32,7 +32,7 @@ export function serialize(farmer: Farmer) {
     writer.writeAllSkills(farmer.skills);
 
     // write first record
-    console.log(binary.serializeRecord(farmer.activeDialogueEvents));
+    writer.writeRecord(farmer.activeDialogueEvents);
 
     writer.writeSize();
     return buffer.slice(0, writer.getOffset());
@@ -63,6 +63,6 @@ export function deserialize(buffer: ArrayBuffer): Farmer {
         glowRate: reader.read("getFloat32"),
         flags: reader.readFlags(),
         skills: reader.readAllSkills(),
-        activeDialogueEvents: {}
+        activeDialogueEvents: reader.readRecord(),
     };
 };
