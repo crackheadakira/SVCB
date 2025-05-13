@@ -29,7 +29,7 @@ export class ViewWrapper {
 
     public write<T extends DataViewSetterKeys>(method: T, value: DataViewParameters<T>[1], littleEndian?: boolean): void
     public write<T extends DataViewSetterKeys>(method: T, value: DataViewParameters<T>[1], littleEndian?: boolean, offset?: number,): void
-    public write<T extends DataViewSetterKeys>(method: T, value: DataViewParameters<T>[1], littleEndian = this.LITTLE_ENDIAN, offset?: number) {
+    public write<T extends DataViewSetterKeys>(method: T, value: DataViewParameters<T>[1], littleEndian = this.LITTLE_ENDIAN, offset?: number): void {
         const fnMethod = this.view[method] as (byteOffset: number, value: DataViewParameters<T>[1], littleEndian?: boolean | undefined) => void;
         const fn = fnMethod.bind(this.view);
 
@@ -40,11 +40,13 @@ export class ViewWrapper {
         }
     }
 
-    public read<T extends DataViewGetterKeys>(method: T, littleEndian = this.LITTLE_ENDIAN): ReturnTypeForGetter<T> {
+    public read<T extends DataViewGetterKeys>(method: T, littleEndian?: boolean, offset?: number): ReturnTypeForGetter<T>
+    public read<T extends DataViewGetterKeys>(method: T, littleEndian = this.LITTLE_ENDIAN, offset?: number): ReturnTypeForGetter<T> {
         const fn = this.view[method].bind(this.view);
-        const res = fn(this.offset, littleEndian);
+        const o = offset ? offset : this.offset;
+        const res = fn(o, littleEndian);
 
-        this.offset += this.getByteSize(method);
+        if (!offset) this.offset += this.getByteSize(method);
 
         return res as ReturnTypeForGetter<T>;
     }
@@ -63,6 +65,10 @@ export class ViewWrapper {
 
     public decrementOffset(dec: number) {
         this.offset -= dec;
+    }
+
+    public writeSize() {
+        this.write("setUint32", this.offset - 14, undefined, 14);
     }
 
     public writeString(text: string): void
@@ -129,10 +135,12 @@ export class ViewWrapper {
         } satisfies Farmer["skills"];
     }
 
-    public readString(length: number) {
+    public readString(length: number, offset: number): string
+    public readString(length: number): string
+    public readString(length: number, offset?: number) {
         let str = '';
         for (let i = 0; i < length; i++) {
-            const charCode = this.read("getUint8");
+            const charCode = this.read("getUint8", undefined, offset);
             if (charCode !== 0) {
                 str += String.fromCharCode(charCode);
             }

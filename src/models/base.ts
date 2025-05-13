@@ -69,7 +69,7 @@ export interface Farmer {
 
     // NEXT TODO: Parse activeDialogueEvents and put them into StringTable to check for any possible savings
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
-    // activeDialogueEvents: Record<string, number> // string, u16
+    activeDialogueEvents: Record<string, number> // string, u16
 
     // TODO Item interface
     // items: {}[],

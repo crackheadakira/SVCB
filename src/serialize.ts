@@ -31,7 +31,7 @@ export function serialize(farmer: Farmer) {
 
     writer.writeAllSkills(farmer.skills);
 
-    writer.write("setUint32", writer.getOffset() - 14, undefined, 14);
+    writer.writeSize();
     return buffer.slice(0, writer.getOffset());
 }
 

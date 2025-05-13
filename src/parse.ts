@@ -68,7 +68,7 @@ export function jsonToFarmer(json: any): Farmer {
         experiencePoints: parseInt(json.experiencePoints.int[5])
       } satisfies Skill
     },
-    // activeDialogueEvents: json.activeDialogueEvents,
+    activeDialogueEvents: json.activeDialogueEvents,
   } satisfies Farmer
 }
 
