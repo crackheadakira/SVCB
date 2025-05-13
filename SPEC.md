@@ -8,9 +8,9 @@ This specification outlines the structure and binary format used to serialize an
 
 | Field                 | Type     | Size (bytes) | Notes                                            |
 | --------------------- | -------- | ------------ | ------------------------------------------------ |
-| `magic`               | `u16`    | 2            | Magic number `0x5336` to identify file           |
+| `magic`               | `u16`    | 2            | Magic number `0x5336` to validate file           |
 | `version`             | `string` | 12           | E.g. `1.6.15`, null-padded                       |
-| `dataSize`            | `u32`    | 4            | Total size (excluding header)                    |
+| `dataSize`            | `u32`    | 4            | How many bytes exist after size                  |
 | `name`                | `string` | 12           | UTF-8, null-padded                               |
 | `farmName`            | `string` | 12           | UTF-8, null-padded                               |
 | `favoriteThing`       | `string` | 12           | UTF-8, null-padded                               |
@@ -36,12 +36,12 @@ Minimum Total Size: 93 bytes
 
 ## Flags Layout
 
-| Bit    | Name          | Notes                  |
-| ------ | ------------- | ---------------------- |
-| `0`    | Gender        | (0 = Female, 1 = Male) |
-| `1`    | isCharging    |                        |
-| `2`    | coloredBorder |                        |
-| `3`    | flip          |                        |
-| `4`    | isEmoting     |                        |
-| `5`    | isGlowing     |                        |
-| `6-15` | Reserved      |                        |
+| Bit    | Name          | Notes                                  |
+| ------ | ------------- | -------------------------------------- |
+| `0`    | Gender        | (0 = Female, 1 = Male)                 |
+| `1`    | isCharging    | If charging up tool                    |
+| `2`    | coloredBorder | Draw player with a border              |
+| `3`    | flip          | Flip the direction character is drawn  |
+| `4`    | isEmoting     | Is farmer emoting                      |
+| `5`    | isGlowing     | Is farmer glowing                      |
+| `6-15` | Reserved      | Reserved for any future boolean values |
