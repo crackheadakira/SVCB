@@ -1,0 +1,147 @@
+# TODO
+
+## SaveGameInfo
+
+-   [x] gameVersion
+-   [x] dataSize
+-   [x] name
+-   [x] farmName
+-   [x] favoriteThing
+-   [x] Spee
+-   [x] Position
+    -   [x] Position.X
+    -   [x] Position.Y
+-   [x] Calendar
+    -   [x] yearForSaveGame
+    -   [x] seasonForSaveGAme
+    -   [x] dayOfMonthForSaveGame
+-   [x] FacingDirection
+-   [x] CurrentEmote
+-   [x] glowTransparency
+-   [x] glowRate
+-   [x] gender
+-   [x] isCharging
+-   [x] coloredBorder
+-   [x] flip
+-   [x] isEmoting
+-   [x] isGlowing
+-   [x] Skills
+    -   [x] Farming
+    -   [x] Fishing
+    -   [x] Foraging
+    -   [x] Mining
+    -   [x] Combat
+    -   [x] Luck
+-   [x] Farming
+-   [x] activeDialogueEvents
+-   [ ] QuestLog
+    -   [ ] Quest
+        -   [ ] Generic Quest
+-   [ ] professions
+-   [ ] newLevels
+-   [ ] items
+    -   [ ] Item
+        -   [ ] Generic Item
+-   [ ] dialogueQuestionsAnswered
+-   [ ] cookingRecipes
+-   [ ] craftingRecipes
+-   [ ] previousActiveDialogueEvents
+-   [ ] triggerActionsRun (array?)
+-   [ ] eventsSeen
+-   [ ] secretNotesSeen
+-   [ ] songsHeard
+-   [ ] achievements
+-   [ ] specialItems
+-   [ ] specialBigCraftables
+-   [ ] mailReceived
+-   [ ] mailForTomorrow
+-   [ ] mailBox
+-   [ ] locationsVisited
+-   [ ] timeWentToBed
+-   [ ] sleptInTemporaryBed
+-   [ ] stats
+    -   [ ] specificMonstersKilled
+-   [ ] biteChime
+-   [ ] itemsLostLastDeath
+-   [ ] movementDirections
+-   [ ] slotCanHost
+-   [ ] userID
+-   [ ] catPerson
+-   [ ] canUnderstandDwarves
+-   [ ] hasClubCard
+-   [ ] hasDarkTalisman
+-   [ ] hasMagicInk
+-   [ ] hasMagnifyingGlass
+-   [ ] hasRustyKey
+-   [ ] hasSkullKey
+-   [ ] hasSpecialCHarm
+-   [ ] hasTownKey
+-   [ ] hasUnlockedSkullDoor
+-   [ ] daysMarried
+-   [ ] whichPetType
+-   [ ] whichPetBreed
+-   [ ] acceptedDailyQuest
+-   [ ] mostRecentBed (Vector2)
+-   [ ] Clothes
+    -   [ ] shirt
+    -   [ ] hair
+    -   [ ] skin
+    -   [ ] shoes
+    -   [ ] accessory
+    -   [ ] facialHair
+    -   [ ] pants
+-   [ ] lastGotPrizeFromGil
+-   [ ] lastDesertFestivalFishingQuest
+-   [ ] Packed RGBA
+    -   [ ] hairstyleColor
+    -   [ ] pantsColor
+    -   [ ] newEyeColor
+-   [ ] divorceTonight
+-   [ ] changeWalletTypeTonight
+-   [ ] bibberstyke
+-   [ ] usingRandomizedBobber
+-   [ ] caveChoice
+-   [ ] maxStamina
+-   [ ] maxItems
+-   [ ] lastSeenMovieWeek
+-   [ ] clubCoins
+-   [ ] trashCanLevel
+-   [ ] daysLeftForToolUpgrade
+-   [ ] houseUpgradeLevel
+-   [ ] daysUntilHouseUpgrade
+-   [ ] showChestColorPicker
+-   [ ] hasWateringCanEnchantment
+-   [ ] temporaryInvinicibilityTimer
+-   [ ] currentTemporaryInvinicibilityDuration
+-   [ ] health
+-   [ ] maxHealth
+-   [ ] difficultyModifier
+-   [ ] basicShipped
+-   [ ] mineralsFound
+-   [ ] recipesCooked
+-   [ ] fishCaught
+-   [ ] archaeologyFound
+-   [ ] callsReceived
+-   [ ] giftedItems
+-   [ ] tailoredItems
+-   [ ] friendshipData
+-   [ ] qiGems
+-   [ ] chestConsumedLevels
+-   [ ] saveTime
+-   [ ] isCustomized
+-   [ ] homeLocation
+-   [ ] lastSleepLocation
+-   [ ] lastSleepPoint (Vector2?)
+-   [ ] disconnectDay
+-   [ ] disconnectPosition
+-   [ ] movementMultiplier
+-   [ ] isMale
+-   [ ] deepestMineLevel
+-   [ ] stamina
+-   [ ] totalMoneyEarned
+-   [ ] millisecondsPlayed
+-   [ ] useSeparateWallets
+-   [ ] theaterBuildDate
+-   [ ] timesReachedMineBottom
+-   [ ] UniqueMultiplayerID
+-   [ ] money
