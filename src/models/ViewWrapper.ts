@@ -129,7 +129,6 @@ export class ViewWrapper {
         const keys = Object.keys(data);
         const enc = new TextEncoder();
 
-        // start off with u32
         const totalEntries = keys.length;
         this.write("setUint16", totalEntries);
 
