@@ -1,19 +1,18 @@
-import { BinaryString, ViewWrapper } from "@models";
+import { BinaryString } from "@models";
 
 export class StringTable {
     private static uniqueStrings: Set<string> = new Set();
-    private static allStrings: string[] = [];
+    // private static allStrings: string[] = [];
     private static binaryStrings: BinaryString[] = [];
-    private static serialized?: Uint8Array;
 
     public static addString(value: string) {
         this.uniqueStrings.add(value);
-        this.allStrings.push(value);
+        // this.allStrings.push(value);
     }
 
     public static removeString(value: string) {
         this.uniqueStrings.delete(value);
-        this.allStrings.splice(this.allStrings.findIndex((v) => v === value), 1)
+        // this.allStrings.splice(this.allStrings.findIndex((v) => v === value), 1)
     }
 
     public static calculateOffset(value: string) {
@@ -32,11 +31,13 @@ export class StringTable {
         return [offset, index];
     }
 
+    /*
     public static filterUnique() {
         this.uniqueStrings = new Set(this.allStrings);
 
         return this.allStrings.length - this.uniqueStrings.size;
     }
+    */
 
     public static serialize() {
         const enc = new TextEncoder();
@@ -46,37 +47,22 @@ export class StringTable {
             totalLength += enc.encode(item).length;
         }
 
-        const buffer = new ArrayBuffer(totalLength);
-        const view = new DataView(buffer);
         let offset = 0;
         let idx = 0;
 
         for (const item of this.uniqueStrings) {
             const encoded = enc.encode(item);
-
-            let i = 0;
-            for (const byte of encoded) {
-                view.setUint8(offset + i, byte);
-                i++;
-            };
-
-            this.binaryStrings[idx] = new BinaryString(encoded.length, offset);
+            this.binaryStrings[idx] = new BinaryString(offset, encoded);
 
             offset += encoded.length;
             idx++;
         }
-
-
-        const buf = new Uint8Array(buffer);
-        this.serialized = buf;
-
-        return buf;
     }
 
-    public static deserializeString(length: number, offset: number) {
-        if (!this.serialized) throw new Error("Trying to deserialize before serialization!");
+    public static deserializeString(index: number) {
+        const str = this.binaryStrings[index];
+        if (!str) throw new Error("Deserializing an invalid index");
 
-        const view = new DataView(this.serialized.buffer, this.serialized.byteOffset, this.serialized.byteLength);
-        return ViewWrapper.readString(length, view, offset);
+        return str.toString();
     }
 }

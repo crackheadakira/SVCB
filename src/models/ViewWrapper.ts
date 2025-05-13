@@ -20,8 +20,10 @@ export class ViewWrapper {
 
     constructor(buffer: DataView, isLittleEndian?: boolean)
     constructor(buffer: ArrayBuffer, isLittleEndian?: boolean)
-    constructor(buffer: ArrayBuffer | DataView, isLittleEndian = false) {
+    constructor(buffer: Uint8Array, isLittleEndian?: boolean)
+    constructor(buffer: ArrayBuffer | DataView | Uint8Array, isLittleEndian = false) {
         if (buffer instanceof DataView) this.view = buffer;
+        else if (buffer instanceof Uint8Array) this.view = this.getViewFromArray(buffer);
         else this.view = new DataView(buffer);
 
         this.LITTLE_ENDIAN = isLittleEndian;
@@ -65,6 +67,12 @@ export class ViewWrapper {
 
     public decrementOffset(dec: number) {
         this.offset -= dec;
+    }
+
+    public writeBytes(data: Uint8Array) {
+        for (const byte of data) {
+            this.write("setUint8", byte);
+        }
     }
 
     public writeSize() {
@@ -188,5 +196,9 @@ export class ViewWrapper {
         if (method.includes("32") || method.includes("Float32")) return 4;
         if (method.includes("64")) return 8;
         throw new Error(`Unknown byte size for method: ${method} `);
+    }
+
+    private getViewFromArray(arr: Uint8Array) {
+        return new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
     }
 }
