@@ -171,3 +171,70 @@ export enum FriendshipStatus {
     Married,
     Divorced,
 }
+
+export interface Item {
+    specialVariable: number,
+    category: number,
+    hasBeenInInventory: boolean,
+    netName: string,
+    parentSheetIndex: number,
+}
+
+export interface Object extends Item {
+    tileLocation: StardewPosition,
+    owner: bigint,
+    type: string,
+    canBeSetDown: boolean,
+    canBeGrabbed: boolean,
+    isHoedirt: boolean,
+    isSpawnedObject: boolean,
+    questItem: boolean,
+    questId: number,
+    isOn: boolean,
+    fragility: number,
+    price: number,
+    edibility: number,
+    stack: number,
+    quality: number,
+    bigCraftable: boolean,
+    setIndoors: boolean,
+    readyForHarvest: boolean,
+    showNextIndex: boolean,
+    flipped: boolean,
+    hasBeenPickedUpByFarmer: boolean,
+    isRecipe: boolean,
+    isLamp: boolean,
+    heldObject: Object,
+    minutesUntilReady: number,
+    boundingBox: Rectangle
+    uses: number,
+    orderData: string,
+    preserve: PreserveType
+    preservedParentSheetIndex: number,
+    honeyType: HoneyType
+}
+
+interface Rectangle {
+    height: number,
+    width: number,
+    x: number,
+    y: number,
+}
+
+enum PreserveType {
+    Wine,
+    Jelly,
+    Pickle,
+    Juice,
+    Roe,
+    AgedRoe,
+}
+
+enum HoneyType {
+    Wild = -1, // 0xFFFFFFFF
+    Poppy = 376, // 0x00000178
+    Tulip = 591, // 0x0000024F
+    SummerSpangle = 593, // 0x00000251
+    FairyRose = 595, // 0x00000253
+    BlueJazz = 597, // 0x00000255
+}
