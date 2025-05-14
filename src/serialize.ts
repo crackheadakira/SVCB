@@ -33,15 +33,15 @@ export function serialize(farmer: Farmer) {
     // write first record
     writer.writeRecord(farmer.activeDialogueEvents);
 
-    writer.writeSize();
-    return buffer.slice(0, writer.getOffset());
+    writer.writeSize(writer.offset - 14, 14);
+    return buffer.slice(0, writer.offset);
 }
 
 export function deserialize(buffer: ArrayBuffer): Farmer {
     const reader = new ViewWrapper(buffer);
 
     const magic = reader.read("getUint16");
-    if (magic !== 0x5336) throw new Error(`Invalid .SVD file given; magic number does not match (got 0x${magic.toString(16)}, 0x5336`);
+    if (magic !== 0x5336) throw new Error(`Invalid .stdew file given; magic number does not match (got 0x${magic.toString(16)}, 0x5336`);
 
     return {
         magic,

@@ -16,7 +16,11 @@ export class ViewWrapper {
     private STRING_LENGTH = 12;
 
     private view: DataView;
-    private offset = 0;
+    private _offset = 0;
+
+    public get offset(): Readonly<number> {
+        return this._offset;
+    }
 
     constructor(buffer: DataView, isLittleEndian?: boolean)
     constructor(buffer: ArrayBuffer, isLittleEndian?: boolean)
@@ -38,7 +42,7 @@ export class ViewWrapper {
         if (offset != undefined) fn(offset, value, littleEndian);
         else {
             fn(this.offset, value, littleEndian);
-            this.offset += this.getByteSize(method);
+            this._offset += this.getByteSize(method);
         }
     }
 
@@ -48,25 +52,21 @@ export class ViewWrapper {
         const o = offset ? offset : this.offset;
         const res = fn(o, littleEndian);
 
-        if (offset == undefined) this.offset += this.getByteSize(method);
+        if (offset == undefined) this._offset += this.getByteSize(method);
 
         return res as ReturnTypeForGetter<T>;
     }
 
     public setOffset(newOffset: number) {
-        this.offset = newOffset;
-    }
-
-    public getOffset() {
-        return this.offset;
+        this._offset = newOffset;
     }
 
     public incrementOffset(inc: number) {
-        this.offset += inc;
+        this._offset += inc;
     }
 
     public decrementOffset(dec: number) {
-        this.offset -= dec;
+        this._offset -= dec;
     }
 
     public writeBytes(data: Uint8Array) {
@@ -75,8 +75,8 @@ export class ViewWrapper {
         }
     }
 
-    public writeSize() {
-        this.write("setUint32", this.offset - 14, undefined, 14);
+    public writeSize(value: number, offset: number) {
+        this.write("setUint32", value, undefined, offset);
     }
 
     public writeString(text: string): void
