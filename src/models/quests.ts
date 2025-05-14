@@ -1,3 +1,5 @@
+import type { StardewMonster, StardewObject } from "@models";
+
 enum QuestType {
     Basic = 1,
     Crafting,
@@ -43,7 +45,7 @@ interface FishingQuest extends Quest {
     numberFished: number,
     whichFish: number,
 
-    // fish: StardewValley.Object
+    fish: StardewObject
     // parts: DescriptionElementList
     // dialogueParts: DescriptionElementList
     // objective: DescriptionElementRef
@@ -58,7 +60,7 @@ interface ItemDeliveryQuest extends Quest {
     item: number,
     number: number,
 
-    // deliveryItem: StardewValley.Object
+    deliveryItem: StardewObject
     // parts: DescriptionElementList
     // dialogueparts: DescriptionElementList
     // objective: DescriptionElementRef
@@ -100,7 +102,7 @@ interface SecretLostItemQuest extends Quest {
 interface SlayMonsterQuest extends Quest {
     monsterName: string,
     target: string,
-    // monster: Stardew.monster
+    monster: StardewMonster
     numberToKill: number,
 
     // parts: DescriptionElementList

@@ -172,7 +172,7 @@ export enum FriendshipStatus {
     Divorced,
 }
 
-export interface Item {
+export interface StardewItem {
     specialVariable: number,
     category: number,
     hasBeenInInventory: boolean,
@@ -180,7 +180,7 @@ export interface Item {
     parentSheetIndex: number,
 }
 
-export interface Object extends Item {
+export interface StardewObject extends StardewItem {
     tileLocation: StardewPosition,
     owner: bigint,
     type: string,
@@ -214,7 +214,7 @@ export interface Object extends Item {
     honeyType: HoneyType
 }
 
-interface Rectangle {
+export interface Rectangle {
     height: number,
     width: number,
     x: number,
@@ -237,4 +237,43 @@ enum HoneyType {
     SummerSpangle = 593, // 0x00000251
     FairyRose = 595, // 0x00000253
     BlueJazz = 597, // 0x00000255
+}
+
+export interface StardewNPC {
+    birthdaySeason: string,
+    birthdayDay: number,
+    age: number,
+    manners: number,
+    socialAnxiety: number,
+    optimism: number,
+    gender: number,
+    sleptInBed: boolean,
+    isInvisible: boolean,
+    lastSeenMovieWeek: number,
+    datable: boolean,
+    defaultPosition: StardewPosition,
+    defaultMap: string,
+    moveTowardPlayerThreshold: number,
+    hasSaidAfternoonDialogue: boolean,
+    dayScheduleName: string,
+    islandScheduleName: string,
+}
+
+export interface StardewMonster extends StardewNPC {
+    damageToFarmer: number,
+    health: number,
+    maxHealth: number,
+    coinsToDrop: number,
+    durationOfRandomMovements: number,
+    resilience: number,
+    slipperiness: number,
+    experienceGained: number,
+    jiterriness: number,
+    missChance: number,
+    isGlider: number,
+    mineMonster: number,
+    hasSpecialItem: number,
+    initializedForLocation: boolean,
+    ignoreDamageLOS: boolean,
+    isHardModeMonster: boolean,
 }
