@@ -1,3 +1,5 @@
+import type { AnyQuest } from "@models"
+
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
     magic: number, // u16 0x5336 -> SV
@@ -70,6 +72,8 @@ export interface SaveInfo {
     // NEXT TODO: Parse activeDialogueEvents and put them into StringTable to check for any possible savings
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
     activeDialogueEvents: Record<string, number> // string, u16
+
+    QuestLog: AnyQuest[];
 
     // TODO Item interface
     // items: {}[],
@@ -173,10 +177,11 @@ export enum FriendshipStatus {
 }
 
 export interface StardewItem {
+    isLostItem?: boolean,
     specialVariable: number,
     category: number,
     hasBeenInInventory: boolean,
-    netName: string,
+    name: string,
     parentSheetIndex: number,
 }
 
@@ -186,10 +191,10 @@ export interface StardewObject extends StardewItem {
     type: string,
     canBeSetDown: boolean,
     canBeGrabbed: boolean,
-    isHoedirt: boolean,
+    isHoedirt?: boolean,
     isSpawnedObject: boolean,
     questItem: boolean,
-    questId: number,
+    questId?: number,
     isOn: boolean,
     fragility: number,
     price: number,
@@ -197,21 +202,25 @@ export interface StardewObject extends StardewItem {
     stack: number,
     quality: number,
     bigCraftable: boolean,
+    setOutdoors: boolean,
     setIndoors: boolean,
     readyForHarvest: boolean,
     showNextIndex: boolean,
     flipped: boolean,
-    hasBeenPickedUpByFarmer: boolean,
+    hasBeenPickedUpByFarmer?: boolean,
     isRecipe: boolean,
     isLamp: boolean,
-    heldObject: Object,
+    heldObject?: StardewObject,
     minutesUntilReady: number,
     boundingBox: Rectangle
+    scale: StardewPosition,
     uses: number,
-    orderData: string,
-    preserve: PreserveType
-    preservedParentSheetIndex: number,
-    honeyType: HoneyType
+    orderData?: string,
+    preserve?: PreserveType
+    preservedParentSheetIndex?: number,
+    honeyType?: HoneyType,
+    specialItem: boolean,
+    destroyOvernight: boolean,
 }
 
 export interface Rectangle {
@@ -219,6 +228,8 @@ export interface Rectangle {
     width: number,
     x: number,
     y: number,
+    location: StardewPosition,
+    size: StardewPosition // technically Vector2
 }
 
 enum PreserveType {
@@ -276,4 +287,9 @@ export interface StardewMonster extends StardewNPC {
     initializedForLocation: boolean,
     ignoreDamageLOS: boolean,
     isHardModeMonster: boolean,
+}
+
+export interface DescriptionElement {
+    xmlKey: string;
+    param?: Array<number | StardewMonster | StardewNPC | StardewObject> | number;
 }

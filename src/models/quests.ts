@@ -1,6 +1,6 @@
-import type { StardewMonster, StardewObject } from "@models";
+import type { DescriptionElement, StardewMonster, StardewObject } from "@models";
 
-enum QuestType {
+export enum QuestType {
     Basic = 1,
     Crafting,
     ItemDelivery,
@@ -14,7 +14,21 @@ enum QuestType {
     Weeding,
 };
 
-interface Quest {
+export type AnyQuest =
+    | Quest
+    | quest.CraftingQuest
+    | quest.FishingQuest
+    | quest.GoSomewhereQuest
+    | quest.ItemDeliveryQuest
+    | quest.ItemHarvestQuest
+    | quest.LostItemQuest
+    | quest.ResourceCollectionQuest
+    | quest.SecretLostItemQuest
+    | quest.SlayMonsterQuest
+    | quest.SocializeQuest;
+
+
+export interface Quest {
     questType: QuestType,
     currentObjective: string,
     description: string,
@@ -26,94 +40,101 @@ interface Quest {
     showNew: boolean,
     canBeCancelled: boolean,
     destroy: boolean,
-    id: number,
+    id?: number,
     moneyReward: number,
     daysLeft: number,
     daysQuestAccepted: number,
     nextQuests?: number[],
 }
 
-interface CraftingQuest extends Quest {
-    isBigCraftable: boolean,
-    indexToCraft: number,
-}
+export namespace quest {
 
-interface FishingQuest extends Quest {
-    target: string,
-    numberToFish: number,
-    reward: number,
-    numberFished: number,
-    whichFish: number,
+    export interface CraftingQuest extends Quest {
+        isBigCraftable: boolean,
+        indexToCraft: number,
+    }
 
-    fish: StardewObject
-    // parts: DescriptionElementList
-    // dialogueParts: DescriptionElementList
-    // objective: DescriptionElementRef
-}
+    export interface FishingQuest extends Quest {
+        target: string,
+        numberToFish: number,
+        reward: number,
+        numberFished: number,
+        whichFish: number,
 
-interface GoSomewhereQuest extends Quest {
-    whereToGo: string,
-}
+        fish: StardewObject
+        parts: DescriptionElement[]
+        dialogueParts: DescriptionElement[]
+        objective: DescriptionElement
+    }
 
-interface ItemDeliveryQuest extends Quest {
-    target: string,
-    item: number,
-    number: number,
+    export interface GoSomewhereQuest extends Quest {
+        whereToGo: string,
+    }
 
-    deliveryItem: StardewObject
-    // parts: DescriptionElementList
-    // dialogueparts: DescriptionElementList
-    // objective: DescriptionElementRef
-}
+    export interface ItemDeliveryQuest extends Quest {
+        target: string,
+        item: number,
+        number: number,
 
-interface ItemHarvestQuest extends Quest {
-    itemIndex: number,
-    number: number,
-}
+        deliveryItem: StardewObject
+        parts: DescriptionElement[]
+        dialogueparts: DescriptionElement[]
+        objective: DescriptionElement
+    }
 
-interface LostItemQuest extends Quest {
-    npcName: string,
-    locationOfItem: string,
-    itemIndex: number,
-    tileX: number,
-    tileY: number,
-    itemFound: boolean,
+    export interface ItemHarvestQuest extends Quest {
+        itemIndex: number,
+        number: number,
+    }
 
-    // objective: DescriptionElementRef
-}
+    export interface LostItemQuest extends Quest {
+        npcName: string,
+        locationOfItem: string,
+        itemIndex: number,
+        tileX: number,
+        tileY: number,
+        itemFound: boolean,
 
-interface ResourceCollectionQuest extends Quest {
-    target: string,
-    targetMessage: string,
-    collected: number,
-    number: number,
-    reward: number,
-    resource: number,
-}
+        objective: DescriptionElement
+    }
 
-interface SecretLostItemQuest extends Quest {
-    npcName: string,
-    friendshipReward: number,
-    exclusiveQuestId: number,
-    itemIndex: number,
-    itemFound: boolean,
-}
+    export interface ResourceCollectionQuest extends Quest {
+        target: string,
+        targetMessage: string,
+        collected: number,
+        number: number,
+        reward: number,
+        resource: number,
 
-interface SlayMonsterQuest extends Quest {
-    monsterName: string,
-    target: string,
-    monster: StardewMonster
-    numberToKill: number,
+        parts: DescriptionElement[]
+        dialogueparts: DescriptionElement[]
+        objective: DescriptionElement
+    }
 
-    // parts: DescriptionElementList
-    // dialogueparts: DescriptionElementList
-    // objective: DescriptionElementRef
-}
+    export interface SecretLostItemQuest extends Quest {
+        npcName: string,
+        friendshipReward: number,
+        exclusiveQuestId: number,
+        itemIndex: number,
+        itemFound: boolean,
+    }
 
-interface SocializeQuest extends Quest {
-    whoToGreet: string[],
-    total: number,
+    export interface SlayMonsterQuest extends Quest {
+        monsterName: string,
+        target: string,
+        monster: StardewMonster
+        numberToKill: number,
 
-    // parts: DescriptionElementList
-    // objective: DescriptionElementRef
+        parts: DescriptionElement[]
+        dialogueparts: DescriptionElement[]
+        objective: DescriptionElement
+    }
+
+    export interface SocializeQuest extends Quest {
+        whoToGreet: string[],
+        total: number,
+
+        parts: DescriptionElement[]
+        objective: DescriptionElement
+    }
 }

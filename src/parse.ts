@@ -1,5 +1,6 @@
-import type { SaveInfo, Gender, Skill, VisitLocation } from "@models";
-import { Direction, StardewSeason, StringTable, VisitPatternHandler } from "@models";
+import type { SaveInfo, Gender, Skill, VisitLocation, AnyQuest, quest, StardewObject, Rectangle, StardewPosition, DescriptionElement } from "@models";
+import { Direction, StardewSeason, QuestType } from "@models";
+import type { StringMappingType } from "typescript";
 
 function parseBoolean(key: string) {
   return key === "true";
@@ -61,7 +62,142 @@ export function jsonToSaveInfo(json: any): SaveInfo {
       } satisfies Skill
     },
     activeDialogueEvents: json.activeDialogueEvents,
+    QuestLog: parseQuestLog(json.questLog.Quest),
   } satisfies SaveInfo
+}
+
+function parseLocation(json: any): StardewPosition {
+  return {
+    x: json.X,
+    y: json.Y,
+  }
+}
+
+function parseQuestLog(json: any) {
+  const final: AnyQuest[] = [];
+  if (Array.isArray(json)) {
+    for (const quest of json) {
+      const res = parseQuest(quest);
+      if (!res) continue;
+
+      final.push(res);
+    }
+  }
+
+  return final;
+}
+
+function parseQuest(json: Record<string, any>): AnyQuest | undefined {
+  const questType = json.questType as QuestType;
+  switch (questType) {
+    case QuestType.Resource:
+      return {
+        currentObjective: json["_currentObjective"],
+        description: json["_questDescription"],
+        title: json["questTitle"],
+        accepted: json.accepted,
+        completed: json.completed,
+        dailyQuest: json.dailyQuest,
+        showNew: json.showNew,
+        canBeCancelled: json.canBeCancelled,
+        destroy: json.destroy,
+        moneyReward: json.moneyReward,
+        questType,
+        daysLeft: json.daysLeft,
+        daysQuestAccepted: json.dayQuestAccepted,
+        target: json.target,
+        targetMessage: json.targetMessage,
+        collected: json.numberCollected,
+        number: json.number,
+        reward: json.reward,
+        resource: json.resource,
+        parts: parseDescriptionElementList(json.parts.DescriptionElement)!,
+        dialogueparts: parseDescriptionElementList(json.dialogueparts.DescriptionElement)!,
+        objective: parseDescriptionElement(json.objective),
+      } satisfies quest.ResourceCollectionQuest
+  }
+}
+
+function parseObject(json: Record<string, any>): StardewObject {
+  return {
+    category: json.category,
+    hasBeenInInventory: json.hasBeenInInventory,
+    name: json.name,
+    parentSheetIndex: json.parentSheetIndex,
+    specialItem: json.specialItem,
+    isRecipe: json.isRecipe,
+    quality: json.quality,
+    stack: json.stack,
+    specialVariable: json.SpecialVariable,
+    tileLocation: parseLocation(json.tileLocation),
+    owner: json.owner,
+    type: json.type,
+    canBeSetDown: json.canBeSetDown,
+    canBeGrabbed: json.canBeGrabbed,
+    isSpawnedObject: json.isSpawnedObject,
+    questItem: json.questItem,
+    isOn: json.isOn,
+    fragility: json.fragility,
+    price: json.price,
+    edibility: json.edibility,
+    bigCraftable: json.bigCraftable,
+    setOutdoors: json.setOutdoors,
+    setIndoors: json.setIndoors,
+    readyForHarvest: json.readyForHarvest,
+    showNextIndex: json.showNextIndex,
+    flipped: json.flipped,
+    isLamp: json.isLamp,
+    minutesUntilReady: json.minutesUntilReady,
+    boundingBox: parseRectangle(json.boundingBox),
+    scale: parseLocation(json.scale),
+    uses: json.uses,
+    destroyOvernight: json.destroyOvernight,
+  } satisfies StardewObject
+}
+
+function parseDescriptionElement(json: Record<string, any>): DescriptionElement {
+  const final: DescriptionElement = {
+    xmlKey: "",
+  };
+
+  final.xmlKey = json.xmlKey;
+  if (json.param) {
+    if (Array.isArray(json.param)) {
+      final.param = [];
+      for (const param of json.param) {
+        if (typeof param === "object" && "$attrs" in param) {
+          if (!param) continue;
+          const type = param["$attrs"]["xsi:type"];
+          if (type === "Object") final.param.push(parseObject(param));
+        } else if (typeof param === "number") final.param.push(param);
+      }
+    } else {
+      final.param = json.param;
+    }
+  }
+
+  return final;
+}
+
+function parseDescriptionElementList(json: Record<string, any>) {
+  if (!Array.isArray(json)) return;
+  const final: DescriptionElement[] = [];
+  for (const item of json) {
+    final.push(parseDescriptionElement(item));
+  }
+
+  return final;
+}
+
+function parseRectangle(json: any): Rectangle {
+  return {
+    x: json.X,
+    y: json.Y,
+    width: json.Width,
+    height: json.Height,
+    location: parseLocation(json.Location),
+    size: parseLocation(json.Size),
+  }
 }
 
 export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | VisitLocation;
