@@ -125,7 +125,7 @@ export class ViewWrapper {
         this.write("setUint8", packed);
     }
 
-    public writeRecord(data: Record<string, number>) {
+    public writeRecord(data: Record<string, number>, customLogic?: (key: string, value: number, writeFn: (...args: Parameters<ViewWrapper["write"]>) => void) => void) {
         const keys = Object.keys(data);
         const enc = new TextEncoder();
 
@@ -136,11 +136,14 @@ export class ViewWrapper {
             const value = data[key];
 
             if (value === undefined) continue;
-
-            const encoded = enc.encode(key);
-            this.write("setUint16", encoded.byteLength);
-            this.writeBytes(encoded);
-            this.write("setUint8", value);
+            if (customLogic) {
+                customLogic(key, value, this.write.bind(this));
+            } else {
+                const encoded = enc.encode(key);
+                this.write("setUint16", encoded.byteLength);
+                this.writeBytes(encoded);
+                this.write("setUint8", value);
+            }
         }
     }
 
