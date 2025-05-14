@@ -91,7 +91,7 @@ export class StardewXMLParser {
       return StardewXMLParser.convertValue(children[0]!.textContent!);
     }
 
-    const obj: XmlObject = this.parseAttributes(node);
+    const obj = this.parseAttributes(node);
 
     for (const child of children) {
       const name = child.nodeName;
@@ -134,7 +134,7 @@ export class StardewXMLParser {
     return { $attrs: attrs };
   }
 
-  postProcess(obj: XmlObject): XmlValue {
+  postProcess(obj: XmlObject) {
     if (
       Object.keys(obj).length === 1 &&
       Array.isArray(obj["item"]) &&
@@ -142,28 +142,12 @@ export class StardewXMLParser {
         entry => typeof entry === "object" && entry !== null && "key" in entry && "value" in entry
       )
     ) {
-      const flatMap: { [key: string]: XmlValue | Record<string, XmlValue> } = {};
+      const flatMap: Record<string, XmlValue> = {};
 
       for (const entry of obj["item"] as XmlObject[]) {
         const key = this.extractKey(entry.key);
         const value = this.extractValue(entry.value);
-
-        const visit = VisitPatternHandler(key, value);
-        if (visit !== undefined) {
-          if (!flatMap[visit.location]) {
-            flatMap[visit.location] = {};
-          }
-
-          const locationMap = flatMap[visit.location] as Record<string, XmlValue>;
-          locationMap[visit.original] = visit;
-
-          StringTable.addString(visit.location);
-        } else {
-          StringTable.addString(key);
-          flatMap[key] = value;
-          StringTable.addString(value);
-        }
-
+        flatMap[key] = value;
       }
 
       return flatMap;
