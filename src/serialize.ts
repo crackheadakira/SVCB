@@ -1,7 +1,6 @@
 import { ViewWrapper, type Farmer } from "@models";
 
 export function serialize(farmer: Farmer) {
-    console.log(farmer);
     const buffer = new ArrayBuffer(8192);
     const writer = new ViewWrapper(buffer);
 

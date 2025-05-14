@@ -5,6 +5,14 @@ export class StringTable {
     // private static allStrings: string[] = [];
     private static binaryStrings: BinaryString[] = [];
 
+    public static getUniqueStrings() {
+        return this.uniqueStrings;
+    }
+
+    public static getBinaryStrings() {
+        return this.binaryStrings;
+    }
+
     public static addString(value: string) {
         this.uniqueStrings.add(value);
         // this.allStrings.push(value);
