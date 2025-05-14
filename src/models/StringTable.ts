@@ -1,69 +1,54 @@
 import { BinaryString } from "@models";
 
 export class StringTable {
-    private static uniqueStrings: Set<string> = new Set();
-    // private static allStrings: string[] = [];
+    private static stringMap: Map<string, number> = new Map();
+    private static stringList: string[] = [];
     private static binaryStrings: BinaryString[] = [];
 
-    public static getUniqueStrings() {
-        return this.uniqueStrings;
+    public static get strings(): readonly string[] {
+        return this.stringList;
     }
-
-    public static getBinaryStrings() {
+    public static get binaries(): readonly BinaryString[] {
         return this.binaryStrings;
+    }
+    public static get indexMap(): ReadonlyMap<string, number> {
+        return this.stringMap;
     }
 
     public static addString(value: string) {
-        this.uniqueStrings.add(value);
-        // this.allStrings.push(value);
+        if (this.stringMap.has(value)) return;
+
+        this.stringMap.set(value, this.stringList.length);
+        this.stringList.push(value);
     }
 
     public static removeString(value: string) {
-        this.uniqueStrings.delete(value);
-        // this.allStrings.splice(this.allStrings.findIndex((v) => v === value), 1)
+        const idx = this.stringMap.get(value);
+        if (idx === undefined) return;
+
+        this.stringMap.delete(value);
+        this.stringList.splice(idx, 1);
+
+        // reset indices
+        this.stringMap.clear();
+        this.stringList.forEach((val, i) => this.stringMap.set(val, i));
     }
 
-    public static calculateOffset(value: string) {
-        const enc = new TextEncoder();
-        if (!this.uniqueStrings.has(value)) throw new Error("Given value does not exist in unique strings");
-        let offset = 0;
-        let index = 0;
-
-        for (const item of this.uniqueStrings) {
-            if (item === value) break;
-
-            offset += enc.encode(item).length;
-            index++;
-        }
-
-        return [offset, index];
+    public static getOffset(value: string) {
+        const idx = this.stringMap.get(value);
+        if (idx !== undefined) return this.binaryStrings[idx]?.offset;
     }
-
-    /*
-    public static filterUnique() {
-        this.uniqueStrings = new Set(this.allStrings);
-
-        return this.allStrings.length - this.uniqueStrings.size;
-    }
-    */
 
     public static serialize() {
+        this.binaryStrings = [];
         const enc = new TextEncoder();
 
-        let totalLength = 0;
-        for (const item of this.uniqueStrings) {
-            totalLength += enc.encode(item).length;
-        }
-
         let offset = 0;
-        let idx = 0;
+        for (const value of this.stringList) {
+            const encoded = enc.encode(value);
+            this.binaryStrings.push(new BinaryString(offset, encoded));
 
-        for (const item of this.uniqueStrings) {
-            const encoded = enc.encode(item);
-            this.binaryStrings[idx] = new BinaryString(offset, encoded);
-
-            offset += encoded.length;
-            idx++;
+            offset += encoded.byteLength;
         }
     }
 

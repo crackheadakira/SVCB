@@ -18,7 +18,7 @@ export class BinaryString {
 
     public toString() {
         const view = new DataView(this.content.buffer, this.content.byteOffset, this.content.byteLength);
-        return ViewWrapper.readString(length, view);
+        return ViewWrapper.readString(this.length, view);
     }
 
     public serialize() {
@@ -28,6 +28,11 @@ export class BinaryString {
         serializedArray.set(this.content, 2);
 
         return serializedArray;
+    }
+
+    public static fromString(offset: number, value: string) {
+        const encoded = new TextEncoder().encode(value);
+        return new BinaryString(offset, encoded);
     }
 
     public static serialize(content: Uint8Array) {

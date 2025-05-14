@@ -1,14 +1,6 @@
 import type { Farmer, Gender, Skill } from "@models";
 import { Direction, StardewSeason, StringTable } from "@models";
 
-export function parseXML(xmlData: string | undefined) {
-  if (!xmlData) throw new Error("Did not get XML data upon submit");
-  const parser = new DOMParser();
-
-  const parsedDom = parser.parseFromString(xmlData, "text/xml");
-  return xmlToJson(parsedDom);
-}
-
 function parseBoolean(key: string) {
   return key === "true";
 }
@@ -70,84 +62,6 @@ export function jsonToFarmer(json: any): Farmer {
     },
     activeDialogueEvents: json.activeDialogueEvents,
   } satisfies Farmer
-}
-
-function flattenEntries(arr: any[]) {
-  const out: Record<string, any> = {};
-  for (const entry of arr) {
-    Object.assign(out, entry);
-  }
-  return out;
-}
-
-function xmlToJson(node: Node) {
-  const obj: any = {};
-
-  if (node.nodeType === 1 && node instanceof Element) {
-    if (node.hasAttribute("xsi:nil") && node.getAttribute("xsi:nil") === "true") {
-      return null;
-    }
-
-    if (node.attributes.length > 0) {
-      obj["$attrs"] = {};
-      for (let i = 0; i < node.attributes.length; i++) {
-        const attr = node.attributes.item(i);
-        if (!attr) continue;
-
-        obj["$attrs"][attr.name] = attr.value;
-      }
-    }
-  }
-
-  const children = Array.from(node.childNodes).filter(n => {
-    if (n.nodeType === 3) {
-      return n.textContent?.trim().length;
-    }
-    return true;
-  });
-
-  if (children.length === 1 && children[0]!.nodeType === 3) {
-    return children[0]!.textContent?.trim();
-  }
-
-  for (const child of children) {
-    const childName = child.nodeName;
-    const childObj = xmlToJson(child);
-
-    if (obj[childName]) {
-      if (!Array.isArray(obj[childName])) {
-        obj[childName] = [obj[childName]];
-      }
-      obj[childName].push(childObj);
-    } else {
-      obj[childName] = childObj;
-    }
-  }
-
-  if (
-    Object.keys(obj).length === 1 &&
-    Array.isArray(obj["item"]) &&
-    obj["item"].every(
-      item =>
-        typeof item === "object" &&
-        "key" in item &&
-        "value" in item
-    )
-  ) {
-    const flatObj: Record<string, any> = {};
-    for (const entry of obj["item"]) {
-      const key = typeof entry.key === "object" && "string" in entry.key ? entry.key.string : entry.key;
-      const value = typeof entry.value === "object" && "int" in entry.value ? Number(entry.value.int) : entry.value;
-
-      flatObj[key] = value;
-
-      StringTable.addString(key);
-      if(typeof value === "string") StringTable.addString(value); 
-    }
-    return flatObj;
-  }
-
-  return obj;
 }
 
 type XmlValue = string | number | boolean | null | XmlObject | XmlValue[];
