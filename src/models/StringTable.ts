@@ -15,7 +15,9 @@ export class StringTable {
         return this.stringMap;
     }
 
-    public static addString(value: string) {
+    public static addString(value: any) {
+        if (typeof value !== "string") return;
+
         if (this.stringMap.has(value)) return;
 
         this.stringMap.set(value, this.stringList.length);
