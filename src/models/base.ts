@@ -1,4 +1,4 @@
-export interface Farmer {
+export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
     magic: number, // u16 0x5336 -> SV
 

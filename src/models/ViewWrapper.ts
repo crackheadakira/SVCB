@@ -1,4 +1,4 @@
-import type { Calendar, Farmer, Skill } from "@models/base";
+import type { Calendar, SaveInfo, Skill } from "@models/base";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -97,7 +97,7 @@ export class ViewWrapper {
         this.write("setUint16", skill.experiencePoints);
     }
 
-    public writeAllSkills(skills: Farmer["skills"]) {
+    public writeAllSkills(skills: SaveInfo["skills"]) {
         this.writeSkill(skills.farming);
         this.writeSkill(skills.fishing);
         this.writeSkill(skills.foraging);
@@ -106,7 +106,7 @@ export class ViewWrapper {
         this.writeSkill(skills.luck);
     }
 
-    public writeFlags(flags: Farmer["flags"]) {
+    public writeFlags(flags: SaveInfo["flags"]) {
         let FLAGS = 0;
 
         if (flags.gender === "Male") FLAGS |= 1 << 0;
@@ -162,7 +162,7 @@ export class ViewWrapper {
             mining: this.readSkill(),
             combat: this.readSkill(),
             luck: this.readSkill(),
-        } satisfies Farmer["skills"];
+        } satisfies SaveInfo["skills"];
     }
 
     public readRecord() {
@@ -213,7 +213,7 @@ export class ViewWrapper {
         return { year, season, dayOfMonth } satisfies Calendar;
     }
 
-    public readFlags(): Farmer["flags"] {
+    public readFlags(): SaveInfo["flags"] {
         const FLAGS = this.read("getUint16");
 
         return {

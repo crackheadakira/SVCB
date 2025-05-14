@@ -1,15 +1,17 @@
-import { StringTable, type Farmer } from "@models";
-import { jsonToFarmer, StardewXMLParser, type XmlObject } from "parse";
+import { StringTable, type SaveInfo } from "@models";
+import { jsonToSaveInfo, StardewXMLParser, type XmlObject } from "parse";
 import { deserialize, serialize } from "serialize";
 
+let XMLSaveInfo: SaveInfo | undefined;
 const inputElement = document.getElementById("saveFile") as HTMLInputElement;
 const buttonElement = document.getElementById("saveFileSerialize");
 
-inputElement?.addEventListener("change", (ev) => handleFiles(ev.target), false);
+inputElement?.addEventListener("change", async (ev) => {
+    XMLSaveInfo = await handleFiles(ev.target);
+}, false);
 buttonElement?.setAttribute("disabled", "true");
 const uploadSerializedFileInput = document.getElementById("uploadSerializedFile");
 
-let XMLSaveData: Farmer;
 
 async function handleFiles(t: EventTarget | null) {
     if (!t) return;
@@ -19,14 +21,15 @@ async function handleFiles(t: EventTarget | null) {
     if (!XMLData) return;
 
     const parser = new StardewXMLParser();
-    // const parsed = parseXML(XMLData);
     const parsed = parser.parse(XMLData) as XmlObject;
-    console.log(parsed);
-    XMLSaveData = jsonToFarmer(parsed.Farmer);
-    console.log(XMLSaveData);
-    // unoptimized: 428 unique strings (Historium)
-    console.log(StringTable.strings);
+    const saveInfo = jsonToSaveInfo(parsed.Farmer);
     buttonElement?.removeAttribute("disabled");
+
+    console.log(parsed);
+    console.log(saveInfo);
+    console.log(StringTable.strings);
+
+    return saveInfo;
 }
 
 async function handleSerializedFile(t: EventTarget | null) {
@@ -40,27 +43,28 @@ async function handleSerializedFile(t: EventTarget | null) {
     console.log(deserializedFarmer);
 }
 
-function getBlob(farmer: Farmer) {
-    const blobData = serialize(farmer);
+function getBlob(saveInfo: SaveInfo | undefined) {
+    if (!saveInfo) return;
 
-    return;
+    const blobData = serialize(saveInfo);
+
     const blob = new Blob([blobData], { type: "application/octet-stream" })
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = farmer.name + `.stdew`;
+    a.download = saveInfo.name + `.stdew`;
 
     document.body.appendChild(a);
 
-    a.click();
+    // a.click();
 
     document.body.removeChild(a);
 
     URL.revokeObjectURL(url);
 }
 
-buttonElement?.addEventListener("click", () => getBlob(XMLSaveData), false);
+buttonElement?.addEventListener("click", () => getBlob(XMLSaveInfo), false);
 uploadSerializedFileInput?.addEventListener("change", async (event) => {
     await handleSerializedFile(event.target);
 }, false);

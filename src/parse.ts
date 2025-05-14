@@ -1,11 +1,11 @@
-import type { Farmer, Gender, Skill, VisitLocation } from "@models";
+import type { SaveInfo, Gender, Skill, VisitLocation } from "@models";
 import { Direction, StardewSeason, StringTable, VisitPatternHandler } from "@models";
 
 function parseBoolean(key: string) {
   return key === "true";
 }
 
-export function jsonToFarmer(json: any): Farmer {
+export function jsonToSaveInfo(json: any): SaveInfo {
   return {
     magic: 0x5336,
     version: json.gameVersion,
@@ -61,7 +61,7 @@ export function jsonToFarmer(json: any): Farmer {
       } satisfies Skill
     },
     activeDialogueEvents: json.activeDialogueEvents,
-  } satisfies Farmer
+  } satisfies SaveInfo
 }
 
 export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | VisitLocation;
