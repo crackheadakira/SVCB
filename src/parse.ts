@@ -6,7 +6,9 @@ function parseBoolean(key: string) {
   return key === "true";
 }
 
-export function jsonToSaveInfo(json: any): SaveInfo {
+export function jsonToSaveInfo(json: any): SaveInfo | void {
+  if (!json) return console.log(json);
+
   return {
     magic: 0x5336,
     version: json.gameVersion,
@@ -38,27 +40,27 @@ export function jsonToSaveInfo(json: any): SaveInfo {
     skills: {
       farming: {
         level: parseInt(json.farmingLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[0])
+        experiencePoints: parseInt(json.experiencePoints[0])
       } satisfies Skill,
       fishing: {
         level: parseInt(json.fishingLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[1])
+        experiencePoints: parseInt(json.experiencePoints[1])
       } satisfies Skill,
       foraging: {
         level: parseInt(json.foragingLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[2])
+        experiencePoints: parseInt(json.experiencePoints[2])
       } satisfies Skill,
       mining: {
         level: parseInt(json.miningLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[3])
+        experiencePoints: parseInt(json.experiencePoints[3])
       } satisfies Skill,
       combat: {
         level: parseInt(json.combatLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[4])
+        experiencePoints: parseInt(json.experiencePoints[4])
       } satisfies Skill,
       luck: {
         level: parseInt(json.luckLevel),
-        experiencePoints: parseInt(json.experiencePoints.int[5])
+        experiencePoints: parseInt(json.experiencePoints[5])
       } satisfies Skill
     },
     activeDialogueEvents: json.activeDialogueEvents,
@@ -91,7 +93,7 @@ function parseQuest(json: Record<string, any>): AnyQuest | undefined {
   const questType = json.questType as QuestType;
   const base = {
     currentObjective: json["_currentObjective"],
-    description: json["quest_Description"],
+    description: json["_questDescription"],
     title: json.questTitle,
     rewardDescription: json?.rewardDescription,
     accepted: json.accepted,
@@ -113,6 +115,18 @@ function parseQuest(json: Record<string, any>): AnyQuest | undefined {
       return {
         ...base,
       } satisfies Quest
+    case QuestType.ItemDelivery:
+      return {
+        ...base,
+        target: json.target,
+        targetMessage: json.targetMessage,
+        item: json.item,
+        number: json.number,
+        deliveryItem: undefined, // need more save files to figure out
+        parts: undefined,
+        dialogueparts: undefined,
+        objective: undefined
+      } satisfies quest.ItemDeliveryQuest
     case QuestType.Building:
       return {
         ...base,
@@ -303,6 +317,14 @@ export class StardewXMLParser {
       }
 
       return flatMap;
+    }
+
+    if (
+      Object.keys(obj).length === 1 &&
+      Array.isArray(obj.int) &&
+      (obj.int.every(v => typeof v === "number" || typeof v === "string" || typeof v === "boolean"))
+    ) {
+      return obj.int;
     }
 
     return obj;

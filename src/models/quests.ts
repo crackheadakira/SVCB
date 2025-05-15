@@ -78,13 +78,14 @@ export namespace quest {
 
     export interface ItemDeliveryQuest extends Quest {
         target: string,
+        targetMessage: string,
         item: number,
         number: number,
 
-        deliveryItem: StardewObject
-        parts: DescriptionElement[]
-        dialogueparts: DescriptionElement[]
-        objective: DescriptionElement
+        deliveryItem?: StardewObject
+        parts?: DescriptionElement[]
+        dialogueparts?: DescriptionElement[]
+        objective?: DescriptionElement
     }
 
     export interface ItemHarvestQuest extends Quest {
