@@ -1,43 +1,43 @@
-import { ViewWrapper, type Farmer } from "@models";
+import { ViewWrapper, type SaveInfo } from "@models";
 
-export function serialize(farmer: Farmer) {
+export function serialize(saveInfo: SaveInfo) {
     const buffer = new ArrayBuffer(8192);
     const writer = new ViewWrapper(buffer);
 
-    writer.write("setUint16", farmer.magic);
+    writer.write("setUint16", saveInfo.magic);
 
-    writer.writeString(farmer.version);
+    writer.writeString(saveInfo.version);
 
     // later set these 4 bytes, 15 -> 19, indicates size
     writer.incrementOffset(4);
 
-    writer.writeString(farmer.name);
-    writer.writeString(farmer.farmName);
-    writer.writeString(farmer.favoriteThing);
+    writer.writeString(saveInfo.name);
+    writer.writeString(saveInfo.farmName);
+    writer.writeString(saveInfo.favoriteThing);
 
-    writer.write("setUint16", farmer.speed);
-    writer.write("setUint16", farmer.position.x);
-    writer.write("setUint16", farmer.position.y);
+    writer.write("setUint16", saveInfo.speed);
+    writer.write("setUint16", saveInfo.position.x);
+    writer.write("setUint16", saveInfo.position.y);
 
-    writer.writeCalendar(farmer.calendar);
+    writer.writeCalendar(saveInfo.calendar);
 
-    writer.write("setUint8", farmer.facing);
-    writer.write("setUint8", farmer.currentEmote);
-    writer.write("setFloat32", farmer.glowTransparency);
-    writer.write("setFloat32", farmer.glowRate);
+    writer.write("setUint8", saveInfo.facing);
+    writer.write("setUint8", saveInfo.currentEmote);
+    writer.write("setFloat32", saveInfo.glowTransparency);
+    writer.write("setFloat32", saveInfo.glowRate);
 
-    writer.writeFlags(farmer.flags);
+    writer.writeFlags(saveInfo.flags);
 
-    writer.writeAllSkills(farmer.skills);
+    writer.writeAllSkills(saveInfo.skills);
 
     // write first record
-    writer.writeRecord(farmer.activeDialogueEvents);
+    writer.writeRecord(saveInfo.activeDialogueEvents);
 
     writer.writeSize(writer.offset - 14, 14);
     return buffer.slice(0, writer.offset);
 }
 
-export function deserialize(buffer: ArrayBuffer): Farmer {
+export function deserialize(buffer: ArrayBuffer): SaveInfo {
     const reader = new ViewWrapper(buffer);
 
     const magic = reader.read("getUint16");
@@ -63,5 +63,6 @@ export function deserialize(buffer: ArrayBuffer): Farmer {
         flags: reader.readFlags(),
         skills: reader.readAllSkills(),
         activeDialogueEvents: reader.readRecord(),
+        QuestLog: [],
     };
 };
