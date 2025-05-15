@@ -9,6 +9,14 @@ test("write uint8", () => {
     expect(buf.toHex()).toBe("1300");
 });
 
+test("write uint8 offset", () => {
+    const buf = new Uint8Array(2);
+    const view = new ViewWrapper(buf);
+    view.write("setUint8", 19, undefined, 1);
+
+    expect(buf.toHex()).toBe("0013");
+});
+
 test("write uint16 little endian", () => {
     const buf = new Uint8Array(2);
     const view = new ViewWrapper(buf);

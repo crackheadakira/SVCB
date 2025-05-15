@@ -1,4 +1,4 @@
-import type { SaveInfo, Gender, Skill, VisitLocation, AnyQuest, quest, StardewObject, Rectangle, StardewPosition, DescriptionElement } from "@models";
+import type { SaveInfo, Gender, Skill, VisitLocation, AnyQuest, quest, StardewObject, Rectangle, StardewPosition, DescriptionElement, Quest } from "@models";
 import { Direction, StardewSeason, QuestType } from "@models";
 import type { StringMappingType } from "typescript";
 
@@ -89,22 +89,38 @@ function parseQuestLog(json: any) {
 
 function parseQuest(json: Record<string, any>): AnyQuest | undefined {
   const questType = json.questType as QuestType;
+  const base = {
+    currentObjective: json["_currentObjective"],
+    description: json["quest_Description"],
+    title: json.questTitle,
+    rewardDescription: json?.rewardDescription,
+    accepted: json.accepted,
+    completed: json.completed,
+    dailyQuest: json.dailyQuest,
+    showNew: json.showNew,
+    canBeCancelled: json.canBeCancelled,
+    destroy: json.destroy,
+    id: json?.id,
+    moneyReward: json.moneyReward,
+    questType,
+    daysLeft: json.daysLeft,
+    daysQuestAccepted: json.dayQuestAccepted,
+    nextQuests: json?.nextQuests,
+  } satisfies Quest;
+
   switch (questType) {
+    case QuestType.Basic:
+      return {
+        ...base,
+      } satisfies Quest
+    case QuestType.Building:
+      return {
+        ...base,
+        buildingType: json.buildingType
+      } satisfies quest.BuildingQuest
     case QuestType.Resource:
       return {
-        currentObjective: json["_currentObjective"],
-        description: json["_questDescription"],
-        title: json["questTitle"],
-        accepted: json.accepted,
-        completed: json.completed,
-        dailyQuest: json.dailyQuest,
-        showNew: json.showNew,
-        canBeCancelled: json.canBeCancelled,
-        destroy: json.destroy,
-        moneyReward: json.moneyReward,
-        questType,
-        daysLeft: json.daysLeft,
-        daysQuestAccepted: json.dayQuestAccepted,
+        ...base,
         target: json.target,
         targetMessage: json.targetMessage,
         collected: json.numberCollected,

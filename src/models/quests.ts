@@ -16,6 +16,7 @@ export enum QuestType {
 
 export type AnyQuest =
     | Quest
+    | quest.BuildingQuest
     | quest.CraftingQuest
     | quest.FishingQuest
     | quest.GoSomewhereQuest
@@ -48,6 +49,10 @@ export interface Quest {
 }
 
 export namespace quest {
+
+    export interface BuildingQuest extends Quest {
+        buildingType: string,
+    }
 
     export interface CraftingQuest extends Quest {
         isBigCraftable: boolean,
