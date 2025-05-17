@@ -1,4 +1,4 @@
-import type { anyLocation, AnyQuest } from "@models"
+import type { anyEvent, AnyQuest } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -70,10 +70,10 @@ export interface SaveInfo {
     }
 
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
-    activeDialogueEvents: Record<string, anyLocation[]>
+    activeDialogueEvents: Record<string, anyEvent[]>
 
     /** Previous dialogue events farmer has experienced, `number` refers to days since event */
-    previousActiveDialogueEvents: Record<string, anyLocation[]>
+    previousActiveDialogueEvents: Record<string, anyEvent[]>
 
     QuestLog: AnyQuest[];
 

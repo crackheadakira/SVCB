@@ -4,78 +4,119 @@ firstVisit_ArchaeologyHouse_memory_oneweek
 eventSeen_prizeTicketIntro_memory_oneday
 */
 
-export type anyLocation = VisitLocation | UndergroundMine;
+export type anyEvent = GeneralEvent | anyLocation;
+type anyLocation = VisitLocation | UndergroundMine | NPCHouse;
 
-export interface VisitLocation {
+type EventMemory = "day" | "week";
+interface GeneralEvent {
+    eventType: "eventSeen" | "fishCaught" | "questComplete",
+    memory?: EventMemory,
+    value: number,
+}
+
+interface VisitLocation {
+    eventType: "firstVisit",
     locationType: "Location" | "undergroundMine" | "NPCHouse",
-    eventType: "firstVisit" | "eventSeen",
+    memory?: EventMemory,
     location: string,
     value: number,
-    memory?: "day" | "week",
 }
 
-interface UndergroundMine extends VisitLocation {
+interface UndergroundMine {
+    eventType: "firstVisit",
     locationType: "undergroundMine",
+    memory?: EventMemory,
     mine: number,
+    value: number,
 }
 
-export function VisitPatternHandler(key: string, value: number): anyLocation | undefined {
-    const firstVisit = key.startsWith("firstVisit_");
-    const eventSeen = key.startsWith("eventSeen_");
-    const fishCaught = key.startsWith("fishCaught_");
-    const questComplete = key.startsWith("questComplete_");
+interface NPCHouse {
+    eventType: "firstVisit";
+    locationType: "NPCHouse";
+    memory?: EventMemory;
+    npc: string;
+    value: number;
+}
+
+
+export function VisitPatternHandler(key: string, value: number): anyEvent | undefined {
+    const [prefix, rawLocation, ...rest] = key.split("_");
+    if (!prefix || !rawLocation) return;
+
     const hasMemory = key.includes("memory");
+    const hasDay = key.includes("oneday");
+    const memory = hasMemory ? (hasDay ? "day" : "week") : undefined;
 
-    if (!firstVisit && !eventSeen && !fishCaught && !questComplete && !hasMemory) return;
+    const base = { value, memory } as const;
 
-    const split = key.split("_");
-    const location = split[1]!;
+    switch (prefix) {
+        case "firstVisit": {
+            if (rawLocation.startsWith("UndergroundMine")) {
+                const mine = parseInt(rawLocation.match(/\d+/)?.[0] ?? "");
+                if (!isNaN(mine)) return {
+                    ...base,
+                    eventType: "firstVisit",
+                    locationType: "undergroundMine",
+                    mine,
+                } satisfies UndergroundMine
+            } else if (rawLocation.includes("House")) {
+                const npc = rawLocation.split("House")[0] ?? "";
+                return {
+                    ...base,
+                    eventType: "firstVisit",
+                    locationType: "NPCHouse",
+                    npc,
+                } satisfies NPCHouse
+            } else return {
+                ...base,
+                eventType: "firstVisit",
+                locationType: "Location",
+                location: rawLocation,
+            } satisfies VisitLocation
 
-    const hasDay = split.includes("oneday");
+            break;
+        }
 
-    const obj = {
-        eventType: firstVisit ? "firstVisit" : "eventSeen",
-        locationType: "Location",
-        location: firstVisit ? location : split[0]!,
-        value,
-        memory: hasMemory ? (hasDay ? "day" : "week") : undefined,
-    } satisfies anyLocation;
+        case "eventSeen":
+        case "questComplete":
+        case "fishCaught": {
+            return {
+                ...base,
+                eventType: prefix,
+            } satisfies GeneralEvent
+        }
 
-    const isUndergroundmine = location.startsWith("UndergroundMine");
-    const isHouse = location.includes("House");
-
-    if (isUndergroundmine) {
-        const mineNumber = parseInt(location.match(/\d+/)![0]);
-
-        return {
-            ...obj,
-            location: "UndergroundMine",
-            locationType: "undergroundMine",
-            mine: mineNumber,
-        } satisfies UndergroundMine;
-    } else if (isHouse) {
-        const npc = location.substring(0, location.indexOf("House"));
-
-        return {
-            ...obj,
-            locationType: "NPCHouse",
-            location: npc,
-        };
+        default: return;
     }
-
-    return obj;
 }
 
 export function parseDialogueEvents(json: any) {
-    const locations: Record<string, anyLocation[]> = {};
+    const locations: Record<string, anyEvent[]> = {};
 
     for (const key of Object.keys(json)) {
         const res = VisitPatternHandler(key, json[key])
         if (!res) continue;
 
-        if (!locations[res.location]) locations[res.location] = [];
-        locations[res.location]?.push(res);
+        let valKey: string = res.eventType;
+
+        if (res.eventType === "firstVisit") {
+            if (res.locationType === "Location") valKey = res.location;
+            else if (isNPCHouse(res)) valKey = res.npc;
+            else if (isUndergroundMine(res)) valKey = res.locationType;
+        };
+
+
+        if (!locations[valKey]) locations[valKey] = [];
+        locations[valKey]?.push(res);
     }
 
     return locations;
+}
+
+function isNPCHouse(event: anyLocation): event is NPCHouse {
+    return event.locationType === "NPCHouse";
+}
+
+function isUndergroundMine(event: anyLocation): event is UndergroundMine {
+    return event.locationType === "undergroundMine";
 }
