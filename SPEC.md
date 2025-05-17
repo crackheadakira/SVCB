@@ -19,6 +19,17 @@ All fields up to byte 93 are fixed-size. Data after byte 93 is variable-length a
 
 All numeric fields (`u16`, `u32`, `f32`, etc.) are stored in big-endian format.
 
+### Example .STDEW start
+
+```
+0x00000000: 53 36   ; magic number ("S6")
+0x00000002: 31 2E 36 2E 31 35   ; "1.6.15"
+0x00000008: 00 00 00 00 00 00   ; null padding (8 bytes)
+0x0000000E: 00 00 03 C4         ; data size ("964")
+0x00000012: 4D 6F 72 67 61 6E   ; farmer name ("Morgan")
+0x00000018: 00 00 00 00 00 00   ; null padding (8 bytes)
+```
+
 ## Save Game Info Layout
 
 | Offset | Field                            | Type                 | Size        | Notes                                           |
@@ -102,12 +113,12 @@ All strings are UTF-8 encoded and prefixed with a `u16` length. Strings may or m
 
 ## Dialogue Event Layout
 
-| Field             | Type  | Notes                                                                                 |
-| ----------------- | ----- | ------------------------------------------------------------------------------------- |
-| `totalEvents`     | `u16` |                                                                                       |
-| `event[i].type`   | `u8`  | `eventSeen`, `fishCaught`, `questComplete`, `location`, `undergroundMine`, `NPCHouse` |
-| `event[i].memory` | `u2`  | `0` = no event, `1` = day, `2` = week. First 2 bits of byte 1                         |
-| `event[i].value`  | `u6`  | Next 6 bits of byte 1                                                                 |
+| Field             | Type  | Notes                                                                                         |
+| ----------------- | ----- | --------------------------------------------------------------------------------------------- |
+| `totalEvents`     | `u16` |                                                                                               |
+| `event[i].type`   | `u8`  | `eventSeen` = 0, `fishCaught`, `questComplete`, `location`, `undergroundMine`, `NPCHouse` = 5 |
+| `event[i].memory` | `u2`  | `0` = no event, `1` = day, `2` = week. First 2 bits of byte 1                                 |
+| `event[i].value`  | `u6`  | Next 6 bits of byte 1                                                                         |
 
 ### First Visit Layout
 
