@@ -1,40 +1,60 @@
 # _.STDEW_ Specification
 
+## Table of Contents
+
+-   [Overview](#overview)
+-   [Save Game Info Layout](#save-game-info-layout)
+-   [Flags Layout](#flags-layout)
+-   [Skill Layout](#skill-layout)
+-   [Record Layout](#record-layout)
+-   [String Layout](#string-layout)
+-   [Dialogue Event Layout](#dialogue-event-layout)
+-   [First Visit Layout](#first-visit-layout)
+
 ## Overview
 
 This specification outlines the structure and binary format used to serialize and deserialize save data from Stardew Valley into a compact binary format.
 
+All fields up to byte 93 are fixed-size. Data after byte 93 is variable-length and must be parsed sequentially using length prefixes or known field counts.
+
+All numeric fields (`u16`, `u32`, `f32`, etc.) are stored in big-endian format.
+
 ## Save Game Info Layout
 
-| Field                          | Type     | Size (bytes) | Notes                                                             |
-| ------------------------------ | -------- | ------------ | ----------------------------------------------------------------- |
-| `magic`                        | `u16`    | 2            | Magic number `0x5336` to validate file                            |
-| `version`                      | `string` | 12           | E.g. `1.6.15`, null-padded                                        |
-| `dataSize`                     | `u32`    | 4            | How many bytes exist after size                                   |
-| `name`                         | `string` | 12           | UTF-8, null-padded                                                |
-| `farmName`                     | `string` | 12           | UTF-8, null-padded                                                |
-| `favoriteThing`                | `string` | 12           | UTF-8, null-padded                                                |
-| `speed`                        | `u16`    | 2            |                                                                   |
-| `position.x`                   | `u16`    | 2            | X-coordinate of the farmer in world space                         |
-| `position.y`                   | `u16`    | 2            | Y-coordinate of the farmer in world space                         |
-| `calendar.year`                | `u16`    | 2            |                                                                   |
-| `calendar.season`              | `u2`     | 0.25         |                                                                   |
-| `calendar.dayOfMonth`          | `u5`     | 0.625        | Calendar wastes 1 byte, takes up 23 bytes                         |
-| `facing`                       | `u8`     | 1            | Should be an `u2` in the future                                   |
-| `currentEmote`                 | `u8`     | 1            |                                                                   |
-| `glowTransparency`             | `f32`    | 4            |                                                                   |
-| `glowRate`                     | `f32`    | 4            |                                                                   |
-| `flags`                        | `u16`    | 2            | Refer to flags layout table for more information                  |
-| `skills.farming`               | `skill`  | 3            | Refer to skill layout table for more information                  |
-| `skills.fishing`               | `skill`  | 3            |                                                                   |
-| `skills.foraging`              | `skill`  | 3            |                                                                   |
-| `skills.mining`                | `skill`  | 3            |                                                                   |
-| `skills.combat`                | `skill`  | 3            |                                                                   |
-| `skills.luck`                  | `skill`  | 3            |                                                                   |
-| `activeDialogueEvents`         | `event`  | variable     | Refer to general dialogue event layout table for more information |
-| `previousActiveDialogueEvents` | `event`  | variable     | Refer to general dialogue event layout table for more information |
+| Offset | Field                            | Type                 | Size        | Notes                                           |
+| ------ | -------------------------------- | -------------------- | ----------- | ----------------------------------------------- |
+| 0      | `magic`                          | `u16`                | 2 bytes     | Magic number `0x5336` to validate file          |
+| 2      | `version`                        | `string`             | 12 bytes    | E.g. `1.6.15`, null-padded                      |
+| 14     | `dataSize`                       | `u32`                | 4 bytes     | How many bytes exist after size                 |
+| 18     | `name`                           | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 30     | `farmName`                       | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 42     | `favoriteThing`                  | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 54     | `speed`                          | `u16`                | 2 bytes     |                                                 |
+| 56     | `position.x`                     | `u16`                | 2 bytes     | X-coordinate of the farmer in world space       |
+| 58     | `position.y`                     | `u16`                | 2 bytes     | Y-coordinate of the farmer in world space       |
+| 60     | `calendar.year`                  | `u16`                | 2 bytes     |                                                 |
+| 62     | `calendar.season`                | `u2`                 | packed bits |                                                 |
+| 62     | `calendar.dayOfMonth`            | `u5`                 | packed bits |                                                 |
+| 62     | `padding`                        | `u1` (pad)           | packed bits |                                                 |
+| 63     | `facing`                         | `u8`                 | 1 bytes     | Should be an `u2` in the future                 |
+| 64     | `currentEmote`                   | `u8`                 | 1 bytes     |                                                 |
+| 65     | `glowTransparency`               | `f32`                | 4 bytes     |                                                 |
+| 69     | `glowRate`                       | `f32`                | 4 bytes     |                                                 |
+| 73     | `flags`                          | `u16`                | 2 bytes     | [Flags Layout](#flags-layout)                   |
+| 75     | `skills.farming`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 78     | `skills.fishing`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 81     | `skills.foraging`                | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 84     | `skills.mining`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 87     | `skills.combat`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 90     | `skills.luck`                    | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 93     | --- START OF VARIABLE REGION --- |                      |             |
+| 93     | `activeDialogueEvents`           | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
+| ...    | `previousActiveDialogueEvents`   | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
 
-Minimum Total Size: 93 bytes
+Fixed byte size:
+
+-   All fields before `activeDialogueEvents` = 93 bytes
+-   Additional variable-length fields follow
 
 ## Flags Layout
 
@@ -48,43 +68,52 @@ Minimum Total Size: 93 bytes
 | `5`    | isGlowing     | Is farmer glowing                      |
 | `6-15` | Reserved      | Reserved for any future boolean values |
 
-## Skill Layout
+### Example
 
-| Field   | Type  | Size (bytes) |
-| ------- | ----- | ------------ |
-| `level` | `u8`  | 1            |
-| `exp`   | `u16` | 2            |
+If `flags = 0b00110101`:
+
+-   Gender = 1 (Male)
+-   isCharging = 0
+-   coloredBorder = 1
+-   flip = 0
+-   isEmoting = 1
+-   isGlowing = 1
 
 ## Record Layout
 
-| Field             | Type          |
-| ----------------- | ------------- |
-| `totalEntries`    | `u16`         |
-| `entry[i].length` | `u16`         |
-| `entry[i].bytes`  | `variable`    |
-| `entry[i].value`  | `u8` or `u16` |
+| Field             | Type          | Notes                               |
+| ----------------- | ------------- | ----------------------------------- |
+| `totalEntries`    | `u16`         |                                     |
+| `entry[i].length` | `u16`         |                                     |
+| `entry[i].bytes`  | `variable`    | Preceded by `entry[i].length` (u16) |
+| `entry[i].value`  | `u8` or `u16` |                                     |
 
 ## String Layout
 
-| Field     | Type       |
-| --------- | ---------- |
-| `length`  | `u16`      |
-| `content` | `variable` |
+All strings are UTF-8 encoded and prefixed with a `u16` length. Strings may or may not be null-padded depending on context:
 
-## General Dialogue Event Layout
+-   Fixed-size fields (e.g., `name`, `farmName`) are right-padded with null bytes (`0x00`) to the defined length.
+-   Variable-length strings are length-prefixed only and not padded.
+
+| Field     | Type       | Notes                      |
+| --------- | ---------- | -------------------------- |
+| `length`  | `u16`      |                            |
+| `content` | `variable` | Preceded by `length` (u16) |
+
+## Dialogue Event Layout
 
 | Field             | Type  | Notes                                                                                 |
 | ----------------- | ----- | ------------------------------------------------------------------------------------- |
 | `totalEvents`     | `u16` |                                                                                       |
 | `event[i].type`   | `u8`  | `eventSeen`, `fishCaught`, `questComplete`, `location`, `undergroundMine`, `NPCHouse` |
-| `event[i].memory` | `u2`  | `0` = no event, `1` = day, `2` = week, optimally would be u2                          |
-| `event[i].value`  | `u6`  |                                                                                       |
+| `event[i].memory` | `u2`  | `0` = no event, `1` = day, `2` = week. First 2 bits of byte 1                         |
+| `event[i].value`  | `u6`  | Next 6 bits of byte 1                                                                 |
 
 ### First Visit Layout
 
 | Field               | Type             | Notes                                 |
 | ------------------- | ---------------- | ------------------------------------- |
 | `DialogueEvents`    | `u16`            |                                       |
-| `event[i].location` | `BinaryString`   | Only on `VisitLocation`               |
+| `event[i].location` | `string`         | Only on `VisitLocation`               |
 | `event[i].mine`     | `u8`             | Only on `undergroundMine`             |
 | `event[i].npc`      | `string` or `u8` | Only on `NPCHouse`, undecided on type |

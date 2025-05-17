@@ -14,7 +14,7 @@ type ReturnTypeForGetter<T extends DataViewGetterKeys> = IsBigIntMethod<T> exten
     : number;
 
 export class ViewWrapper {
-    private LITTLE_ENDIAN: boolean;
+    private LITTLE_ENDIAN: boolean = false;
     private STRING_LENGTH = 12;
     private static readonly encoder = new TextEncoder()
 
@@ -28,12 +28,12 @@ export class ViewWrapper {
     constructor(buffer: DataView, isLittleEndian?: boolean)
     constructor(buffer: ArrayBuffer, isLittleEndian?: boolean)
     constructor(buffer: Uint8Array, isLittleEndian?: boolean)
-    constructor(buffer: ArrayBuffer | DataView | Uint8Array, isLittleEndian = false) {
+    constructor(buffer: ArrayBuffer | DataView | Uint8Array, isLittleEndian?: boolean) {
         if (buffer instanceof DataView) this.view = buffer;
         else if (buffer instanceof Uint8Array) this.view = this.getViewFromArray(buffer);
         else this.view = new DataView(buffer);
 
-        this.LITTLE_ENDIAN = isLittleEndian;
+        if (isLittleEndian) this.LITTLE_ENDIAN = isLittleEndian;
     }
 
     public write<T extends DataViewSetterKeys>(method: T, value: DataViewParameters<T>[1], littleEndian?: boolean): void
