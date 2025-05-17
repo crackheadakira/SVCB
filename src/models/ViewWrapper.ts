@@ -16,6 +16,7 @@ type ReturnTypeForGetter<T extends DataViewGetterKeys> = IsBigIntMethod<T> exten
 export class ViewWrapper {
     private LITTLE_ENDIAN: boolean;
     private STRING_LENGTH = 12;
+    private static readonly encoder = new TextEncoder()
 
     private view: DataView;
     private _offset = 0;
@@ -72,9 +73,8 @@ export class ViewWrapper {
     }
 
     public writeBytes(data: Uint8Array) {
-        for (const byte of data) {
-            this.write("setUint8", byte);
-        }
+        new Uint8Array(this.view.buffer, this.view.byteOffset + this._offset, data.length).set(data);
+        this._offset += data.length;
     }
 
     public writeSize(value: number, offset: number) {
@@ -86,8 +86,7 @@ export class ViewWrapper {
     public writeString(text: string, length?: number) {
         const maxLength = length ? length : this.STRING_LENGTH;
 
-        const enc = new TextEncoder();
-        const encoded = enc.encode(text.padEnd(maxLength, "\0").substring(0, maxLength));
+        const encoded = ViewWrapper.encoder.encode(text.padEnd(maxLength, "\0").substring(0, maxLength));
         for (const byte of encoded) {
             this.write("setUint8", byte);
         };
@@ -129,7 +128,6 @@ export class ViewWrapper {
 
     public writeRecord(data: Record<string, number>, customLogic?: (key: string, value: number, writeFn: (...args: Parameters<ViewWrapper["write"]>) => void) => void) {
         const keys = Object.keys(data);
-        const enc = new TextEncoder();
 
         const totalEntries = keys.length;
         this.write("setUint16", totalEntries);
@@ -141,7 +139,7 @@ export class ViewWrapper {
             if (customLogic) {
                 customLogic(key, value, this.write.bind(this));
             } else {
-                const encoded = enc.encode(key);
+                const encoded = ViewWrapper.encoder.encode(key);
                 this.write("setUint16", encoded.byteLength);
                 this.writeBytes(encoded);
                 this.write("setUint8", value);
