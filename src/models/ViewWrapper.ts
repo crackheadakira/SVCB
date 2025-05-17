@@ -1,4 +1,6 @@
 import type { Calendar, SaveInfo, Skill } from "@models/base";
+import { EventType, EventTypeChecker, type anyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "parsers/dialogueEventsParser";
+import { BinaryString } from "./BinaryTypes";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -147,6 +149,26 @@ export class ViewWrapper {
         }
     }
 
+    public writeBinaryString(data: BinaryString) {
+        this.write("setUint16", data.length);
+        for (const byte of data.content) {
+            this.write("setUint8", byte);
+        }
+    }
+
+    public writeDialogueEvent(data: anyEvent[]) {
+        this.write("setUint16", data.length);
+        for (const item of data) {
+            this.write("setUint8", item.eventType);
+            const memory = item.memory === undefined ? 0 : (item.memory === "day" ? 1 : 2);
+            this.write("setUint8", (memory << 6) | (item.value & 0b111111));
+
+            if (EventTypeChecker.isLocation(item)) this.writeBinaryString(BinaryString.fromString(0, item.location));
+            else if (EventTypeChecker.isUndergroundMine(item)) this.write("setUint8", item.mine);
+            else if (EventTypeChecker.isNPCHouse(item)) this.writeBinaryString(BinaryString.fromString(0, item.npc));
+        }
+    }
+
     public readSkill() {
         return {
             level: this.read("getUint8"),
@@ -181,8 +203,12 @@ export class ViewWrapper {
 
     public readString(length: number, offset: number): string
     public readString(length: number): string
-    public readString(length: number, offset?: number) {
+    public readString(): string
+    public readString(length?: number, offset?: number) {
         let str = '';
+
+        if (!length) length = this.read("getUint16");
+
         for (let i = 0; i < length; i++) {
             const charCode = this.read("getUint8", undefined, offset);
             if (charCode !== 0) {
@@ -203,6 +229,51 @@ export class ViewWrapper {
         }
 
         return str;
+    }
+
+    public readDialogueEvents(): anyEvent[] {
+        const totalEvents = this.read("getUint16");
+        const events: anyEvent[] = [];
+
+        for (let i = 0; i < totalEvents; i++) {
+            events.push(this.readDialogueEvent())
+        }
+
+        return events.sort();
+    }
+
+    public readDialogueEvent(): anyEvent {
+        const type = this.read("getUint8");
+        const packed = this.read("getUint8");
+        const _memory = packed >> 6;
+        const value = packed & 0b00111111;
+        let memory: EventMemory | undefined;
+        if (_memory === 1) memory = "day";
+        else if (_memory === 2) memory = "week";
+
+        const base = {
+            eventType: type,
+            value,
+            memory,
+        } satisfies GeneralEvent;
+
+        if (type < 3) return base;
+        else if (type === EventType.location) {
+            return {
+                ...base,
+                location: this.readString(),
+            } satisfies VisitLocation
+        } else if (type === EventType.undergroundMine) {
+            return {
+                ...base,
+                mine: this.read("getUint8"),
+            } satisfies UndergroundMine
+        } else {
+            return {
+                ...base,
+                npc: this.readString(),
+            } satisfies NPCHouse
+        }
     }
 
     public readCalendar() {

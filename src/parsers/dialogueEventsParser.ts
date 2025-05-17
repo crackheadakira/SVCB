@@ -7,32 +7,38 @@ eventSeen_prizeTicketIntro_memory_oneday
 export type anyEvent = GeneralEvent | anyLocation;
 type anyLocation = VisitLocation | UndergroundMine | NPCHouse;
 
-type EventMemory = "day" | "week";
-interface GeneralEvent {
-    eventType: "eventSeen" | "fishCaught" | "questComplete",
+export enum EventType {
+    eventSeen,
+    fishCaught,
+    questComplete,
+    location,
+    undergroundMine,
+    NPCHouse
+}
+
+export type EventMemory = "day" | "week";
+export interface GeneralEvent {
+    eventType: EventType,
     memory?: EventMemory,
     value: number,
 }
 
-interface VisitLocation {
-    eventType: "firstVisit",
-    locationType: "Location" | "undergroundMine" | "NPCHouse",
+export interface VisitLocation {
+    eventType: EventType,
     memory?: EventMemory,
     location: string,
     value: number,
 }
 
-interface UndergroundMine {
-    eventType: "firstVisit",
-    locationType: "undergroundMine",
+export interface UndergroundMine {
+    eventType: EventType,
     memory?: EventMemory,
     mine: number,
     value: number,
 }
 
-interface NPCHouse {
-    eventType: "firstVisit";
-    locationType: "NPCHouse";
+export interface NPCHouse {
+    eventType: EventType;
     memory?: EventMemory;
     npc: string;
     value: number;
@@ -55,68 +61,73 @@ export function VisitPatternHandler(key: string, value: number): anyEvent | unde
                 const mine = parseInt(rawLocation.match(/\d+/)?.[0] ?? "");
                 if (!isNaN(mine)) return {
                     ...base,
-                    eventType: "firstVisit",
-                    locationType: "undergroundMine",
+                    eventType: EventType.undergroundMine,
                     mine,
                 } satisfies UndergroundMine
             } else if (rawLocation.includes("House")) {
                 const npc = rawLocation.split("House")[0] ?? "";
                 return {
                     ...base,
-                    eventType: "firstVisit",
-                    locationType: "NPCHouse",
+                    eventType: EventType.NPCHouse,
                     npc,
                 } satisfies NPCHouse
             } else return {
                 ...base,
-                eventType: "firstVisit",
-                locationType: "Location",
+                eventType: EventType.location,
                 location: rawLocation,
             } satisfies VisitLocation
 
             break;
         }
 
-        case "eventSeen":
-        case "questComplete":
-        case "fishCaught": {
-            return {
-                ...base,
-                eventType: prefix,
-            } satisfies GeneralEvent
-        }
+        case "eventSeen": return {
+            ...base,
+            eventType: EventType.eventSeen,
+        } satisfies GeneralEvent
+
+        case "questComplete": return {
+            ...base,
+            eventType: EventType.questComplete,
+        } satisfies GeneralEvent
+
+        case "fishCaught": return {
+            ...base,
+            eventType: EventType.fishCaught,
+        } satisfies GeneralEvent
 
         default: return;
     }
 }
 
 export function parseDialogueEvents(json: any) {
-    const locations: Record<string, anyEvent[]> = {};
+    const locations: anyEvent[] = [];
 
     for (const key of Object.keys(json)) {
         const res = VisitPatternHandler(key, json[key])
         if (!res) continue;
 
-        let valKey: string = res.eventType;
+        let valKey: string = EventType[res.eventType];
 
-        if (res.eventType === "firstVisit") {
-            if (res.locationType === "Location") valKey = res.location;
-            else if (isNPCHouse(res)) valKey = res.npc;
-            else if (isUndergroundMine(res)) valKey = res.locationType;
-        };
+        if (EventTypeChecker.isLocation(res)) valKey = res.location;
+        else if (EventTypeChecker.isNPCHouse(res)) valKey = res.npc;
+        else if (EventTypeChecker.isUndergroundMine(res)) valKey = "UndergroundMine";
 
-
-        if (!locations[valKey]) locations[valKey] = [];
-        locations[valKey]?.push(res);
+        locations.push(res);
     }
 
-    return locations;
+    return locations.sort();
 }
 
-function isNPCHouse(event: anyLocation): event is NPCHouse {
-    return event.locationType === "NPCHouse";
-}
+export namespace EventTypeChecker {
+    export function isLocation(event: anyEvent): event is VisitLocation {
+        return event.eventType === EventType.location;
+    }
 
-function isUndergroundMine(event: anyLocation): event is UndergroundMine {
-    return event.locationType === "undergroundMine";
+    export function isNPCHouse(event: anyEvent): event is NPCHouse {
+        return event.eventType === EventType.NPCHouse;
+    }
+
+    export function isUndergroundMine(event: anyEvent): event is UndergroundMine {
+        return event.eventType === EventType.undergroundMine
+    }
 }

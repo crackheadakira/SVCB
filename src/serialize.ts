@@ -30,8 +30,8 @@ export function serialize(saveInfo: SaveInfo) {
 
     writer.writeAllSkills(saveInfo.skills);
 
-    // write first record
-    writer.writeRecord(saveInfo.activeDialogueEvents);
+    writer.writeDialogueEvent(saveInfo.activeDialogueEvents);
+    writer.writeDialogueEvent(saveInfo.previousActiveDialogueEvents);
 
     writer.writeSize(writer.offset - 14, 14);
     return buffer.slice(0, writer.offset);
@@ -62,7 +62,8 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
         glowRate: reader.read("getFloat32"),
         flags: reader.readFlags(),
         skills: reader.readAllSkills(),
-        activeDialogueEvents: reader.readRecord(),
+        activeDialogueEvents: reader.readDialogueEvents(),
+        previousActiveDialogueEvents: reader.readDialogueEvents(),
         QuestLog: [],
     };
 };

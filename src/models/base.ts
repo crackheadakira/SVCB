@@ -70,10 +70,10 @@ export interface SaveInfo {
     }
 
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
-    activeDialogueEvents: Record<string, anyEvent[]>
+    activeDialogueEvents: anyEvent[]
 
     /** Previous dialogue events farmer has experienced, `number` refers to days since event */
-    previousActiveDialogueEvents: Record<string, anyEvent[]>
+    previousActiveDialogueEvents: anyEvent[]
 
     QuestLog: AnyQuest[];
 

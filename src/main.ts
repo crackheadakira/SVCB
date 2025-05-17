@@ -61,7 +61,7 @@ function getBlob(saveInfo: SaveInfo | undefined) {
 
     document.body.appendChild(a);
 
-    // a.click();
+    a.click();
 
     document.body.removeChild(a);
 

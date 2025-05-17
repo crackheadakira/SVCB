@@ -1,6 +1,6 @@
-import type { VisitLocation } from "@models";
+import type { anyEvent } from "@models";
 
-export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | VisitLocation;
+export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | anyEvent;
 export interface XmlObject {
     [key: string]: XmlValue;
 }
