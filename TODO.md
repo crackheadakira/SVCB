@@ -33,7 +33,9 @@
     -   [x] Combat
     -   [x] Luck
 -   [x] Farming
--   [x] activeDialogueEvents
+-   [ ] dialogueEvents
+    -   [ ] activeDialogueEvents
+    -   [ ] previousActiveDialogueEvents
 -   [ ] QuestLog
     -   [ ] Quest
         -   [ ] Generic Quest
@@ -45,7 +47,6 @@
 -   [ ] dialogueQuestionsAnswered
 -   [ ] cookingRecipes
 -   [ ] craftingRecipes
--   [ ] previousActiveDialogueEvents
 -   [ ] triggerActionsRun (array?)
 -   [ ] eventsSeen
 -   [ ] secretNotesSeen

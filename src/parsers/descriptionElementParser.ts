@@ -13,10 +13,9 @@ export function parseDescriptionElementList(json: Record<string, any>) {
 
 export function parseDescriptionElement(json: Record<string, any>): DescriptionElement {
     const final: DescriptionElement = {
-        xmlKey: "",
+        xmlKey: json.xmlKey,
     };
 
-    final.xmlKey = json.xmlKey;
     if (json.param) {
         if (Array.isArray(json.param)) {
             final.param = [];

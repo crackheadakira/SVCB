@@ -3,7 +3,8 @@
     "@types/bun": "^1.2.13"
   },
   "scripts": {
-    "start": "bun ./index.html"
+    "start": "bun ./index.html",
+    "build": "bun build ./index.html --minify --outdir=dist"
   },
   "name": "sdv",
   "type": "module",
