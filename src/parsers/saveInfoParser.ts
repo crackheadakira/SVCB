@@ -1,4 +1,4 @@
-import { Direction, StardewSeason, type Gender, type SaveInfo, type Skill } from "@models";
+import { Direction, parseDialogueEvents, StardewSeason, type Gender, type SaveInfo, type Skill } from "@models";
 import { parseBoolean, parseQuestLog } from "@parsers";
 
 export function jsonToSaveInfo(json: any): SaveInfo | undefined {
@@ -58,7 +58,8 @@ export function jsonToSaveInfo(json: any): SaveInfo | undefined {
                 experiencePoints: parseInt(json.experiencePoints[5])
             } satisfies Skill
         },
-        activeDialogueEvents: json.activeDialogueEvents,
+        activeDialogueEvents: parseDialogueEvents(json.activeDialogueEvents),
+        previousActiveDialogueEvents: parseDialogueEvents(json.previousActiveDialogueEvents),
         QuestLog: parseQuestLog(json.questLog.Quest),
     } satisfies SaveInfo
 }

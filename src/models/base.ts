@@ -1,4 +1,4 @@
-import type { AnyQuest } from "@models"
+import type { anyLocation, AnyQuest } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -69,9 +69,11 @@ export interface SaveInfo {
         luck: Skill,
     }
 
-    // NEXT TODO: Parse activeDialogueEvents and put them into StringTable to check for any possible savings
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
-    activeDialogueEvents: Record<string, number> // string, u16
+    activeDialogueEvents: Record<string, anyLocation[]>
+
+    /** Previous dialogue events farmer has experienced, `number` refers to days since event */
+    previousActiveDialogueEvents: Record<string, anyLocation[]>
 
     QuestLog: AnyQuest[];
 
@@ -104,9 +106,6 @@ export interface SaveInfo {
 
     // /** Keys of trigger actions that have been run */
     // triggerActionsRun: string[]
-
-    // /** Previous dialogue events farmer has experienced, `number` refers to days since event */
-    // previousActiveDialogueEvents: Record<string, number> // string, u16
 
     // // Unneeded
 
