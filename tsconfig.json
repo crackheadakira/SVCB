@@ -32,6 +32,9 @@
       ],      
       "@models/*": [
         "models/*"
+      ],
+      "@parsers": [
+        "parsers/index"
       ]
     }
   }

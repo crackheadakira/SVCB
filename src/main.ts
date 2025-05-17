@@ -1,5 +1,5 @@
 import { StringTable, type SaveInfo } from "@models";
-import { jsonToSaveInfo, StardewXMLParser, type XmlObject } from "parse";
+import { jsonToSaveInfo, StardewXMLParser, type XmlObject } from "@parsers";
 import { deserialize, serialize } from "serialize";
 
 let XMLSaveInfo: SaveInfo | undefined;
@@ -23,6 +23,10 @@ async function handleFiles(t: EventTarget | null) {
     const parser = new StardewXMLParser();
     const parsed = parser.parse(XMLData) as XmlObject;
     const saveInfo = jsonToSaveInfo(parsed.Farmer);
+    if (!saveInfo) return;
+
+    StringTable.readObject(saveInfo);
+
     buttonElement?.removeAttribute("disabled");
 
     console.log(parsed);

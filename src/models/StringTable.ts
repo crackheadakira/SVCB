@@ -60,4 +60,11 @@ export class StringTable {
 
         return str.toString();
     }
+
+    public static readObject(obj: Record<string, any>) {
+        for (const key of Object.keys(obj))
+            if (typeof obj[key] === "object" && obj[key] !== null) {
+                StringTable.readObject(obj[key]);
+            } else if (typeof obj[key] === "string") StringTable.addString(obj[key]);
+    }
 }

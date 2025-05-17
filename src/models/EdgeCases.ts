@@ -4,7 +4,7 @@ firstVisit_ArchaeologyHouse_memory_oneweek
 eventSeen_prizeTicketIntro_memory_oneday
 */
 
-import type { XmlValue } from "parse";
+import type { XmlValue } from "@parsers";
 
 
 export interface VisitLocation {
