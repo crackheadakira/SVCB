@@ -62,3 +62,21 @@ Minimum Total Size: 93 bytes
 | `entry[i].length` | `u16`         |
 | `entry[i].bytes`  | `variable`    |
 | `entry[i].value`  | `u8` or `u16` |
+
+## General Dialogue Event Layout
+
+| Field             | Type  | Notes                                                                                 |
+| ----------------- | ----- | ------------------------------------------------------------------------------------- |
+| `DialogueEvents`  | `u16` |                                                                                       |
+| `event[i].type`   | `u8`  | `eventSeen`, `fishCaught`, `questComplete`, `location`, `undergroundMine`, `NPCHouse` |
+| `event[i].memory` | `u8`  | `0` = no event, `1` = day, `2` = week, optimally would be u2                          |
+| `event[i].value`  | `u8`  |                                                                                       |
+
+### First Visit Layout
+
+| Field               | Type             | Notes                                 |
+| ------------------- | ---------------- | ------------------------------------- |
+| `DialogueEvents`    | `u16`            |                                       |
+| `event[i].location` | `BinaryString`   | Only on `VisitLocation`               |
+| `event[i].mine`     | `u8`             | Only on `undergroundMine`             |
+| `event[i].npc`      | `string` or `u8` | Only on `NPCHouse`, undecided on type |
