@@ -7,7 +7,6 @@ export function parseObject(json: Record<string, any>): StardewObject {
         hasBeenInInventory: json.hasBeenInInventory,
         name: json.name,
         parentSheetIndex: json.parentSheetIndex,
-        specialItem: json.specialItem,
         isRecipe: json.isRecipe,
         quality: json.quality,
         stack: json.stack,
@@ -17,6 +16,7 @@ export function parseObject(json: Record<string, any>): StardewObject {
         type: json.type,
         canBeSetDown: json.canBeSetDown,
         canBeGrabbed: json.canBeGrabbed,
+        specialItem: json.specialItem,
         isSpawnedObject: json.isSpawnedObject,
         questItem: json.questItem,
         isOn: json.isOn,
@@ -35,5 +35,11 @@ export function parseObject(json: Record<string, any>): StardewObject {
         scale: parseLocation(json.scale),
         uses: json.uses,
         destroyOvernight: json.destroyOvernight,
+        hasBeenPickedUpByFarmer: json.hasBeenPickedUpByFarmer,
+        heldObject: json.heldObject,
+        honeyType: json.honeyType,
+        isHoedirt: json.isHoedirt,
+        preserve: json.preserve,
+        orderData: json.orderData
     } satisfies StardewObject
 }

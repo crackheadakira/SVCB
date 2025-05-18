@@ -1,6 +1,7 @@
-import type { Calendar, SaveInfo, Skill } from "@models/base";
+import type { Calendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models/base";
 import { EventType, EventTypeChecker, type anyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "parsers/dialogueEventsParser";
 import { BinaryString } from "./BinaryTypes";
+import { makeBitFlags, parseBitFlags } from "@models";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -107,6 +108,26 @@ export class ViewWrapper {
         this.writeSkill(skills.luck);
     }
 
+    public writeFlags<T extends Record<string, boolean>>(
+        flags: T,
+        bitPositions: Record<keyof T, number>
+    ) {
+        const bitmask = makeBitFlags(flags, bitPositions);
+
+        const maxBit = Math.max(...Object.values(bitPositions));
+
+        if (maxBit < 8) {
+            this.write("setUint8", bitmask);
+        } else if (maxBit < 16) {
+            this.write("setUint16", bitmask);
+        } else if (maxBit < 32) {
+            this.write("setUint32", bitmask);
+        } else {
+            throw new Error("Flags too large for u32 write");
+        }
+    }
+
+    /*
     public writeFlags(flags: SaveInfo["flags"]) {
         let FLAGS = 0;
 
@@ -118,7 +139,7 @@ export class ViewWrapper {
         if (flags.isGlowing) FLAGS |= 1 << 5;
 
         this.write("setUint16", FLAGS);
-    }
+    }*/
 
     public writeCalendar(calendar: Calendar) {
         const packed = ((calendar.season & 0b11) << 5) | (calendar.dayOfMonth & 0b11111);
@@ -164,6 +185,144 @@ export class ViewWrapper {
             if (EventTypeChecker.isLocation(item)) this.writeBinaryString(BinaryString.fromString(0, item.location));
             else if (EventTypeChecker.isUndergroundMine(item)) this.write("setUint8", item.mine);
             else if (EventTypeChecker.isNPCHouse(item)) this.writeBinaryString(BinaryString.fromString(0, item.npc));
+        }
+    }
+
+    public writePosition(data: StardewPosition) {
+        this.write("setUint16", data.x);
+        this.write("setUint16", data.y);
+    }
+
+    public writeRectangle(data: Rectangle) {
+        this.write("setUint16", data.x);
+        this.write("setUint16", data.y);
+        this.write("setUint16", data.width);
+        this.write("setUint16", data.height);
+        this.writePosition(data.location);
+        this.writePosition(data.size);
+    }
+
+    // TODO: optimize data storage
+    public writeStardewObject(data: StardewObject) {
+        this.writeString(data.type);
+        this.write("setBigInt64", data.owner);
+        this.write("setUint16", data.fragility);
+        this.write("setUint16", data.price);
+        this.write("setInt16", data.edibility);
+        this.write("setUint16", data.stack);
+        this.write("setUint8", data.quality);
+
+        this.write("setUint8", data.minutesUntilReady);
+        this.writeRectangle(data.boundingBox);
+        this.writePosition(data.scale);
+        this.write("setUint16", data.uses);
+
+        const flags = {
+            specialItem: data.specialItem,
+            destroyOvernight: data.destroyOvernight,
+            canBeSetDown: data.canBeSetDown,
+            canBeGrabbed: data.canBeGrabbed,
+            isSpawnedObject: data.isSpawnedObject,
+            questItem: data.questItem,
+            isOn: data.isOn,
+            bigCraftable: data.bigCraftable,
+            setOutdoors: data.setOutdoors,
+            setIndoors: data.setIndoors,
+            readyForHarvest: data.readyForHarvest,
+            showNextIndex: data.showNextIndex,
+            flipped: data.flipped,
+            isRecipe: data.isRecipe,
+            isLamp: data.isLamp,
+            isHoedirt: data.isHoedirt ?? false,
+            hasBeenPickedUpByFarmer: data.hasBeenPickedUpByFarmer ?? false,
+            hasQuestId: data.questId !== undefined,
+            hasHeldObject: data.heldObject !== undefined,
+            hasPreserve: data.preserve !== undefined,
+            hasOrderData: data.orderData !== undefined,
+            hasHoneyType: data.honeyType !== undefined,
+        };
+
+        this.writeFlags(flags, {
+            specialItem: 0,
+            destroyOvernight: 1,
+            canBeSetDown: 2,
+            canBeGrabbed: 3,
+            isSpawnedObject: 4,
+            questItem: 5,
+            isOn: 6,
+            bigCraftable: 7,
+            setOutdoors: 8,
+            setIndoors: 9,
+            readyForHarvest: 10,
+            showNextIndex: 11,
+            flipped: 12,
+            isRecipe: 13,
+            isLamp: 14,
+            isHoedirt: 15,
+            hasBeenPickedUpByFarmer: 16,
+            hasQuestId: 17,
+            hasHeldObject: 18,
+            hasOrderData: 19,
+            hasPreserve: 20,
+            hasHoneyType: 21,
+        });
+
+        if (flags.hasQuestId) this.write("setUint8", data.questId!);
+        if (flags.hasPreserve) {
+            this.write("setUint8", data.preserve!);
+            this.write("setUint16", data.preservedParentSheetIndex!);
+        }
+        if (flags.hasOrderData) this.writeString(data.orderData!);
+        if (flags.hasHoneyType) this.write("setUint8", data.honeyType!);
+        if (flags.hasHeldObject) this.writeStardewObject(data.heldObject!);
+    }
+
+    public writeDescriptionElementList(data: DescriptionElement[]) {
+        this.write("setUint8", data.length);
+
+        for (const element of data) this.writeDescriptionElement(element);
+    }
+
+    // TODO: not make this finicky
+    public writeDescriptionElement(data: DescriptionElement) {
+        this.writeString(data.xmlKey);
+
+        if (!data.param) {
+            this.write("setUint8", 0);
+            return;
+        }
+
+        if (Array.isArray(data.param)) {
+            this.write("setUint8", data.param.length);
+
+            for (const param of data.param) {
+                if (typeof param === "object" && "owner" in param) {
+                    this.writeStardewObject(param);
+                }
+            }
+
+        } else {
+            this.write("setUint8", 1);
+            this.write("setUint8", data.param);
+        }
+
+    }
+
+    public readPosition(): StardewPosition {
+        return {
+            x: this.read("getUint16"),
+            y: this.read("getUint16"),
+        }
+    }
+
+    public readRectangle(): Rectangle {
+        return {
+            x: this.read("getUint16"),
+            y: this.read("getUint16"),
+            width: this.read("getUint16"),
+            height: this.read("getUint16"),
+            location: this.readPosition(),
+            size: this.readPosition(),
         }
     }
 
@@ -282,7 +441,27 @@ export class ViewWrapper {
         return { year, season, dayOfMonth } satisfies Calendar;
     }
 
-    public readFlags(): SaveInfo["flags"] {
+    public readFlags<T extends Record<string, boolean>>(
+        bitPositions: Record<keyof T, number>
+    ) {
+        const maxBit = Math.max(...Object.values(bitPositions));
+        let bitmask: number;
+
+        if (maxBit < 8) {
+            bitmask = this.read("getUint8");
+        } else if (maxBit < 16) {
+            bitmask = this.read("getUint16");
+        } else if (maxBit < 32) {
+            bitmask = this.read("getUint32");
+        } else {
+            throw new Error("Too many flags to read in one go");
+        }
+
+        return parseBitFlags(bitmask, bitPositions);
+    }
+
+
+    public readFarmerFlags(): SaveInfo["flags"] {
         const FLAGS = this.read("getUint16");
 
         return {

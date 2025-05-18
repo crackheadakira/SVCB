@@ -26,7 +26,17 @@ export function serialize(saveInfo: SaveInfo) {
     writer.write("setFloat32", saveInfo.glowTransparency);
     writer.write("setFloat32", saveInfo.glowRate);
 
-    writer.writeFlags(saveInfo.flags);
+    writer.writeFlags({
+        ...saveInfo.flags,
+        gender: saveInfo.flags.gender === "Male",
+    }, {
+        gender: 0,
+        isCharging: 1,
+        coloredBorder: 2,
+        flip: 3,
+        isEmoting: 4,
+        isGlowing: 5,
+    });
 
     writer.writeAllSkills(saveInfo.skills);
 
@@ -60,7 +70,7 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
         currentEmote: reader.read("getUint8"),
         glowTransparency: reader.read("getFloat32"),
         glowRate: reader.read("getFloat32"),
-        flags: reader.readFlags(),
+        flags: reader.readFarmerFlags(),
         skills: reader.readAllSkills(),
         activeDialogueEvents: reader.readDialogueEvents(),
         previousActiveDialogueEvents: reader.readDialogueEvents(),

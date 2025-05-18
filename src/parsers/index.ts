@@ -4,3 +4,4 @@ export * from "./objectParser"
 export * from "./questParser"
 export * from "./saveInfoParser"
 export * from "./utils"
+export * from "./dialogueEventsParser";

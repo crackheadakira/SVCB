@@ -3,4 +3,4 @@ export * from "./BinaryTypes";
 export * from "./quests";
 export * from "./StringTable";
 export * from "./ViewWrapper";
-export * from "../parsers/dialogueEventsParser";
+export * from "./BitFlags";

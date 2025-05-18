@@ -22,12 +22,12 @@ All numeric fields (`u16`, `u32`, `f32`, etc.) are stored in big-endian format.
 ### Example .STDEW start
 
 ```
-0x00000000: 53 36   ; magic number ("S6")
-0x00000002: 31 2E 36 2E 31 35   ; "1.6.15"
-0x00000008: 00 00 00 00 00 00   ; null padding (8 bytes)
-0x0000000E: 00 00 03 C4         ; data size ("964")
-0x00000012: 4D 6F 72 67 61 6E   ; farmer name ("Morgan")
-0x00000018: 00 00 00 00 00 00   ; null padding (8 bytes)
+0x00: 53 36               ; magic number ("S6")
+0x02: 31 2E 36 2E 31 35   ; "1.6.15"
+0x08: 00 00 00 00 00 00   ; null padding (8 bytes)
+0x0E: 00 00 03 C4         ; data size ("964")
+0x12: 4D 6F 72 67 61 6E   ; farmer name ("Morgan")
+0x18: 00 00 00 00 00 00   ; null padding (8 bytes)
 ```
 
 ## Save Game Info Layout

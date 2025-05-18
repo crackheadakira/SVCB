@@ -1,4 +1,5 @@
-import type { anyEvent, AnyQuest } from "@models"
+import type { AnyQuest } from "@models"
+import type { anyEvent } from "@parsers"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -188,38 +189,40 @@ export interface StardewObject extends StardewItem {
     tileLocation: StardewPosition,
     owner: bigint,
     type: string,
-    canBeSetDown: boolean,
-    canBeGrabbed: boolean,
-    isHoedirt?: boolean,
-    isSpawnedObject: boolean,
-    questItem: boolean,
-    questId?: number,
-    isOn: boolean,
     fragility: number,
     price: number,
     edibility: number,
     stack: number,
     quality: number,
+    minutesUntilReady: number,
+    boundingBox: Rectangle
+    scale: StardewPosition,
+    uses: number,
+
+    specialItem: boolean,
+    destroyOvernight: boolean,
+    canBeSetDown: boolean,
+    canBeGrabbed: boolean,
+    isSpawnedObject: boolean,
+    questItem: boolean,
+    isOn: boolean,
     bigCraftable: boolean,
     setOutdoors: boolean,
     setIndoors: boolean,
     readyForHarvest: boolean,
     showNextIndex: boolean,
     flipped: boolean,
-    hasBeenPickedUpByFarmer?: boolean,
     isRecipe: boolean,
     isLamp: boolean,
+
+    isHoedirt?: boolean,
+    hasBeenPickedUpByFarmer?: boolean,
+    questId?: number,
     heldObject?: StardewObject,
-    minutesUntilReady: number,
-    boundingBox: Rectangle
-    scale: StardewPosition,
-    uses: number,
+    preservedParentSheetIndex?: number,
     orderData?: string,
     preserve?: PreserveType
-    preservedParentSheetIndex?: number,
     honeyType?: HoneyType,
-    specialItem: boolean,
-    destroyOvernight: boolean,
 }
 
 export interface Rectangle {
