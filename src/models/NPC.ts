@@ -1,4 +1,4 @@
-import type { StardewPosition } from "@models";
+import type { IStardewPosition } from "@models";
 
 export interface StardewNPC {
     birthdaySeason: string,
@@ -12,7 +12,7 @@ export interface StardewNPC {
     isInvisible: boolean,
     lastSeenMovieWeek: number,
     datable: boolean,
-    defaultPosition: StardewPosition,
+    defaultPosition: IStardewPosition,
     defaultMap: string,
     moveTowardPlayerThreshold: number,
     hasSaidAfternoonDialogue: boolean,

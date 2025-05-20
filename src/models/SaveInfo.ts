@@ -1,4 +1,4 @@
-import type { AnyQuest, ICalendar, Direction, Gender, Skill, StardewPosition, AnyEvent } from "@models"
+import type { AnyQuest, ICalendar, Direction, ISkill, IStardewPosition, AnyEvent } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -23,7 +23,7 @@ export interface SaveInfo {
     speed: number,
 
     /** Farmer position in world */
-    position: StardewPosition,
+    position: IStardewPosition,
 
     /** Date of world */
     calendar: ICalendar,
@@ -61,12 +61,12 @@ export interface SaveInfo {
     }
 
     skills: {
-        farming: Skill,
-        fishing: Skill,
-        foraging: Skill,
-        mining: Skill,
-        combat: Skill,
-        luck: Skill,
+        farming: ISkill,
+        fishing: ISkill,
+        foraging: ISkill,
+        mining: ISkill,
+        combat: ISkill,
+        luck: ISkill,
     }
 
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */

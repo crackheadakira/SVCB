@@ -1,4 +1,4 @@
-import type { DescriptionElement, StardewObject } from "@models";
+import type { StardewObject } from "@models";
 import { EventType, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "models";
 import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle } from "@abstractions";
 import { EventTypeChecker } from "@parsers";
@@ -223,37 +223,6 @@ export class ViewWrapper {
         if (flags.hasOrderData) this.writeString(data.orderData!);
         if (flags.hasHoneyType) this.write("setUint8", data.honeyType!);
         if (flags.hasHeldObject) this.writeStardewObject(data.heldObject!);
-    }
-
-    public writeDescriptionElementList(data: DescriptionElement[]) {
-        this.write("setUint8", data.length);
-
-        for (const element of data) this.writeDescriptionElement(element);
-    }
-
-    // TODO: not make this finicky
-    public writeDescriptionElement(data: DescriptionElement) {
-        this.writeString(data.xmlKey);
-
-        if (!data.param) {
-            this.write("setUint8", 0);
-            return;
-        }
-
-        if (Array.isArray(data.param)) {
-            this.write("setUint8", data.param.length);
-
-            for (const param of data.param) {
-                if (typeof param === "object" && "owner" in param) {
-                    this.writeStardewObject(param);
-                }
-            }
-
-        } else {
-            this.write("setUint8", 1);
-            this.write("setUint8", data.param);
-        }
-
     }
 
     public readRecord() {

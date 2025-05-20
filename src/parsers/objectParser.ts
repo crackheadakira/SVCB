@@ -1,5 +1,5 @@
+import { StardewPosition, StardewRectangle } from "@abstractions";
 import type { StardewObject } from "@models";
-import { parseLocation, parseRectangle } from "@parsers";
 
 export function parseObject(json: Record<string, any>): StardewObject {
     return {
@@ -11,7 +11,7 @@ export function parseObject(json: Record<string, any>): StardewObject {
         quality: json.quality,
         stack: json.stack,
         specialVariable: json.SpecialVariable,
-        tileLocation: parseLocation(json.tileLocation),
+        tileLocation: StardewPosition.parse(json.tileLocation),
         owner: json.owner,
         type: json.type,
         canBeSetDown: json.canBeSetDown,
@@ -31,8 +31,8 @@ export function parseObject(json: Record<string, any>): StardewObject {
         flipped: json.flipped,
         isLamp: json.isLamp,
         minutesUntilReady: json.minutesUntilReady,
-        boundingBox: parseRectangle(json.boundingBox),
-        scale: parseLocation(json.scale),
+        boundingBox: StardewRectangle.parse(json.boundingBox),
+        scale: StardewPosition.parse(json.scale),
         uses: json.uses,
         destroyOvernight: json.destroyOvernight,
         hasBeenPickedUpByFarmer: json.hasBeenPickedUpByFarmer,

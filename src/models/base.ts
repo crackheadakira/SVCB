@@ -125,7 +125,7 @@ enum HoneyType {
     BlueJazz = 597, // 0x00000255
 }
 
-export interface DescriptionElement {
+export interface IDescriptionElement {
     xmlKey: string;
     param?: Array<number | StardewMonster | StardewNPC | StardewObject> | number;
 }

@@ -1,5 +1,5 @@
+import { DescriptionElement, DescriptionElementList } from "@abstractions";
 import { QuestType, type AnyQuest, type quest, type Quest } from "@models";
-import { parseDescriptionElement, parseDescriptionElementList } from "@parsers";
 
 export function parseQuestLog(json: any) {
     const final: AnyQuest[] = [];
@@ -67,9 +67,9 @@ export function parseQuest(json: Record<string, any>): AnyQuest | undefined {
                 number: json.number,
                 reward: json.reward,
                 resource: json.resource,
-                parts: parseDescriptionElementList(json.parts.DescriptionElement)!,
-                dialogueparts: parseDescriptionElementList(json.dialogueparts.DescriptionElement)!,
-                objective: parseDescriptionElement(json.objective),
+                parts: DescriptionElementList.parse(json.parts.DescriptionElement)!,
+                dialogueparts: DescriptionElementList.parse(json.dialogueparts.DescriptionElement)!,
+                objective: DescriptionElement.parse(json.objective),
             } satisfies quest.ResourceCollectionQuest
     }
 }

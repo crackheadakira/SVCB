@@ -7,3 +7,4 @@ export * from "./FarmerFlags";
 export * from "./StardewPosition";
 export * from "./Skills";
 export * from "./StardewRectangle";
+export * from "./DescriptionElement";

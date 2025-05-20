@@ -1,4 +1,4 @@
-import type { DescriptionElement, StardewMonster, StardewObject } from "@models";
+import type { IDescriptionElement, StardewMonster, StardewObject } from "@models";
 
 export enum QuestType {
     Basic = 1,
@@ -67,9 +67,9 @@ export namespace quest {
         whichFish: number,
 
         fish: StardewObject
-        parts: DescriptionElement[]
-        dialogueParts: DescriptionElement[]
-        objective: DescriptionElement
+        parts: IDescriptionElement[]
+        dialogueParts: IDescriptionElement[]
+        objective: IDescriptionElement
     }
 
     export interface GoSomewhereQuest extends Quest {
@@ -83,9 +83,9 @@ export namespace quest {
         number: number,
 
         deliveryItem?: StardewObject
-        parts?: DescriptionElement[]
-        dialogueparts?: DescriptionElement[]
-        objective?: DescriptionElement
+        parts?: IDescriptionElement[]
+        dialogueparts?: IDescriptionElement[]
+        objective?: IDescriptionElement
     }
 
     export interface ItemHarvestQuest extends Quest {
@@ -101,7 +101,7 @@ export namespace quest {
         tileY: number,
         itemFound: boolean,
 
-        objective: DescriptionElement
+        objective: IDescriptionElement
     }
 
     export interface ResourceCollectionQuest extends Quest {
@@ -112,9 +112,9 @@ export namespace quest {
         reward: number,
         resource: number,
 
-        parts: DescriptionElement[]
-        dialogueparts: DescriptionElement[]
-        objective: DescriptionElement
+        parts: IDescriptionElement[]
+        dialogueparts: IDescriptionElement[]
+        objective: IDescriptionElement
     }
 
     export interface SecretLostItemQuest extends Quest {
@@ -131,16 +131,16 @@ export namespace quest {
         monster: StardewMonster
         numberToKill: number,
 
-        parts: DescriptionElement[]
-        dialogueparts: DescriptionElement[]
-        objective: DescriptionElement
+        parts: IDescriptionElement[]
+        dialogueparts: IDescriptionElement[]
+        objective: IDescriptionElement
     }
 
     export interface SocializeQuest extends Quest {
         whoToGreet: string[],
         total: number,
 
-        parts: DescriptionElement[]
-        objective: DescriptionElement
+        parts: IDescriptionElement[]
+        objective: IDescriptionElement
     }
 }
