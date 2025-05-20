@@ -1,6 +1,6 @@
-import type { ICalendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models";
+import type { DescriptionElement, StardewObject } from "@models";
 import { EventType, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "models";
-import { BinaryString, makeBitFlags, parseBitFlags } from "@abstractions";
+import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle } from "@abstractions";
 import { EventTypeChecker } from "@parsers";
 
 type FunctionKeys<T> = {
@@ -94,20 +94,6 @@ export class ViewWrapper {
 
     }
 
-    public writeSkill(skill: Skill) {
-        this.write("setUint8", skill.level);
-        this.write("setUint16", skill.experiencePoints);
-    }
-
-    public writeAllSkills(skills: SaveInfo["skills"]) {
-        this.writeSkill(skills.farming);
-        this.writeSkill(skills.fishing);
-        this.writeSkill(skills.foraging);
-        this.writeSkill(skills.mining);
-        this.writeSkill(skills.combat);
-        this.writeSkill(skills.luck);
-    }
-
     public writeFlags<T extends Record<string, boolean>>(
         flags: T,
         bitPositions: Record<keyof T, number>
@@ -127,27 +113,7 @@ export class ViewWrapper {
         }
     }
 
-    /*
-    public writeFlags(flags: SaveInfo["flags"]) {
-        let FLAGS = 0;
-
-        if (flags.gender === "Male") FLAGS |= 1 << 0;
-        if (flags.isCharging) FLAGS |= 1 << 1;
-        if (flags.coloredBorder) FLAGS |= 1 << 2;
-        if (flags.flip) FLAGS |= 1 << 3;
-        if (flags.isEmoting) FLAGS |= 1 << 4;
-        if (flags.isGlowing) FLAGS |= 1 << 5;
-
-        this.write("setUint16", FLAGS);
-    }*/
-
-    public writeCalendar(calendar: ICalendar) {
-        const packed = ((calendar.season & 0b11) << 5) | (calendar.dayOfMonth & 0b11111);
-        this.write("setUint16", calendar.year);
-        this.write("setUint8", packed);
-    }
-
-    public writeRecord(data: Record<string, number>, customLogic?: (key: string, value: number, writeFn: (...args: Parameters<ViewWrapper["write"]>) => void) => void) {
+    public writeRecord(data: Record<string, number>) {
         const keys = Object.keys(data);
 
         const totalEntries = keys.length;
@@ -155,16 +121,12 @@ export class ViewWrapper {
 
         for (const key of keys) {
             const value = data[key];
-
             if (value === undefined) continue;
-            if (customLogic) {
-                customLogic(key, value, this.write.bind(this));
-            } else {
-                const encoded = ViewWrapper.encoder.encode(key);
-                this.write("setUint16", encoded.byteLength);
-                this.writeBytes(encoded);
-                this.write("setUint8", value);
-            }
+
+            const encoded = ViewWrapper.encoder.encode(key);
+            this.write("setUint16", encoded.byteLength);
+            this.writeBytes(encoded);
+            this.write("setUint8", value);
         }
     }
 
@@ -188,20 +150,6 @@ export class ViewWrapper {
         }
     }
 
-    public writePosition(data: StardewPosition) {
-        this.write("setUint16", data.x);
-        this.write("setUint16", data.y);
-    }
-
-    public writeRectangle(data: Rectangle) {
-        this.write("setUint16", data.x);
-        this.write("setUint16", data.y);
-        this.write("setUint16", data.width);
-        this.write("setUint16", data.height);
-        this.writePosition(data.location);
-        this.writePosition(data.size);
-    }
-
     // TODO: optimize data storage
     public writeStardewObject(data: StardewObject) {
         this.writeString(data.type);
@@ -213,8 +161,8 @@ export class ViewWrapper {
         this.write("setUint8", data.quality);
 
         this.write("setUint8", data.minutesUntilReady);
-        this.writeRectangle(data.boundingBox);
-        this.writePosition(data.scale);
+        StardewRectangle.serialize(this, data.boundingBox);
+        StardewPosition.serialize(this, data.scale);
         this.write("setUint16", data.uses);
 
         const flags = {
@@ -308,42 +256,6 @@ export class ViewWrapper {
 
     }
 
-    public readPosition(): StardewPosition {
-        return {
-            x: this.read("getUint16"),
-            y: this.read("getUint16"),
-        }
-    }
-
-    public readRectangle(): Rectangle {
-        return {
-            x: this.read("getUint16"),
-            y: this.read("getUint16"),
-            width: this.read("getUint16"),
-            height: this.read("getUint16"),
-            location: this.readPosition(),
-            size: this.readPosition(),
-        }
-    }
-
-    public readSkill() {
-        return {
-            level: this.read("getUint8"),
-            experiencePoints: this.read("getUint16"),
-        } satisfies Skill
-    }
-
-    public readAllSkills() {
-        return {
-            farming: this.readSkill(),
-            fishing: this.readSkill(),
-            foraging: this.readSkill(),
-            mining: this.readSkill(),
-            combat: this.readSkill(),
-            luck: this.readSkill(),
-        } satisfies SaveInfo["skills"];
-    }
-
     public readRecord() {
         const totalEntries = this.read("getUint16");
         const resultingRecord: Record<string, number> = {};
@@ -431,14 +343,6 @@ export class ViewWrapper {
                 npc: this.readString(),
             } satisfies NPCHouse
         }
-    }
-
-    public readCalendar() {
-        const year = this.read("getUint16")
-        const packed = this.read("getUint8");
-        const season = (packed >> 5) & 0b11;
-        const dayOfMonth = packed & 0b11111;
-        return { year, season, dayOfMonth } satisfies ICalendar;
     }
 
     public readFlags<T extends Record<string, boolean>>(

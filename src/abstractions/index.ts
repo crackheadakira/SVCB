@@ -3,3 +3,7 @@ export * from "./StringTable";
 export * from "./Calendar";
 export * from "./Serialize";
 export * from "./BitFlags";
+export * from "./FarmerFlags";
+export * from "./StardewPosition";
+export * from "./Skills";
+export * from "./StardewRectangle";

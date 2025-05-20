@@ -1,4 +1,4 @@
-import { BinaryString } from "@classes";
+import { BinaryString } from "@abstractions";
 
 export class StringTable {
     private static stringMap: Map<string, number> = new Map();

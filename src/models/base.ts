@@ -1,6 +1,6 @@
 import type { StardewMonster, StardewNPC } from "@models"
 
-export interface Skill {
+export interface ISkill {
     level: number // u8 or u4,
     experiencePoints: number // u16
 }
@@ -19,7 +19,7 @@ export interface Friendship {
     roommateMarriage?: boolean
 }
 
-export type StardewPosition = {
+export type IStardewPosition = {
     /** X position indicating location in world */
     x: number, // u16
     /** Y position indicating location in world */
@@ -59,7 +59,7 @@ export interface StardewItem {
 }
 
 export interface StardewObject extends StardewItem {
-    tileLocation: StardewPosition,
+    tileLocation: IStardewPosition,
     owner: bigint,
     type: string,
     fragility: number,
@@ -68,8 +68,8 @@ export interface StardewObject extends StardewItem {
     stack: number,
     quality: number,
     minutesUntilReady: number,
-    boundingBox: Rectangle
-    scale: StardewPosition,
+    boundingBox: IStardewRectangle
+    scale: IStardewPosition,
     uses: number,
 
     specialItem: boolean,
@@ -98,13 +98,13 @@ export interface StardewObject extends StardewItem {
     honeyType?: HoneyType,
 }
 
-export interface Rectangle {
+export interface IStardewRectangle {
     height: number,
     width: number,
     x: number,
     y: number,
-    location: StardewPosition,
-    size: StardewPosition // technically Vector2
+    location: IStardewPosition,
+    size: IStardewPosition // technically Vector2
 }
 
 enum PreserveType {

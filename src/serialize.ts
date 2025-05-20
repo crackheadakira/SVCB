@@ -1,6 +1,5 @@
-import { Calendar } from "@abstractions";
+import { Calendar, FarmerFlags, Skills } from "@abstractions";
 import { ViewWrapper, type SaveInfo } from "@models";
-import { FarmerFlags } from "abstractions/FarmerFlags";
 
 export function serialize(saveInfo: SaveInfo) {
     const buffer = new ArrayBuffer(8192);
@@ -21,7 +20,6 @@ export function serialize(saveInfo: SaveInfo) {
     writer.write("setUint16", saveInfo.position.x);
     writer.write("setUint16", saveInfo.position.y);
 
-    writer.writeCalendar(saveInfo.calendar);
     Calendar.serialize(writer, saveInfo.calendar);
 
     writer.write("setUint8", saveInfo.facing);
@@ -31,7 +29,7 @@ export function serialize(saveInfo: SaveInfo) {
 
     FarmerFlags.serialize(writer, saveInfo.flags);
 
-    writer.writeAllSkills(saveInfo.skills);
+    Skills.serialize(writer, saveInfo.skills);
 
     writer.writeDialogueEvent(saveInfo.activeDialogueEvents);
     writer.writeDialogueEvent(saveInfo.previousActiveDialogueEvents);
@@ -58,13 +56,13 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
             x: reader.read("getUint16"),
             y: reader.read("getUint16")
         },
-        calendar: reader.readCalendar(),
+        calendar: Calendar.deserialize(reader),
         facing: reader.read("getUint8"),
         currentEmote: reader.read("getUint8"),
         glowTransparency: reader.read("getFloat32"),
         glowRate: reader.read("getFloat32"),
         flags: FarmerFlags.deserialize(reader),
-        skills: reader.readAllSkills(),
+        skills: Skills.deserialize(reader),
         activeDialogueEvents: reader.readDialogueEvents(),
         previousActiveDialogueEvents: reader.readDialogueEvents(),
         QuestLog: [],

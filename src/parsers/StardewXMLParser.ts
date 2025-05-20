@@ -54,7 +54,7 @@ export class StardewXMLParser {
         if (val === "") return null;
         if (val === "true") return true;
         if (val === "false") return false;
-        if (/^-?\d+(\.\d+)?$/.test(val)) return parseFloat(val);
+        if (!isNaN(Number(val))) return Number(val);
 
         return val;
     }
