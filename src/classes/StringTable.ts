@@ -1,4 +1,4 @@
-import { BinaryString } from "@models";
+import { BinaryString } from "@classes";
 
 export class StringTable {
     private static stringMap: Map<string, number> = new Map();

@@ -1,6 +1,6 @@
-import type { Calendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models/base";
-import { EventType, EventTypeChecker, type anyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "parsers/dialogueEventsParser";
-import { BinaryString } from "./BinaryTypes";
+import type { Calendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models";
+import { EventType, EventTypeChecker, type anyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "parsers";
+import { BinaryString } from "@classes";
 import { makeBitFlags, parseBitFlags } from "@models";
 
 type FunctionKeys<T> = {

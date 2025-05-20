@@ -35,6 +35,9 @@
       ],
       "@parsers": [
         "parsers/index"
+      ],
+      "@classes": [
+        "classes/index"
       ]
     }
   }

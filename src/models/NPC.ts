@@ -1,0 +1,40 @@
+import type { StardewPosition } from "@models";
+
+export interface StardewNPC {
+    birthdaySeason: string,
+    birthdayDay: number,
+    age: number,
+    manners: number,
+    socialAnxiety: number,
+    optimism: number,
+    gender: number,
+    sleptInBed: boolean,
+    isInvisible: boolean,
+    lastSeenMovieWeek: number,
+    datable: boolean,
+    defaultPosition: StardewPosition,
+    defaultMap: string,
+    moveTowardPlayerThreshold: number,
+    hasSaidAfternoonDialogue: boolean,
+    dayScheduleName: string,
+    islandScheduleName: string,
+}
+
+export interface StardewMonster extends StardewNPC {
+    damageToFarmer: number,
+    health: number,
+    maxHealth: number,
+    coinsToDrop: number,
+    durationOfRandomMovements: number,
+    resilience: number,
+    slipperiness: number,
+    experienceGained: number,
+    jiterriness: number,
+    missChance: number,
+    isGlider: number,
+    mineMonster: number,
+    hasSpecialItem: number,
+    initializedForLocation: boolean,
+    ignoreDamageLOS: boolean,
+    isHardModeMonster: boolean,
+}

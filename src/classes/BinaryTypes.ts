@@ -1,10 +1,5 @@
 import { ViewWrapper } from "@models";
 
-export interface BinaryData {
-    size: number;
-    content: Uint8Array;
-}
-
 export class BinaryString {
     readonly offset: number;
     readonly length: number;

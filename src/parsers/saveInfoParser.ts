@@ -1,5 +1,5 @@
-import { Direction, parseDialogueEvents, StardewSeason, type Gender, type SaveInfo, type Skill } from "@models";
-import { parseBoolean, parseQuestLog } from "@parsers";
+import { Direction, StardewSeason, type Gender, type SaveInfo, type Skill } from "@models";
+import { parseBoolean, parseQuestLog, parseDialogueEvents } from "@parsers";
 
 export function jsonToSaveInfo(json: any): SaveInfo | undefined {
     if (!json) return;
