@@ -1,4 +1,6 @@
+import { Calendar } from "@abstractions";
 import { ViewWrapper, type SaveInfo } from "@models";
+import { FarmerFlags } from "abstractions/FarmerFlags";
 
 export function serialize(saveInfo: SaveInfo) {
     const buffer = new ArrayBuffer(8192);
@@ -20,23 +22,14 @@ export function serialize(saveInfo: SaveInfo) {
     writer.write("setUint16", saveInfo.position.y);
 
     writer.writeCalendar(saveInfo.calendar);
+    Calendar.serialize(writer, saveInfo.calendar);
 
     writer.write("setUint8", saveInfo.facing);
     writer.write("setUint8", saveInfo.currentEmote);
     writer.write("setFloat32", saveInfo.glowTransparency);
     writer.write("setFloat32", saveInfo.glowRate);
 
-    writer.writeFlags({
-        ...saveInfo.flags,
-        gender: saveInfo.flags.gender === "Male",
-    }, {
-        gender: 0,
-        isCharging: 1,
-        coloredBorder: 2,
-        flip: 3,
-        isEmoting: 4,
-        isGlowing: 5,
-    });
+    FarmerFlags.serialize(writer, saveInfo.flags);
 
     writer.writeAllSkills(saveInfo.skills);
 
@@ -70,7 +63,7 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
         currentEmote: reader.read("getUint8"),
         glowTransparency: reader.read("getFloat32"),
         glowRate: reader.read("getFloat32"),
-        flags: reader.readFarmerFlags(),
+        flags: FarmerFlags.deserialize(reader),
         skills: reader.readAllSkills(),
         activeDialogueEvents: reader.readDialogueEvents(),
         previousActiveDialogueEvents: reader.readDialogueEvents(),

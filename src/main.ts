@@ -1,5 +1,5 @@
 import type { SaveInfo } from "@models";
-import { StringTable } from "@classes";
+import { StringTable } from "@abstractions";
 import { jsonToSaveInfo, StardewXMLParser, type XmlObject } from "@parsers";
 import { deserialize, serialize } from "serialize";
 

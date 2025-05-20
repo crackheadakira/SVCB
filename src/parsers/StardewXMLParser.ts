@@ -1,6 +1,6 @@
-import type { anyEvent } from "@parsers";
+import type { AnyEvent } from "@models";
 
-export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | anyEvent;
+export type XmlValue = string | number | boolean | null | XmlObject | XmlValue[] | AnyEvent;
 export interface XmlObject {
     [key: string]: XmlValue;
 }

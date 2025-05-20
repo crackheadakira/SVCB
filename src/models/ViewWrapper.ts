@@ -1,7 +1,7 @@
-import type { Calendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models";
-import { EventType, EventTypeChecker, type anyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "parsers";
-import { BinaryString } from "@classes";
-import { makeBitFlags, parseBitFlags } from "@models";
+import type { ICalendar, DescriptionElement, Rectangle, SaveInfo, Skill, StardewObject, StardewPosition } from "@models";
+import { EventType, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "models";
+import { BinaryString, makeBitFlags, parseBitFlags } from "@abstractions";
+import { EventTypeChecker } from "@parsers";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -141,7 +141,7 @@ export class ViewWrapper {
         this.write("setUint16", FLAGS);
     }*/
 
-    public writeCalendar(calendar: Calendar) {
+    public writeCalendar(calendar: ICalendar) {
         const packed = ((calendar.season & 0b11) << 5) | (calendar.dayOfMonth & 0b11111);
         this.write("setUint16", calendar.year);
         this.write("setUint8", packed);
@@ -175,7 +175,7 @@ export class ViewWrapper {
         }
     }
 
-    public writeDialogueEvent(data: anyEvent[]) {
+    public writeDialogueEvent(data: AnyEvent[]) {
         this.write("setUint16", data.length);
         for (const item of data) {
             this.write("setUint8", item.eventType);
@@ -388,9 +388,9 @@ export class ViewWrapper {
         return str;
     }
 
-    public readDialogueEvents(): anyEvent[] {
+    public readDialogueEvents(): AnyEvent[] {
         const totalEvents = this.read("getUint16");
-        const events: anyEvent[] = [];
+        const events: AnyEvent[] = [];
 
         for (let i = 0; i < totalEvents; i++) {
             events.push(this.readDialogueEvent())
@@ -399,7 +399,7 @@ export class ViewWrapper {
         return events.sort();
     }
 
-    public readDialogueEvent(): anyEvent {
+    public readDialogueEvent(): AnyEvent {
         const type = this.read("getUint8");
         const packed = this.read("getUint8");
         const _memory = packed >> 6;
@@ -438,7 +438,7 @@ export class ViewWrapper {
         const packed = this.read("getUint8");
         const season = (packed >> 5) & 0b11;
         const dayOfMonth = packed & 0b11111;
-        return { year, season, dayOfMonth } satisfies Calendar;
+        return { year, season, dayOfMonth } satisfies ICalendar;
     }
 
     public readFlags<T extends Record<string, boolean>>(
@@ -458,20 +458,6 @@ export class ViewWrapper {
         }
 
         return parseBitFlags(bitmask, bitPositions);
-    }
-
-
-    public readFarmerFlags(): SaveInfo["flags"] {
-        const FLAGS = this.read("getUint16");
-
-        return {
-            gender: (FLAGS & (1 << 0)) !== 0 ? "Male" : "Female",
-            isCharging: (FLAGS & (1 << 1)) !== 0,
-            coloredBorder: (FLAGS & (1 << 2)) !== 0,
-            flip: (FLAGS & (1 << 3)) !== 0,
-            isEmoting: (FLAGS & (1 << 4)) !== 0,
-            isGlowing: (FLAGS & (1 << 5)) !== 0,
-        }
     }
 
     private getByteSize(method: DataViewSetterKeys | DataViewGetterKeys) {

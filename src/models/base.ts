@@ -9,11 +9,11 @@ export interface Friendship {
     points: number // u16
     giftsThisWeek: number // u8
     giftsToday: number // u8
-    lastGiftDate?: Calendar,
+    lastGiftDate?: ICalendar,
     talkedToToday: boolean
     proposalRejected: boolean,
-    weddingDate?: Calendar,
-    nextBirthingDate?: Calendar,
+    weddingDate?: ICalendar,
+    nextBirthingDate?: ICalendar,
     status: FriendshipStatus
     proposer: number // i64
     roommateMarriage?: boolean
@@ -26,7 +26,7 @@ export type StardewPosition = {
     y: number, // u16
 };
 
-export type Calendar = {
+export type ICalendar = {
     year: number // u16,
     season: StardewSeason,
     dayOfMonth: number,

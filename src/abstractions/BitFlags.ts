@@ -1,4 +1,4 @@
-type FlagMap<T> = { [K in keyof T]: number };
+export type FlagMap<T> = { [K in keyof T]: number };
 
 export function makeBitFlags<T extends Record<string, boolean>>(
     flags: T,

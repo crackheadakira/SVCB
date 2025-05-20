@@ -4,48 +4,9 @@ firstVisit_ArchaeologyHouse_memory_oneweek
 eventSeen_prizeTicketIntro_memory_oneday
 */
 
-export type anyEvent = GeneralEvent | anyLocation;
-type anyLocation = VisitLocation | UndergroundMine | NPCHouse;
+import { EventType, type AnyEvent, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "@models";
 
-export enum EventType {
-    eventSeen,
-    fishCaught,
-    questComplete,
-    location,
-    undergroundMine,
-    NPCHouse
-}
-
-export type EventMemory = "day" | "week";
-export interface GeneralEvent {
-    eventType: EventType,
-    memory?: EventMemory,
-    value: number,
-}
-
-export interface VisitLocation {
-    eventType: EventType,
-    memory?: EventMemory,
-    location: string,
-    value: number,
-}
-
-export interface UndergroundMine {
-    eventType: EventType,
-    memory?: EventMemory,
-    mine: number,
-    value: number,
-}
-
-export interface NPCHouse {
-    eventType: EventType;
-    memory?: EventMemory;
-    npc: string;
-    value: number;
-}
-
-
-export function VisitPatternHandler(key: string, value: number): anyEvent | undefined {
+export function VisitPatternHandler(key: string, value: number): AnyEvent | undefined {
     const [prefix, rawLocation, ...rest] = key.split("_");
     if (!prefix || !rawLocation) return;
 
@@ -100,7 +61,7 @@ export function VisitPatternHandler(key: string, value: number): anyEvent | unde
 }
 
 export function parseDialogueEvents(json: any) {
-    const locations: anyEvent[] = [];
+    const locations: AnyEvent[] = [];
 
     for (const key of Object.keys(json)) {
         const res = VisitPatternHandler(key, json[key])
@@ -119,15 +80,15 @@ export function parseDialogueEvents(json: any) {
 }
 
 export namespace EventTypeChecker {
-    export function isLocation(event: anyEvent): event is VisitLocation {
+    export function isLocation(event: AnyEvent): event is VisitLocation {
         return event.eventType === EventType.location;
     }
 
-    export function isNPCHouse(event: anyEvent): event is NPCHouse {
+    export function isNPCHouse(event: AnyEvent): event is NPCHouse {
         return event.eventType === EventType.NPCHouse;
     }
 
-    export function isUndergroundMine(event: anyEvent): event is UndergroundMine {
+    export function isUndergroundMine(event: AnyEvent): event is UndergroundMine {
         return event.eventType === EventType.undergroundMine
     }
 }

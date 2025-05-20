@@ -1,5 +1,4 @@
-import type { AnyQuest, Calendar, Direction, Gender, Skill, StardewPosition } from "@models"
-import type { anyEvent } from "@parsers"
+import type { AnyQuest, ICalendar, Direction, Gender, Skill, StardewPosition, AnyEvent } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -27,7 +26,7 @@ export interface SaveInfo {
     position: StardewPosition,
 
     /** Date of world */
-    calendar: Calendar,
+    calendar: ICalendar,
 
     /** Direction farmer is facing */
     facing: Direction,
@@ -42,8 +41,8 @@ export interface SaveInfo {
     glowRate: number, // f32
 
     flags: {
-        /** Gender of farmer */
-        gender: Gender,
+        /** Gender of farmer, `false` if female, `true` if male */
+        gender: boolean,
 
         /** If charging up tool */
         isCharging: boolean,
@@ -71,10 +70,10 @@ export interface SaveInfo {
     }
 
     /** Dialogue events farmer has yet to experience, `number` refers to days until event */
-    activeDialogueEvents: anyEvent[]
+    activeDialogueEvents: AnyEvent[]
 
     /** Previous dialogue events farmer has experienced, `number` refers to days since event */
-    previousActiveDialogueEvents: anyEvent[]
+    previousActiveDialogueEvents: AnyEvent[]
 
     QuestLog: AnyQuest[];
 
