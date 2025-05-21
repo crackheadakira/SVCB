@@ -14,33 +14,27 @@ export enum QuestType {
     Weeding,
 };
 
-export type AnyQuest =
-    | Quest
-    | quest.BuildingQuest
-    | quest.CraftingQuest
-    | quest.FishingQuest
-    | quest.GoSomewhereQuest
-    | quest.ItemDeliveryQuest
-    | quest.ItemHarvestQuest
-    | quest.LostItemQuest
-    | quest.ResourceCollectionQuest
-    | quest.SecretLostItemQuest
-    | quest.SlayMonsterQuest
-    | quest.SocializeQuest;
+export type IAnyQuest =
+    | IQuest
+    | quest.IBuildingQuest
+    | quest.ICraftingQuest
+    | quest.IFishingQuest
+    | quest.IGoSomewhereQuest
+    | quest.IItemDeliveryQuest
+    | quest.IItemHarvestQuest
+    | quest.ILostItemQuest
+    | quest.IResourceCollectionQuest
+    | quest.ISecretLostItemQuest
+    | quest.ISlayMonsterQuest
+    | quest.ISocializeQuest;
 
-
-export interface Quest {
+export interface IQuest {
     questType: QuestType,
     currentObjective: string,
     description: string,
     title: string,
     rewardDescription?: string,
-    accepted: boolean,
-    completed: boolean,
-    dailyQuest: boolean,
-    showNew: boolean,
-    canBeCancelled: boolean,
-    destroy: boolean,
+    flags: IQuestFlags,
     id?: number,
     moneyReward: number,
     daysLeft: number,
@@ -48,18 +42,33 @@ export interface Quest {
     nextQuests?: number[],
 }
 
+export interface IQuestFlags {
+    [key: string]: boolean | undefined;
+    accepted: boolean;
+    completed: boolean;
+    dailyQuest: boolean;
+    showNew: boolean;
+    canBeCancelled: boolean;
+    destroy: boolean;
+}
+
+export interface IAnyQuestFlags extends IQuestFlags {
+    isBigCraftable?: boolean;
+    itemFound?: boolean;
+}
+
 export namespace quest {
 
-    export interface BuildingQuest extends Quest {
+    export interface IBuildingQuest extends IQuest {
         buildingType: string,
     }
 
-    export interface CraftingQuest extends Quest {
-        isBigCraftable: boolean,
+    export interface ICraftingQuest extends IQuest {
         indexToCraft: number,
+        flags: IAnyQuestFlags,
     }
 
-    export interface FishingQuest extends Quest {
+    export interface IFishingQuest extends IQuest {
         target: string,
         numberToFish: number,
         reward: number,
@@ -72,11 +81,11 @@ export namespace quest {
         objective: IDescriptionElement
     }
 
-    export interface GoSomewhereQuest extends Quest {
+    export interface IGoSomewhereQuest extends IQuest {
         whereToGo: string,
     }
 
-    export interface ItemDeliveryQuest extends Quest {
+    export interface IItemDeliveryQuest extends IQuest {
         target: string,
         targetMessage: string,
         item: number,
@@ -88,23 +97,23 @@ export namespace quest {
         objective?: IDescriptionElement
     }
 
-    export interface ItemHarvestQuest extends Quest {
+    export interface IItemHarvestQuest extends IQuest {
         itemIndex: number,
         number: number,
     }
 
-    export interface LostItemQuest extends Quest {
+    export interface ILostItemQuest extends IQuest {
         npcName: string,
         locationOfItem: string,
         itemIndex: number,
         tileX: number,
         tileY: number,
-        itemFound: boolean,
+        flags: IAnyQuestFlags,
 
         objective: IDescriptionElement
     }
 
-    export interface ResourceCollectionQuest extends Quest {
+    export interface IResourceCollectionQuest extends IQuest {
         target: string,
         targetMessage: string,
         collected: number,
@@ -117,15 +126,15 @@ export namespace quest {
         objective: IDescriptionElement
     }
 
-    export interface SecretLostItemQuest extends Quest {
+    export interface ISecretLostItemQuest extends IQuest {
         npcName: string,
         friendshipReward: number,
         exclusiveQuestId: number,
         itemIndex: number,
-        itemFound: boolean,
+        flags: IAnyQuestFlags,
     }
 
-    export interface SlayMonsterQuest extends Quest {
+    export interface ISlayMonsterQuest extends IQuest {
         monsterName: string,
         target: string,
         monster: StardewMonster
@@ -136,7 +145,7 @@ export namespace quest {
         objective: IDescriptionElement
     }
 
-    export interface SocializeQuest extends Quest {
+    export interface ISocializeQuest extends IQuest {
         whoToGreet: string[],
         total: number,
 

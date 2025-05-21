@@ -1,13 +1,7 @@
-/*
-firstVisit_AdventureGuild_memory_oneday
-firstVisit_ArchaeologyHouse_memory_oneweek
-eventSeen_prizeTicketIntro_memory_oneday
-*/
-
 import { EventType, type AnyEvent, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "@models";
 
 export function VisitPatternHandler(key: string, value: number): AnyEvent | undefined {
-    const [prefix, rawLocation, ...rest] = key.split("_");
+    const [prefix, rawLocation] = key.split("_");
     if (!prefix || !rawLocation) return;
 
     const hasMemory = key.includes("memory");

@@ -1,6 +1,7 @@
 export type FlagMap<T> = { [K in keyof T]: number };
 
-export function makeBitFlags<T extends Record<string, boolean>>(
+type BooleanRecord = Record<string, boolean | undefined>;
+export function makeBitFlags<T extends BooleanRecord>(
     flags: T,
     bitPositions: FlagMap<T>
 ): number {
@@ -13,7 +14,7 @@ export function makeBitFlags<T extends Record<string, boolean>>(
     return bitmask;
 }
 
-export function parseBitFlags<T extends Record<string, boolean>>(
+export function parseBitFlags<T extends BooleanRecord>(
     bitmask: number,
     bitPositions: FlagMap<T>
 ): T {

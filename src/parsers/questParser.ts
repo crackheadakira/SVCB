@@ -1,8 +1,8 @@
 import { DescriptionElement, DescriptionElementList } from "@abstractions";
-import { QuestType, type AnyQuest, type quest, type Quest } from "@models";
+import { QuestType, type IAnyQuest, type quest, type IQuest } from "@models";
 
 export function parseQuestLog(json: any) {
-    const final: AnyQuest[] = [];
+    const final: IAnyQuest[] = [];
     if (Array.isArray(json)) {
         for (const quest of json) {
             const res = parseQuest(quest);
@@ -15,7 +15,7 @@ export function parseQuestLog(json: any) {
     return final;
 }
 
-export function parseQuest(json: Record<string, any>): AnyQuest | undefined {
+export function parseQuest(json: Record<string, any>): IAnyQuest | undefined {
     const questType = json.questType as QuestType;
     const base = {
         currentObjective: json["_currentObjective"],
@@ -34,13 +34,15 @@ export function parseQuest(json: Record<string, any>): AnyQuest | undefined {
         daysLeft: json.daysLeft,
         daysQuestAccepted: json.dayQuestAccepted,
         nextQuests: json?.nextQuests,
-    } satisfies Quest;
+    } satisfies IQuest;
 
     switch (questType) {
+        default:
         case QuestType.Basic:
             return {
                 ...base,
-            } satisfies Quest
+            } satisfies IQuest
+
         case QuestType.ItemDelivery:
             return {
                 ...base,
@@ -52,12 +54,14 @@ export function parseQuest(json: Record<string, any>): AnyQuest | undefined {
                 parts: undefined,
                 dialogueparts: undefined,
                 objective: undefined
-            } satisfies quest.ItemDeliveryQuest
+            } satisfies quest.IItemDeliveryQuest
+
         case QuestType.Building:
             return {
                 ...base,
                 buildingType: json.buildingType
-            } satisfies quest.BuildingQuest
+            } satisfies quest.IBuildingQuest
+
         case QuestType.Resource:
             return {
                 ...base,
@@ -70,6 +74,6 @@ export function parseQuest(json: Record<string, any>): AnyQuest | undefined {
                 parts: DescriptionElementList.parse(json.parts.DescriptionElement)!,
                 dialogueparts: DescriptionElementList.parse(json.dialogueparts.DescriptionElement)!,
                 objective: DescriptionElement.parse(json.objective),
-            } satisfies quest.ResourceCollectionQuest
+            } satisfies quest.IResourceCollectionQuest
     }
 }

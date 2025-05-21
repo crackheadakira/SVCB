@@ -94,7 +94,7 @@ export class ViewWrapper {
 
     }
 
-    public writeFlags<T extends Record<string, boolean>>(
+    public writeFlags<T extends Record<string, boolean | undefined>>(
         flags: T,
         bitPositions: Record<keyof T, number>
     ) {
