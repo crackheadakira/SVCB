@@ -1,5 +1,5 @@
 import { DescriptionElement, DescriptionElementList, type FlagMap, type Serializer } from "@abstractions"
-import { QuestType, type IAnyQuest, type IAnyQuestFlags, type IQuest, type quest } from "@models"
+import { QuestType, type IAnyQuest, type IAnyQuestFlags, type IQuest, type IQuestFlags, type quest } from "@models"
 
 const bitPositions: FlagMap<IAnyQuestFlags> = {
     accepted: 0,
@@ -15,7 +15,6 @@ const bitPositions: FlagMap<IAnyQuestFlags> = {
 
 export const Quest: Serializer<IAnyQuest> = {
     serialize(view, data) {
-        // TODO: implement the function
         view.write("setUint8", data.questType);
         view.writeString(data.currentObjective);
         view.writeString(data.description);
@@ -23,10 +22,51 @@ export const Quest: Serializer<IAnyQuest> = {
 
         view.writeFlags(data.flags, bitPositions);
 
+        view.write("setUint16", data.moneyReward);
+        view.write("setUint8", data.daysLeft);
+        view.write("setInt16", data.daysQuestAccepted);
+
+
+        view.write("setInt16", data.id ?? -1);
+        view.write("setUint8", data.nextQuests?.length ?? 0);
+
+        if (data.nextQuests) {
+            for (const quest of data.nextQuests)
+                view.write("setInt16", quest);
+        }
+
+        // TODO: add other quest type serialization
+        switch (data.questType) {
+            case QuestType.ItemDelivery:
+                console.log(data.target);
+                break;
+        }
     },
 
     deserialize(view) {
         // TODO: implement
+        const final: IAnyQuest = {
+            questType: view.read("getUint8"),
+            currentObjective: view.readString(),
+            description: view.readString(),
+            title: view.readString(),
+            flags: view.readFlags(bitPositions) as IQuestFlags,
+            moneyReward: view.read("getUint16"),
+            daysLeft: view.read("getUint8"),
+            daysQuestAccepted: view.read("getInt16"),
+        };
+
+        const id = view.read("getInt16");
+        final.id = id !== -1 ? id : undefined;
+
+        const questCount = view.read("getUint8");
+        if (questCount > 0) final.nextQuests = [];
+        for (let i = 0; i < questCount; i++) {
+            const quest = view.read("getInt16");
+            final.nextQuests?.push(quest);
+        }
+
+        return final;
     },
 
     parse(json) {
@@ -57,11 +97,13 @@ export const Quest: Serializer<IAnyQuest> = {
             case QuestType.Basic:
                 return {
                     ...base,
+                    questType: QuestType.Basic,
                 } satisfies IQuest
 
             case QuestType.ItemDelivery:
                 return {
                     ...base,
+                    questType: QuestType.ItemDelivery,
                     target: json.target,
                     targetMessage: json.targetMessage,
                     item: json.item,
@@ -75,12 +117,14 @@ export const Quest: Serializer<IAnyQuest> = {
             case QuestType.Building:
                 return {
                     ...base,
+                    questType: QuestType.Building,
                     buildingType: json.buildingType
                 } satisfies quest.IBuildingQuest
 
             case QuestType.Resource:
                 return {
                     ...base,
+                    questType: QuestType.Resource,
                     target: json.target,
                     targetMessage: json.targetMessage,
                     collected: json.numberCollected,

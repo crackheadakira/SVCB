@@ -15,7 +15,7 @@ export enum QuestType {
 };
 
 export type IAnyQuest =
-    | IQuest
+    | quest.IBasicQuest
     | quest.IBuildingQuest
     | quest.ICraftingQuest
     | quest.IFishingQuest
@@ -35,10 +35,10 @@ export interface IQuest {
     title: string,
     rewardDescription?: string,
     flags: IQuestFlags,
-    id?: number,
     moneyReward: number,
     daysLeft: number,
     daysQuestAccepted: number,
+    id?: number,
     nextQuests?: number[],
 }
 
@@ -59,16 +59,23 @@ export interface IAnyQuestFlags extends IQuestFlags {
 
 export namespace quest {
 
+    export interface IBasicQuest extends IQuest {
+        questType: QuestType.Basic
+    }
+
     export interface IBuildingQuest extends IQuest {
+        questType: QuestType.Building,
         buildingType: string,
     }
 
     export interface ICraftingQuest extends IQuest {
+        questType: QuestType.Crafting,
         indexToCraft: number,
         flags: IAnyQuestFlags,
     }
 
     export interface IFishingQuest extends IQuest {
+        questType: QuestType.Fishing,
         target: string,
         numberToFish: number,
         reward: number,
@@ -82,10 +89,12 @@ export namespace quest {
     }
 
     export interface IGoSomewhereQuest extends IQuest {
+        questType: QuestType.Location,
         whereToGo: string,
     }
 
     export interface IItemDeliveryQuest extends IQuest {
+        questType: QuestType.ItemDelivery,
         target: string,
         targetMessage: string,
         item: number,
@@ -98,11 +107,13 @@ export namespace quest {
     }
 
     export interface IItemHarvestQuest extends IQuest {
+        questType: QuestType.Harvest,
         itemIndex: number,
         number: number,
     }
 
     export interface ILostItemQuest extends IQuest {
+        questType: QuestType.Harvest,
         npcName: string,
         locationOfItem: string,
         itemIndex: number,
@@ -114,6 +125,7 @@ export namespace quest {
     }
 
     export interface IResourceCollectionQuest extends IQuest {
+        questType: QuestType.Resource,
         target: string,
         targetMessage: string,
         collected: number,
@@ -127,6 +139,7 @@ export namespace quest {
     }
 
     export interface ISecretLostItemQuest extends IQuest {
+        questType: QuestType.Harvest,
         npcName: string,
         friendshipReward: number,
         exclusiveQuestId: number,
@@ -135,6 +148,7 @@ export namespace quest {
     }
 
     export interface ISlayMonsterQuest extends IQuest {
+        questType: QuestType.Monster,
         monsterName: string,
         target: string,
         monster: StardewMonster
@@ -146,6 +160,7 @@ export namespace quest {
     }
 
     export interface ISocializeQuest extends IQuest {
+        questType: QuestType.Socialize,
         whoToGreet: string[],
         total: number,
 
