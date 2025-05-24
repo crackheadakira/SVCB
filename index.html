@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SDV</title>
     <script defer src="src/main.ts" type="module"></script>
+    <link rel="stylesheet" href="index.css" />
 </head>
+
 <body>
-    <div class="main">
-        <label for="saveFile">Upload your Stardew Valley save file</label>
-        <input type="file" name="saveFile" id="saveFile">
+    <div class="container">
+        <div>
+            <div class="main">
+                <input type="file" name="saveFile" id="saveFile" />
+                <label for="saveFile">Upload your Stardew Valley save file</label>
+            </div>
+            <div class="main">
+                <input type="file" name="uploadSerializedFile" id="uploadSerializedFile" accept=".stdew" />
+                <label for="uploadSerializedFile">Upload your serialized Stardew Valley save file</label>
+            </div>
+        </div>
+
+        <button id="saveFileSerialize">Serialize</button>
     </div>
-    <div class="main">
-        <label for="uploadSerializedFile">Upload your serialized Stardew Valley save file</label>
-        <input type="file" name="uploadSerializedFile" id="uploadSerializedFile" accept=".stdew">
-    </div>
-    <button id="saveFileSerialize">Serialize</button>
 </body>
-<style>
-    .main {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 8px;
-        width: fit-content;
-    }
-</style>
+
 </html>
