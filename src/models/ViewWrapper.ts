@@ -243,8 +243,6 @@ export class ViewWrapper {
             }
         }
 
-        console.log(str, length, offset);
-
         return str;
     }
 

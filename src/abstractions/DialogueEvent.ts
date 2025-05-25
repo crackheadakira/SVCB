@@ -1,5 +1,5 @@
 import { type Serializer, StringTable } from "@abstractions";
-import { EventType, ViewWrapper, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "@models";
+import { EventType, ViewWrapper, type AnyEvent, type EventMemory, type GeneralEvent, type House, type UndergroundMine, type VisitLocation } from "@models";
 
 export const DialogueEvent = {
     serialize(view: ViewWrapper, data: AnyEvent) {
@@ -9,7 +9,7 @@ export const DialogueEvent = {
 
         if (isLocation(data)) view.writeString(data.location);
         else if (isUndergroundMine(data)) view.write("setUint8", data.mine);
-        else if (isNPCHouse(data)) view.writeString(data.npc)
+        else if (isHouse(data)) view.writeString(data.house)
     },
 
     deserialize(view: ViewWrapper): AnyEvent {
@@ -41,8 +41,8 @@ export const DialogueEvent = {
         } else {
             return {
                 ...base,
-                npc: view.readString(),
-            } satisfies NPCHouse
+                house: view.readString(),
+            } satisfies House
         }
     },
 
@@ -66,12 +66,12 @@ export const DialogueEvent = {
                         mine,
                     } satisfies UndergroundMine
                 } else if (rawLocation.includes("House")) {
-                    const npc = rawLocation.split("House")[0] ?? "";
+                    const house = rawLocation.split("House")[0] ?? "";
                     return {
                         ...base,
-                        eventType: EventType.NPCHouse,
-                        npc: StringTable.addString(npc)!,
-                    } satisfies NPCHouse
+                        eventType: EventType.House,
+                        house: StringTable.addString(house)!,
+                    } satisfies House
                 } else return {
                     ...base,
                     eventType: EventType.location,
@@ -144,8 +144,8 @@ function isLocation(event: AnyEvent): event is VisitLocation {
     return event.eventType === EventType.location;
 }
 
-function isNPCHouse(event: AnyEvent): event is NPCHouse {
-    return event.eventType === EventType.NPCHouse;
+function isHouse(event: AnyEvent): event is House {
+    return event.eventType === EventType.House;
 }
 
 function isUndergroundMine(event: AnyEvent): event is UndergroundMine {

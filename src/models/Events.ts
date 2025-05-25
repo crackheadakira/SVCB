@@ -1,7 +1,7 @@
 import type { StardewString } from "@abstractions";
 
 export type AnyEvent = GeneralEvent | anyLocation;
-type anyLocation = VisitLocation | UndergroundMine | NPCHouse;
+type anyLocation = VisitLocation | UndergroundMine | House;
 
 export enum EventType {
     eventSeen,
@@ -9,7 +9,7 @@ export enum EventType {
     questComplete,
     location,
     undergroundMine,
-    NPCHouse
+    House
 }
 
 export type EventMemory = "day" | "week";
@@ -33,9 +33,9 @@ export interface UndergroundMine {
     value: number,
 }
 
-export interface NPCHouse {
+export interface House {
     eventType: EventType;
     memory?: EventMemory;
-    npc: StardewString;
+    house: StardewString;
     value: number;
 }
