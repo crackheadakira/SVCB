@@ -1,6 +1,6 @@
 import { Direction, StardewSeason, type SaveInfo } from "@models";
-import { parseQuestLog, parseDialogueEvents } from "@parsers";
-import { FarmerFlags, Skills, StardewPosition } from "abstractions";
+import { parseQuestLog } from "@parsers";
+import { FarmerFlags, Skills, StardewPosition, DialogueEvents } from "abstractions";
 
 export function jsonToSaveInfo(json: any): SaveInfo | undefined {
     if (!json) return;
@@ -24,8 +24,8 @@ export function jsonToSaveInfo(json: any): SaveInfo | undefined {
         glowRate: parseFloat(json.glowRate),
         flags: FarmerFlags.parse(json),
         skills: Skills.parse(json),
-        activeDialogueEvents: parseDialogueEvents(json.activeDialogueEvents),
-        previousActiveDialogueEvents: parseDialogueEvents(json.previousActiveDialogueEvents),
+        activeDialogueEvents: DialogueEvents.parse(json.activeDialogueEvents),
+        previousActiveDialogueEvents: DialogueEvents.parse(json.previousActiveDialogueEvents),
         QuestLog: parseQuestLog(json.questLog.Quest),
     } satisfies SaveInfo
 }

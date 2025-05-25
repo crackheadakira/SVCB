@@ -1,7 +1,5 @@
 import type { StardewObject } from "@models";
-import { EventType, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "models";
 import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle, type StardewString } from "@abstractions";
-import { EventTypeChecker } from "@parsers";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -138,19 +136,6 @@ export class ViewWrapper {
         }
     }
 
-    public writeDialogueEvent(data: AnyEvent[]) {
-        this.write("setUint16", data.length);
-        for (const item of data) {
-            this.write("setUint8", item.eventType);
-            const memory = item.memory === undefined ? 0 : (item.memory === "day" ? 1 : 2);
-            this.write("setUint8", (memory << 6) | (item.value & 0b111111));
-
-            if (EventTypeChecker.isLocation(item)) this.writeString(item.location);
-            else if (EventTypeChecker.isUndergroundMine(item)) this.write("setUint8", item.mine);
-            else if (EventTypeChecker.isNPCHouse(item)) this.writeString(item.npc);
-        }
-    }
-
     // TODO: optimize data storage
     public writeStardewObject(data: StardewObject) {
         this.writeString(data.type);
@@ -274,51 +259,6 @@ export class ViewWrapper {
         }
 
         return str;
-    }
-
-    public readDialogueEvents(): AnyEvent[] {
-        const totalEvents = this.read("getUint16");
-        const events: AnyEvent[] = [];
-
-        for (let i = 0; i < totalEvents; i++) {
-            events.push(this.readDialogueEvent())
-        }
-
-        return events.sort();
-    }
-
-    public readDialogueEvent(): AnyEvent {
-        const type = this.read("getUint8");
-        const packed = this.read("getUint8");
-        const _memory = packed >> 6;
-        const value = packed & 0b00111111;
-        let memory: EventMemory | undefined;
-        if (_memory === 1) memory = "day";
-        else if (_memory === 2) memory = "week";
-
-        const base = {
-            eventType: type,
-            value,
-            memory,
-        } satisfies GeneralEvent;
-
-        if (type < EventType.location) return base;
-        else if (type === EventType.location) {
-            return {
-                ...base,
-                location: this.readString(),
-            } satisfies VisitLocation
-        } else if (type === EventType.undergroundMine) {
-            return {
-                ...base,
-                mine: this.read("getUint8"),
-            } satisfies UndergroundMine
-        } else {
-            return {
-                ...base,
-                npc: this.readString(),
-            } satisfies NPCHouse
-        }
     }
 
     public readFlags<T extends Record<string, boolean>>(

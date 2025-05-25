@@ -9,3 +9,4 @@ export * from "./Skills";
 export * from "./StardewRectangle";
 export * from "./DescriptionElement";
 export * from "./Quests";
+export * from "./DialogueEvent";

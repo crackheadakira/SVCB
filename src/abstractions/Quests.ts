@@ -20,7 +20,7 @@ export const Quest: Serializer<IAnyQuest> = {
         view.writeString(data.description);
         view.writeString(data.title);
 
-        view.writeFlags(data.flags, bitPositions);
+        view.writeFlags(data.flags, bitPositions, "8");
 
         view.write("setUint16", data.moneyReward);
         view.write("setUint8", data.daysLeft);

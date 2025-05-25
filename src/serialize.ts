@@ -1,4 +1,4 @@
-import { Calendar, FarmerFlags, Skills, StringTable } from "@abstractions";
+import { Calendar, DialogueEvents, FarmerFlags, Skills, StringTable } from "@abstractions";
 import { ViewWrapper, type SaveInfo } from "@models";
 
 export function serialize(saveInfo: SaveInfo) {
@@ -31,8 +31,8 @@ export function serialize(saveInfo: SaveInfo) {
 
     Skills.serialize(writer, saveInfo.skills);
 
-    writer.writeDialogueEvent(saveInfo.activeDialogueEvents);
-    writer.writeDialogueEvent(saveInfo.previousActiveDialogueEvents);
+    DialogueEvents.serialize(writer, saveInfo.activeDialogueEvents);
+    DialogueEvents.serialize(writer, saveInfo.previousActiveDialogueEvents);
 
     // string table offset is derived from this in usage
     writer.writeSize(writer.offset - 14, 14);
@@ -70,8 +70,8 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
         glowRate: reader.read("getFloat32"),
         flags: FarmerFlags.deserialize(reader),
         skills: Skills.deserialize(reader),
-        activeDialogueEvents: reader.readDialogueEvents(),
-        previousActiveDialogueEvents: reader.readDialogueEvents(),
+        activeDialogueEvents: DialogueEvents.deserialize(reader),
+        previousActiveDialogueEvents: DialogueEvents.deserialize(reader),
         QuestLog: [],
     };
 };
