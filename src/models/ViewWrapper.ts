@@ -257,6 +257,9 @@ export class ViewWrapper {
                 str += String.fromCharCode(charCode);
             }
         }
+
+        console.log(str, length, offset);
+
         return str;
     }
 
