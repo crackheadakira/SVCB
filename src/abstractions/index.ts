@@ -10,3 +10,4 @@ export * from "./StardewRectangle";
 export * from "./DescriptionElement";
 export * from "./Quests";
 export * from "./DialogueEvent";
+export * from "./StardewPosition";

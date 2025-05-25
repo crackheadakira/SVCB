@@ -1,5 +1,5 @@
 import type { StardewString } from "@abstractions";
-import type { IDescriptionElement, StardewMonster, StardewObject } from "@models";
+import type { IDescriptionElement, StardewMonster, IStardewObject } from "@models";
 
 export enum QuestType {
     Basic = 1,
@@ -83,7 +83,7 @@ export namespace quest {
         numberFished: number,
         whichFish: number,
 
-        fish: StardewObject
+        fish: IStardewObject
         parts: IDescriptionElement[]
         dialogueParts: IDescriptionElement[]
         objective: IDescriptionElement
@@ -101,7 +101,7 @@ export namespace quest {
         item: number,
         number: number,
 
-        deliveryItem?: StardewObject
+        deliveryItem?: IStardewObject
         parts?: IDescriptionElement[]
         dialogueparts?: IDescriptionElement[]
         objective?: IDescriptionElement

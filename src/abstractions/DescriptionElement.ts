@@ -1,6 +1,6 @@
 import { StringTable, type Serializer } from "@abstractions";
 import type { IDescriptionElement } from "@models";
-import { parseObject } from "@parsers";
+import { StardewObject } from "./StardewObject";
 
 export const DescriptionElementList: Serializer<IDescriptionElement[]> = {
     serialize(view, data) {
@@ -48,7 +48,7 @@ export const DescriptionElement: Serializer<IDescriptionElement> = {
 
             for (const param of data.param) {
                 if (typeof param === "object" && "owner" in param) {
-                    view.writeStardewObject(param);
+                    StardewObject.serialize(view, param);
                 }
             }
 
@@ -83,7 +83,7 @@ export const DescriptionElement: Serializer<IDescriptionElement> = {
                     if (typeof param === "object" && "$attrs" in param) {
                         if (!param) continue;
                         const type = param["$attrs"]["xsi:type"];
-                        if (type === "Object") final.param.push(parseObject(param));
+                        if (type === "Object") final.param.push(StardewObject.parse(param));
                     } else if (typeof param === "number") final.param.push(param);
                 }
             } else {

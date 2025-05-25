@@ -50,29 +50,13 @@ export enum FriendshipStatus {
     Divorced,
 }
 
-export interface StardewItem {
-    isLostItem?: boolean,
-    specialVariable: number,
-    category: number,
+export interface IStardewItemFlags {
+    [key: string]: boolean | undefined;
     hasBeenInInventory: boolean,
-    name: StardewString,
-    parentSheetIndex: number,
+    isLostItem?: boolean,
 }
 
-export interface StardewObject extends StardewItem {
-    tileLocation: IStardewPosition,
-    owner: bigint,
-    type: string,
-    fragility: number,
-    price: number,
-    edibility: number,
-    stack: number,
-    quality: number,
-    minutesUntilReady: number,
-    boundingBox: IStardewRectangle
-    scale: IStardewPosition,
-    uses: number,
-
+export interface IStardewObjectFlags extends IStardewItemFlags {
     specialItem: boolean,
     destroyOvernight: boolean,
     canBeSetDown: boolean,
@@ -91,8 +75,38 @@ export interface StardewObject extends StardewItem {
 
     isHoedirt?: boolean,
     hasBeenPickedUpByFarmer?: boolean,
+
+    hasQuestId: boolean,
+    hasHeldObject: boolean,
+    hasOrderData: boolean,
+    hasPreserve: boolean,
+    hasHoneyType: boolean,
+}
+
+export interface IStardewItem {
+    specialVariable: number,
+    category: number,
+    name: StardewString,
+    parentSheetIndex: number,
+    flags: IStardewItemFlags,
+}
+
+export interface IStardewObject extends IStardewItem {
+    tileLocation: IStardewPosition,
+    owner: bigint,
+    type: StardewString,
+    fragility: number,
+    price: number,
+    edibility: number,
+    stack: number,
+    quality: number,
+    minutesUntilReady: number,
+    boundingBox: IStardewRectangle
+    scale: IStardewPosition,
+    uses: number,
+    flags: IStardewObjectFlags,
     questId?: number,
-    heldObject?: StardewObject,
+    heldObject?: IStardewObject,
     preservedParentSheetIndex?: number,
     orderData?: StardewString,
     preserve?: PreserveType
@@ -128,5 +142,5 @@ enum HoneyType {
 
 export interface IDescriptionElement {
     xmlKey: StardewString;
-    param?: Array<number | StardewMonster | StardewNPC | StardewObject> | number;
+    param?: Array<number | StardewMonster | StardewNPC | IStardewObject> | number;
 }

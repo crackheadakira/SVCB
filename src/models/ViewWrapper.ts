@@ -1,4 +1,3 @@
-import type { StardewObject } from "@models";
 import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle, type StardewString } from "@abstractions";
 
 type FunctionKeys<T> = {
@@ -7,7 +6,7 @@ type FunctionKeys<T> = {
 type DataViewSetterKeys = Extract<FunctionKeys<DataView>, `set${string}`>;
 type DataViewGetterKeys = Extract<FunctionKeys<DataView>, `get${string}`>;
 type DataViewParameters<T extends DataViewGetterKeys | DataViewSetterKeys> = Parameters<DataView[T]>
-type IsBigIntMethod<T extends string> = T extends `${string}big${string}` ? true : false;
+type IsBigIntMethod<T extends string> = T extends `${string}Big${string}` ? true : false;
 type ReturnTypeForGetter<T extends DataViewGetterKeys> = IsBigIntMethod<T> extends true
     ? bigint
     : number;
@@ -136,81 +135,6 @@ export class ViewWrapper {
         }
     }
 
-    // TODO: optimize data storage
-    public writeStardewObject(data: StardewObject) {
-        this.writeString(data.type);
-        this.write("setBigInt64", data.owner);
-        this.write("setUint16", data.fragility);
-        this.write("setUint16", data.price);
-        this.write("setInt16", data.edibility);
-        this.write("setUint16", data.stack);
-        this.write("setUint8", data.quality);
-
-        this.write("setUint8", data.minutesUntilReady);
-        StardewRectangle.serialize(this, data.boundingBox);
-        StardewPosition.serialize(this, data.scale);
-        this.write("setUint16", data.uses);
-
-        const flags = {
-            specialItem: data.specialItem,
-            destroyOvernight: data.destroyOvernight,
-            canBeSetDown: data.canBeSetDown,
-            canBeGrabbed: data.canBeGrabbed,
-            isSpawnedObject: data.isSpawnedObject,
-            questItem: data.questItem,
-            isOn: data.isOn,
-            bigCraftable: data.bigCraftable,
-            setOutdoors: data.setOutdoors,
-            setIndoors: data.setIndoors,
-            readyForHarvest: data.readyForHarvest,
-            showNextIndex: data.showNextIndex,
-            flipped: data.flipped,
-            isRecipe: data.isRecipe,
-            isLamp: data.isLamp,
-            isHoedirt: data.isHoedirt ?? false,
-            hasBeenPickedUpByFarmer: data.hasBeenPickedUpByFarmer ?? false,
-            hasQuestId: data.questId !== undefined,
-            hasHeldObject: data.heldObject !== undefined,
-            hasPreserve: data.preserve !== undefined,
-            hasOrderData: data.orderData !== undefined,
-            hasHoneyType: data.honeyType !== undefined,
-        };
-
-        this.writeFlags(flags, {
-            specialItem: 0,
-            destroyOvernight: 1,
-            canBeSetDown: 2,
-            canBeGrabbed: 3,
-            isSpawnedObject: 4,
-            questItem: 5,
-            isOn: 6,
-            bigCraftable: 7,
-            setOutdoors: 8,
-            setIndoors: 9,
-            readyForHarvest: 10,
-            showNextIndex: 11,
-            flipped: 12,
-            isRecipe: 13,
-            isLamp: 14,
-            isHoedirt: 15,
-            hasBeenPickedUpByFarmer: 16,
-            hasQuestId: 17,
-            hasHeldObject: 18,
-            hasOrderData: 19,
-            hasPreserve: 20,
-            hasHoneyType: 21,
-        }, "32");
-
-        if (flags.hasQuestId) this.write("setUint8", data.questId!);
-        if (flags.hasPreserve) {
-            this.write("setUint8", data.preserve!);
-            this.write("setUint16", data.preservedParentSheetIndex!);
-        }
-        if (flags.hasOrderData) this.writeString(data.orderData!);
-        if (flags.hasHoneyType) this.write("setUint8", data.honeyType!);
-        if (flags.hasHeldObject) this.writeStardewObject(data.heldObject!);
-    }
-
     public readRecord() {
         const totalEntries = this.read("getUint16");
         const resultingRecord: Record<string, number> = {};
@@ -260,19 +184,16 @@ export class ViewWrapper {
     }
 
     public readFlags<T extends Record<string, boolean>>(
-        bitPositions: Record<keyof T, number>
-    ) {
-        const maxBit = Math.max(...Object.values(bitPositions));
+        bitPositions: Record<keyof T, number>, size: "8" | "16" | "32"
+    ): T {
         let bitmask: number;
 
-        if (maxBit < 8) {
+        if (size === "8") {
             bitmask = this.read("getUint8");
-        } else if (maxBit < 16) {
+        } else if (size === "16") {
             bitmask = this.read("getUint16");
-        } else if (maxBit < 32) {
-            bitmask = this.read("getUint32");
         } else {
-            throw new Error("Too many flags to read in one go");
+            bitmask = this.read("getUint32");
         }
 
         return parseBitFlags(bitmask, bitPositions);

@@ -49,7 +49,7 @@ export const Quest: Serializer<IAnyQuest> = {
             currentObjective: view.readString(),
             description: view.readString(),
             title: view.readString(),
-            flags: view.readFlags(bitPositions) as IQuestFlags,
+            flags: view.readFlags(bitPositions, "8") as IQuestFlags,
             moneyReward: view.read("getUint16"),
             daysLeft: view.read("getUint8"),
             daysQuestAccepted: view.read("getInt16"),
