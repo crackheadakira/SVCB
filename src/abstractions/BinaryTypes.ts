@@ -1,19 +1,23 @@
 import { ViewWrapper } from "@models";
 
+export type StardewString = string | BinaryString;
+
 export class BinaryString {
     readonly offset: number;
     readonly length: number;
     readonly content: Uint8Array;
+    readonly original: string;
 
-    constructor(offset: number, content: Uint8Array) {
+    constructor(offset: number, content: Uint8Array, original: string) {
         this.offset = offset;
         this.content = content;
         this.length = content.byteLength;
+
+        this.original = original;
     }
 
     public toString() {
-        const view = new DataView(this.content.buffer, this.content.byteOffset, this.content.byteLength);
-        return ViewWrapper.readString(this.length, view);
+        return this.original;
     }
 
     public serialize() {
@@ -27,7 +31,7 @@ export class BinaryString {
 
     public static fromString(offset: number, value: string) {
         const encoded = new TextEncoder().encode(value);
-        return new BinaryString(offset, encoded);
+        return new BinaryString(offset, encoded, value);
     }
 
     public static serialize(content: Uint8Array) {

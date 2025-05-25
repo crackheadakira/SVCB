@@ -1,6 +1,6 @@
 import type { StardewObject } from "@models";
 import { EventType, type AnyEvent, type EventMemory, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "models";
-import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle } from "@abstractions";
+import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle, type StardewString } from "@abstractions";
 import { EventTypeChecker } from "@parsers";
 
 type FunctionKeys<T> = {
@@ -17,6 +17,7 @@ type ReturnTypeForGetter<T extends DataViewGetterKeys> = IsBigIntMethod<T> exten
 export class ViewWrapper {
     private LITTLE_ENDIAN: boolean = false;
     private STRING_LENGTH = 12;
+    private dataSize: number = 0;
     private static readonly encoder = new TextEncoder()
 
     private view: DataView;
@@ -24,6 +25,10 @@ export class ViewWrapper {
 
     public get offset(): Readonly<number> {
         return this._offset;
+    }
+
+    public setDataSize(d: number) {
+        this.dataSize = d;
     }
 
     constructor(buffer: DataView, isLittleEndian?: boolean)
@@ -43,7 +48,7 @@ export class ViewWrapper {
         const fnMethod = this.view[method] as (byteOffset: number, value: DataViewParameters<T>[1], littleEndian?: boolean | undefined) => void;
         const fn = fnMethod.bind(this.view);
 
-        if (offset != undefined) fn(offset, value, littleEndian);
+        if (offset !== undefined) fn(offset, value, littleEndian);
         else {
             fn(this.offset, value, littleEndian);
             this._offset += this.getByteSize(method);
@@ -53,10 +58,10 @@ export class ViewWrapper {
     public read<T extends DataViewGetterKeys>(method: T, littleEndian?: boolean, offset?: number): ReturnTypeForGetter<T>
     public read<T extends DataViewGetterKeys>(method: T, littleEndian = this.LITTLE_ENDIAN, offset?: number): ReturnTypeForGetter<T> {
         const fn = this.view[method].bind(this.view);
-        const o = offset ? offset : this.offset;
+        const o = offset !== undefined ? offset : this.offset;
         const res = fn(o, littleEndian);
 
-        if (offset == undefined) this._offset += this.getByteSize(method);
+        if (offset === undefined) this._offset += this.getByteSize(method);
 
         return res as ReturnTypeForGetter<T>;
     }
@@ -82,10 +87,16 @@ export class ViewWrapper {
         this.write("setUint32", value, undefined, offset);
     }
 
-    public writeString(text: string): void
-    public writeString(text: string, length: number): void
-    public writeString(text: string, length?: number) {
+    public writeString(text: StardewString): void
+    public writeString(text: StardewString, length: number): void
+    public writeString(text: StardewString, length?: number) {
         const maxLength = length ? length : this.STRING_LENGTH;
+
+        if (text instanceof BinaryString) {
+            this.write("setUint32", text.offset);
+            this.write("setUint16", text.length);
+            return;
+        }
 
         const encoded = ViewWrapper.encoder.encode(text.padEnd(maxLength, "\0").substring(0, maxLength));
         for (const byte of encoded) {
@@ -96,20 +107,17 @@ export class ViewWrapper {
 
     public writeFlags<T extends Record<string, boolean | undefined>>(
         flags: T,
-        bitPositions: Record<keyof T, number>
+        bitPositions: Record<keyof T, number>,
+        size: "8" | "16" | "32"
     ) {
         const bitmask = makeBitFlags(flags, bitPositions);
 
-        const maxBit = Math.max(...Object.values(bitPositions));
-
-        if (maxBit < 8) {
+        if (size === "8") {
             this.write("setUint8", bitmask);
-        } else if (maxBit < 16) {
+        } else if (size === "16") {
             this.write("setUint16", bitmask);
-        } else if (maxBit < 32) {
+        } else if (size === "32") {
             this.write("setUint32", bitmask);
-        } else {
-            throw new Error("Flags too large for u32 write");
         }
     }
 
@@ -130,13 +138,6 @@ export class ViewWrapper {
         }
     }
 
-    public writeBinaryString(data: BinaryString) {
-        this.write("setUint16", data.length);
-        for (const byte of data.content) {
-            this.write("setUint8", byte);
-        }
-    }
-
     public writeDialogueEvent(data: AnyEvent[]) {
         this.write("setUint16", data.length);
         for (const item of data) {
@@ -144,9 +145,9 @@ export class ViewWrapper {
             const memory = item.memory === undefined ? 0 : (item.memory === "day" ? 1 : 2);
             this.write("setUint8", (memory << 6) | (item.value & 0b111111));
 
-            if (EventTypeChecker.isLocation(item)) this.writeBinaryString(BinaryString.fromString(0, item.location));
+            if (EventTypeChecker.isLocation(item)) this.writeString(item.location);
             else if (EventTypeChecker.isUndergroundMine(item)) this.write("setUint8", item.mine);
-            else if (EventTypeChecker.isNPCHouse(item)) this.writeBinaryString(BinaryString.fromString(0, item.npc));
+            else if (EventTypeChecker.isNPCHouse(item)) this.writeString(item.npc);
         }
     }
 
@@ -213,7 +214,7 @@ export class ViewWrapper {
             hasOrderData: 19,
             hasPreserve: 20,
             hasHoneyType: 21,
-        });
+        }, "32");
 
         if (flags.hasQuestId) this.write("setUint8", data.questId!);
         if (flags.hasPreserve) {
@@ -245,10 +246,13 @@ export class ViewWrapper {
     public readString(length?: number, offset?: number) {
         let str = '';
 
-        if (!length) length = this.read("getUint16");
+        if (!length) {
+            offset = this.read("getUint32") + this.dataSize;
+            length = this.read("getUint16");
+        }
 
         for (let i = 0; i < length; i++) {
-            const charCode = this.read("getUint8", undefined, offset);
+            const charCode = this.read("getUint8", undefined, offset === undefined ? undefined : offset + i);
             if (charCode !== 0) {
                 str += String.fromCharCode(charCode);
             }
@@ -295,7 +299,7 @@ export class ViewWrapper {
             memory,
         } satisfies GeneralEvent;
 
-        if (type < 3) return base;
+        if (type < EventType.location) return base;
         else if (type === EventType.location) {
             return {
                 ...base,

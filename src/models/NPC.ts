@@ -1,7 +1,8 @@
+import type { StardewString } from "@abstractions";
 import type { IStardewPosition } from "@models";
 
 export interface StardewNPC {
-    birthdaySeason: string,
+    birthdaySeason: StardewString,
     birthdayDay: number,
     age: number,
     manners: number,
@@ -13,11 +14,11 @@ export interface StardewNPC {
     lastSeenMovieWeek: number,
     datable: boolean,
     defaultPosition: IStardewPosition,
-    defaultMap: string,
+    defaultMap: StardewString,
     moveTowardPlayerThreshold: number,
     hasSaidAfternoonDialogue: boolean,
-    dayScheduleName: string,
-    islandScheduleName: string,
+    dayScheduleName: StardewString,
+    islandScheduleName: StardewString,
 }
 
 export interface StardewMonster extends StardewNPC {

@@ -12,7 +12,7 @@ const bitPositions: FlagMap<SaveInfo["flags"]> = {
 
 export const FarmerFlags: Serializer<SaveInfo["flags"]> = {
     serialize(view, data) {
-        view.writeFlags(data, bitPositions);
+        view.writeFlags(data, bitPositions, "16");
     },
     deserialize(view) {
         const FLAGS = view.read("getUint16");

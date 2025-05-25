@@ -1,3 +1,4 @@
+import type { StardewString } from "@abstractions";
 import type { IDescriptionElement, StardewMonster, StardewObject } from "@models";
 
 export enum QuestType {
@@ -30,10 +31,10 @@ export type IAnyQuest =
 
 export interface IQuest {
     questType: QuestType,
-    currentObjective: string,
-    description: string,
-    title: string,
-    rewardDescription?: string,
+    currentObjective: StardewString,
+    description: StardewString,
+    title: StardewString,
+    rewardDescription?: StardewString,
     flags: IQuestFlags,
     moneyReward: number,
     daysLeft: number,
@@ -65,7 +66,7 @@ export namespace quest {
 
     export interface IBuildingQuest extends IQuest {
         questType: QuestType.Building,
-        buildingType: string,
+        buildingType: StardewString,
     }
 
     export interface ICraftingQuest extends IQuest {
@@ -76,7 +77,7 @@ export namespace quest {
 
     export interface IFishingQuest extends IQuest {
         questType: QuestType.Fishing,
-        target: string,
+        target: StardewString,
         numberToFish: number,
         reward: number,
         numberFished: number,
@@ -90,13 +91,13 @@ export namespace quest {
 
     export interface IGoSomewhereQuest extends IQuest {
         questType: QuestType.Location,
-        whereToGo: string,
+        whereToGo: StardewString,
     }
 
     export interface IItemDeliveryQuest extends IQuest {
         questType: QuestType.ItemDelivery,
-        target: string,
-        targetMessage: string,
+        target: StardewString,
+        targetMessage: StardewString,
         item: number,
         number: number,
 
@@ -114,8 +115,8 @@ export namespace quest {
 
     export interface ILostItemQuest extends IQuest {
         questType: QuestType.Harvest,
-        npcName: string,
-        locationOfItem: string,
+        npcName: StardewString,
+        locationOfItem: StardewString,
         itemIndex: number,
         tileX: number,
         tileY: number,
@@ -126,12 +127,12 @@ export namespace quest {
 
     export interface IResourceCollectionQuest extends IQuest {
         questType: QuestType.Resource,
-        target: string,
-        targetMessage: string,
+        target: StardewString,
+        targetMessage: StardewString,
         collected: number,
         number: number,
         reward: number,
-        resource: number,
+        resource: number | StardewString,
 
         parts: IDescriptionElement[]
         dialogueparts: IDescriptionElement[]
@@ -140,7 +141,7 @@ export namespace quest {
 
     export interface ISecretLostItemQuest extends IQuest {
         questType: QuestType.Harvest,
-        npcName: string,
+        npcName: StardewString,
         friendshipReward: number,
         exclusiveQuestId: number,
         itemIndex: number,
@@ -149,8 +150,8 @@ export namespace quest {
 
     export interface ISlayMonsterQuest extends IQuest {
         questType: QuestType.Monster,
-        monsterName: string,
-        target: string,
+        monsterName: StardewString,
+        target: StardewString,
         monster: StardewMonster
         numberToKill: number,
 

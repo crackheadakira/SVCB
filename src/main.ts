@@ -26,7 +26,7 @@ async function handleFiles(t: EventTarget | null) {
     const saveInfo = jsonToSaveInfo(parsed.Farmer);
     if (!saveInfo) return;
 
-    StringTable.readObject(saveInfo);
+    // StringTable.readObject(saveInfo);
 
     buttonElement?.removeAttribute("disabled");
 

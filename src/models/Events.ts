@@ -1,3 +1,5 @@
+import type { StardewString } from "@abstractions";
+
 export type AnyEvent = GeneralEvent | anyLocation;
 type anyLocation = VisitLocation | UndergroundMine | NPCHouse;
 
@@ -20,7 +22,7 @@ export interface GeneralEvent {
 export interface VisitLocation {
     eventType: EventType,
     memory?: EventMemory,
-    location: string,
+    location: StardewString,
     value: number,
 }
 
@@ -34,6 +36,6 @@ export interface UndergroundMine {
 export interface NPCHouse {
     eventType: EventType;
     memory?: EventMemory;
-    npc: string;
+    npc: StardewString;
     value: number;
 }

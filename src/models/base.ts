@@ -1,3 +1,4 @@
+import type { StardewString } from "@abstractions"
 import type { StardewMonster, StardewNPC } from "@models"
 
 export interface ISkill {
@@ -54,7 +55,7 @@ export interface StardewItem {
     specialVariable: number,
     category: number,
     hasBeenInInventory: boolean,
-    name: string,
+    name: StardewString,
     parentSheetIndex: number,
 }
 
@@ -93,7 +94,7 @@ export interface StardewObject extends StardewItem {
     questId?: number,
     heldObject?: StardewObject,
     preservedParentSheetIndex?: number,
-    orderData?: string,
+    orderData?: StardewString,
     preserve?: PreserveType
     honeyType?: HoneyType,
 }
@@ -126,6 +127,6 @@ enum HoneyType {
 }
 
 export interface IDescriptionElement {
-    xmlKey: string;
+    xmlKey: StardewString;
     param?: Array<number | StardewMonster | StardewNPC | StardewObject> | number;
 }

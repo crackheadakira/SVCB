@@ -1,11 +1,11 @@
-import { StardewPosition, StardewRectangle } from "@abstractions";
+import { StardewPosition, StardewRectangle, StringTable } from "@abstractions";
 import type { StardewObject } from "@models";
 
 export function parseObject(json: Record<string, any>): StardewObject {
     return {
         category: json.category,
         hasBeenInInventory: json.hasBeenInInventory,
-        name: json.name,
+        name: StringTable.addString(json.name)!,
         parentSheetIndex: json.parentSheetIndex,
         isRecipe: json.isRecipe,
         quality: json.quality,
@@ -40,6 +40,6 @@ export function parseObject(json: Record<string, any>): StardewObject {
         honeyType: json.honeyType,
         isHoedirt: json.isHoedirt,
         preserve: json.preserve,
-        orderData: json.orderData
+        orderData: StringTable.addString(json.orderData)
     } satisfies StardewObject
 }

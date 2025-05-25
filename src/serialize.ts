@@ -1,4 +1,4 @@
-import { Calendar, FarmerFlags, Skills } from "@abstractions";
+import { Calendar, FarmerFlags, Skills, StringTable } from "@abstractions";
 import { ViewWrapper, type SaveInfo } from "@models";
 
 export function serialize(saveInfo: SaveInfo) {
@@ -34,7 +34,12 @@ export function serialize(saveInfo: SaveInfo) {
     writer.writeDialogueEvent(saveInfo.activeDialogueEvents);
     writer.writeDialogueEvent(saveInfo.previousActiveDialogueEvents);
 
+    // string table offset is derived from this in usage
     writer.writeSize(writer.offset - 14, 14);
+
+    // write string table
+    StringTable.write(writer);
+
     return buffer.slice(0, writer.offset);
 }
 
@@ -43,6 +48,8 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
 
     const magic = reader.read("getUint16");
     if (magic !== 0x5336) throw new Error(`Invalid .stdew file given; magic number does not match (got 0x${magic.toString(16)}, 0x5336`);
+    const dataSize = reader.read("getUint32", undefined, 14);
+    reader.setDataSize(dataSize);
 
     return {
         magic,

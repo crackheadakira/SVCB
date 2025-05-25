@@ -1,4 +1,4 @@
-import type { Serializer } from "@abstractions";
+import { StringTable, type Serializer } from "@abstractions";
 import type { IDescriptionElement } from "@models";
 import { parseObject } from "@parsers";
 
@@ -74,7 +74,7 @@ export const DescriptionElement: Serializer<IDescriptionElement> = {
 
     parse(json) {
         const final: IDescriptionElement = {
-            xmlKey: json.xmlKey,
+            xmlKey: StringTable.addString(json.xmlKey)!,
         };
 
         if (json.param) {

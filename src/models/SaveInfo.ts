@@ -1,4 +1,4 @@
-import type { AnyQuest, ICalendar, Direction, ISkill, IStardewPosition, AnyEvent } from "@models"
+import type { IAnyQuest, ICalendar, Direction, ISkill, IStardewPosition, AnyEvent } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -75,7 +75,7 @@ export interface SaveInfo {
     /** Previous dialogue events farmer has experienced, `number` refers to days since event */
     previousActiveDialogueEvents: AnyEvent[]
 
-    QuestLog: AnyQuest[];
+    QuestLog: IAnyQuest[];
 
     // TODO Item interface
     // items: {}[],

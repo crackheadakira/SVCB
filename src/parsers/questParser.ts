@@ -1,4 +1,4 @@
-import { DescriptionElement, DescriptionElementList } from "@abstractions";
+import { DescriptionElement, DescriptionElementList, StringTable } from "@abstractions";
 import { QuestType, type IAnyQuest, type quest, type IQuest } from "@models";
 
 export function parseQuestLog(json: any) {
@@ -18,16 +18,18 @@ export function parseQuestLog(json: any) {
 export function parseQuest(json: Record<string, any>): IAnyQuest | undefined {
     const questType = json.questType as QuestType;
     const base = {
-        currentObjective: json["_currentObjective"],
-        description: json["_questDescription"],
-        title: json.questTitle,
-        rewardDescription: json?.rewardDescription,
-        accepted: json.accepted,
-        completed: json.completed,
-        dailyQuest: json.dailyQuest,
-        showNew: json.showNew,
-        canBeCancelled: json.canBeCancelled,
-        destroy: json.destroy,
+        currentObjective: StringTable.addString(json["_currentObjective"])!,
+        description: StringTable.addString(json["_questDescription"])!,
+        title: StringTable.addString(json.questTitle)!,
+        rewardDescription: StringTable.addString(json?.rewardDescription)!,
+        flags: {
+            accepted: json.accepted,
+            completed: json.completed,
+            dailyQuest: json.dailyQuest,
+            showNew: json.showNew,
+            canBeCancelled: json.canBeCancelled,
+            destroy: json.destroy,
+        },
         id: json?.id,
         moneyReward: json.moneyReward,
         questType,
@@ -41,11 +43,13 @@ export function parseQuest(json: Record<string, any>): IAnyQuest | undefined {
         case QuestType.Basic:
             return {
                 ...base,
-            } satisfies IQuest
+                questType: QuestType.Basic,
+            } satisfies quest.IBasicQuest;
 
         case QuestType.ItemDelivery:
             return {
                 ...base,
+                questType: QuestType.ItemDelivery,
                 target: json.target,
                 targetMessage: json.targetMessage,
                 item: json.item,
@@ -59,18 +63,20 @@ export function parseQuest(json: Record<string, any>): IAnyQuest | undefined {
         case QuestType.Building:
             return {
                 ...base,
-                buildingType: json.buildingType
+                questType: QuestType.Building,
+                buildingType: StringTable.addString(json.buildingType)!
             } satisfies quest.IBuildingQuest
 
         case QuestType.Resource:
             return {
                 ...base,
-                target: json.target,
-                targetMessage: json.targetMessage,
+                questType: QuestType.Resource,
+                target: StringTable.addString(json.target)!,
+                targetMessage: StringTable.addString(json.targetMessage)!,
                 collected: json.numberCollected,
                 number: json.number,
                 reward: json.reward,
-                resource: json.resource,
+                resource: !isNaN(json.resource) ? json.resource : StringTable.addString(json.resource),
                 parts: DescriptionElementList.parse(json.parts.DescriptionElement)!,
                 dialogueparts: DescriptionElementList.parse(json.dialogueparts.DescriptionElement)!,
                 objective: DescriptionElement.parse(json.objective),

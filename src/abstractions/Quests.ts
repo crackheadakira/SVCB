@@ -1,4 +1,4 @@
-import { DescriptionElement, DescriptionElementList, type FlagMap, type Serializer } from "@abstractions"
+import { DescriptionElement, DescriptionElementList, StringTable, type FlagMap, type Serializer } from "@abstractions"
 import { QuestType, type IAnyQuest, type IAnyQuestFlags, type IQuest, type IQuestFlags, type quest } from "@models"
 
 const bitPositions: FlagMap<IAnyQuestFlags> = {
@@ -72,9 +72,9 @@ export const Quest: Serializer<IAnyQuest> = {
     parse(json) {
         const questType = json.questType as QuestType;
         const base = {
-            currentObjective: json["_currentObjective"],
-            description: json["_questDescription"],
-            title: json.questTitle,
+            currentObjective: StringTable.addString(json["_currentObjective"])!,
+            description: StringTable.addString(json["_questDescription"])!,
+            title: StringTable.addString(json.questTitle)!,
             flags: {
                 accepted: json.accepted,
                 completed: json.completed,
@@ -104,8 +104,8 @@ export const Quest: Serializer<IAnyQuest> = {
                 return {
                     ...base,
                     questType: QuestType.ItemDelivery,
-                    target: json.target,
-                    targetMessage: json.targetMessage,
+                    target: StringTable.addString(json.target)!,
+                    targetMessage: StringTable.addString(json.targetMessage)!,
                     item: json.item,
                     number: json.number,
                     deliveryItem: undefined, // need more save files to figure out
@@ -118,19 +118,19 @@ export const Quest: Serializer<IAnyQuest> = {
                 return {
                     ...base,
                     questType: QuestType.Building,
-                    buildingType: json.buildingType
+                    buildingType: StringTable.addString(json.buildingType)!
                 } satisfies quest.IBuildingQuest
 
             case QuestType.Resource:
                 return {
                     ...base,
                     questType: QuestType.Resource,
-                    target: json.target,
-                    targetMessage: json.targetMessage,
+                    target: StringTable.addString(json.target)!,
+                    targetMessage: StringTable.addString(json.targetMessage)!,
                     collected: json.numberCollected,
                     number: json.number,
                     reward: json.reward,
-                    resource: json.resource,
+                    resource: !isNaN(json.resource) ? json.resource : StringTable.addString(json.resource),
                     parts: DescriptionElementList.parse(json.parts.DescriptionElement)!,
                     dialogueparts: DescriptionElementList.parse(json.dialogueparts.DescriptionElement)!,
                     objective: DescriptionElement.parse(json.objective),

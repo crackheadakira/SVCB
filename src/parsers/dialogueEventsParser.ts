@@ -1,3 +1,4 @@
+import { BinaryString, StringTable } from "@abstractions";
 import { EventType, type AnyEvent, type GeneralEvent, type NPCHouse, type UndergroundMine, type VisitLocation } from "@models";
 
 export function VisitPatternHandler(key: string, value: number): AnyEvent | undefined {
@@ -24,12 +25,12 @@ export function VisitPatternHandler(key: string, value: number): AnyEvent | unde
                 return {
                     ...base,
                     eventType: EventType.NPCHouse,
-                    npc,
+                    npc: StringTable.addString(npc)!,
                 } satisfies NPCHouse
             } else return {
                 ...base,
                 eventType: EventType.location,
-                location: rawLocation,
+                location: StringTable.addString(rawLocation)!,
             } satisfies VisitLocation
 
             break;
@@ -61,10 +62,10 @@ export function parseDialogueEvents(json: any) {
         const res = VisitPatternHandler(key, json[key])
         if (!res) continue;
 
-        let valKey: string = EventType[res.eventType];
+        let valKey = EventType[res.eventType];
 
-        if (EventTypeChecker.isLocation(res)) valKey = res.location;
-        else if (EventTypeChecker.isNPCHouse(res)) valKey = res.npc;
+        if (EventTypeChecker.isLocation(res)) valKey = res.location.toString();
+        else if (EventTypeChecker.isNPCHouse(res)) valKey = res.npc.toString();
         else if (EventTypeChecker.isUndergroundMine(res)) valKey = "UndergroundMine";
 
         locations.push(res);
