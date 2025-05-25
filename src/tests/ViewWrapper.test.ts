@@ -6,7 +6,7 @@ test("write uint8", () => {
     const view = new ViewWrapper(buf);
     view.write("setUint8", 19);
 
-    expect(buf.toHex()).toBe("1300");
+    expect(buf.toHex()).toEqual("1300");
 });
 
 test("write uint8 offset", () => {
@@ -14,7 +14,7 @@ test("write uint8 offset", () => {
     const view = new ViewWrapper(buf);
     view.write("setUint8", 19, undefined, 1);
 
-    expect(buf.toHex()).toBe("0013");
+    expect(buf.toHex()).toEqual("0013");
 });
 
 test("write uint16 little endian", () => {
@@ -22,5 +22,5 @@ test("write uint16 little endian", () => {
     const view = new ViewWrapper(buf);
     view.write("setUint16", 19, true);
 
-    expect(buf.toHex()).toBe("1300");
+    expect(buf.toHex()).toEqual("1300");
 });
