@@ -32,35 +32,37 @@ All numeric fields (`u16`, `u32`, `f32`, etc.) are stored in big-endian format.
 
 ## Save Game Info Layout
 
-| Offset | Field                            | Type                 | Size        | Notes                                           |
-| ------ | -------------------------------- | -------------------- | ----------- | ----------------------------------------------- |
-| 0      | `magic`                          | `u16`                | 2 bytes     | Magic number `0x5336` to validate file          |
-| 2      | `version`                        | `string`             | 12 bytes    | E.g. `1.6.15`, null-padded                      |
-| 14     | `dataSize`                       | `u32`                | 4 bytes     | How many bytes exist after size                 |
-| 18     | `name`                           | `string`             | 12 bytes    | UTF-8, null-padded                              |
-| 30     | `farmName`                       | `string`             | 12 bytes    | UTF-8, null-padded                              |
-| 42     | `favoriteThing`                  | `string`             | 12 bytes    | UTF-8, null-padded                              |
-| 54     | `speed`                          | `u16`                | 2 bytes     |                                                 |
-| 56     | `position.x`                     | `u16`                | 2 bytes     | X-coordinate of the farmer in world space       |
-| 58     | `position.y`                     | `u16`                | 2 bytes     | Y-coordinate of the farmer in world space       |
-| 60     | `calendar.year`                  | `u16`                | 2 bytes     |                                                 |
-| 62     | `calendar.season`                | `u2`                 | packed bits |                                                 |
-| 62     | `calendar.dayOfMonth`            | `u5`                 | packed bits |                                                 |
-| 62     | `padding`                        | `u1` (pad)           | packed bits |                                                 |
-| 63     | `facing`                         | `u8`                 | 1 bytes     | Should be an `u2` in the future                 |
-| 64     | `currentEmote`                   | `u8`                 | 1 bytes     |                                                 |
-| 65     | `glowTransparency`               | `f32`                | 4 bytes     |                                                 |
-| 69     | `glowRate`                       | `f32`                | 4 bytes     |                                                 |
-| 73     | `flags`                          | `u16`                | 2 bytes     | [Flags Layout](#flags-layout)                   |
-| 75     | `skills.farming`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 78     | `skills.fishing`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 81     | `skills.foraging`                | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 84     | `skills.mining`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 87     | `skills.combat`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 90     | `skills.luck`                    | `u8 level + u16 exp` | 3 bytes     |                                                 |
-| 93     | --- START OF VARIABLE REGION --- |                      |             |
-| 93     | `activeDialogueEvents`           | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
-| ...    | `previousActiveDialogueEvents`   | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
+| Offset       | Field                            | Type                 | Size        | Notes                                           |
+| ------------ | -------------------------------- | -------------------- | ----------- | ----------------------------------------------- |
+| 0            | `magic`                          | `u16`                | 2 bytes     | Magic number `0x5336` to validate file          |
+| 2            | `version`                        | `string`             | 12 bytes    | E.g. `1.6.15`, null-padded                      |
+| 14           | `dataSize`                       | `u32`                | 4 bytes     | How many bytes exist after size                 |
+| 18           | `name`                           | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 30           | `farmName`                       | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 42           | `favoriteThing`                  | `string`             | 12 bytes    | UTF-8, null-padded                              |
+| 54           | `speed`                          | `u16`                | 2 bytes     |                                                 |
+| 56           | `position.x`                     | `u16`                | 2 bytes     | X-coordinate of the farmer in world space       |
+| 58           | `position.y`                     | `u16`                | 2 bytes     | Y-coordinate of the farmer in world space       |
+| 60           | `calendar.year`                  | `u16`                | 2 bytes     |                                                 |
+| 62           | `calendar.season`                | `u2`                 | packed bits |                                                 |
+| 62           | `calendar.dayOfMonth`            | `u5`                 | packed bits |                                                 |
+| 62           | `padding`                        | `u1` (pad)           | packed bits |                                                 |
+| 63           | `facing`                         | `u8`                 | 1 bytes     | Should be an `u2` in the future                 |
+| 64           | `currentEmote`                   | `u8`                 | 1 bytes     |                                                 |
+| 65           | `glowTransparency`               | `f32`                | 4 bytes     |                                                 |
+| 69           | `glowRate`                       | `f32`                | 4 bytes     |                                                 |
+| 73           | `flags`                          | `u16`                | 2 bytes     | [Flags Layout](#flags-layout)                   |
+| 75           | `skills.farming`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 78           | `skills.fishing`                 | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 81           | `skills.foraging`                | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 84           | `skills.mining`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 87           | `skills.combat`                  | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 90           | `skills.luck`                    | `u8 level + u16 exp` | 3 bytes     |                                                 |
+| 93           | --- START OF VARIABLE REGION --- |                      |             |                                                 |
+| 93           | `activeDialogueEvents`           | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
+| ...          | `previousActiveDialogueEvents`   | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
+| dataSize     | `stringTable.length`             | `u16`                | 2 bytes     |                                                 |
+| dataSize + 2 | `stringTable`                    | stream of `u8`       | variable    | Contains the data pointed to by BinaryString    |
 
 Fixed byte size:
 
