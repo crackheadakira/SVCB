@@ -29,8 +29,8 @@ const cases: [SaveInfo["skills"], Uint8Array<ArrayBuffer>][] = [
 
 describe.each(cases)("case %#", (skills, serialized) => {
     test("serialize skill", () => {
-        const buf = new Uint8Array(18);
-        const view = new ViewWrapper(buf);
+        const buf = new Uint8Array(serialized.byteLength);
+        const view = new ViewWrapper(buf, false);
 
         Skills.serialize(view, skills);
 
@@ -39,7 +39,7 @@ describe.each(cases)("case %#", (skills, serialized) => {
 
     test("deserialize skill", () => {
         const buf = new Uint8Array(serialized);
-        const view = new ViewWrapper(buf);
+        const view = new ViewWrapper(buf, false);
 
         const res = Skills.deserialize(view);
 

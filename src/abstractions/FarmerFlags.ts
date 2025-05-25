@@ -1,7 +1,7 @@
 import { parseBitFlags, type FlagMap, type Serializer } from "@abstractions";
 import type { SaveInfo } from "@models";
 
-const bitPositions: FlagMap<SaveInfo["flags"]> = {
+export const bitPositions: FlagMap<SaveInfo["flags"]> = {
     gender: 0,
     isCharging: 1,
     coloredBorder: 2,

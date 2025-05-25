@@ -9,8 +9,8 @@ const cases: [ICalendar, Uint8Array<ArrayBuffer>][] = [
 
 describe.each(cases)("case %#", (calendar, serialized) => {
     test("serialize calendar", () => {
-        const buf = new Uint8Array(3);
-        const view = new ViewWrapper(buf);
+        const buf = new Uint8Array(serialized.byteLength);
+        const view = new ViewWrapper(buf, false);
 
         Calendar.serialize(view, calendar);
 
@@ -19,7 +19,7 @@ describe.each(cases)("case %#", (calendar, serialized) => {
 
     test("deserialize calendar", () => {
         const buf = new Uint8Array(serialized);
-        const view = new ViewWrapper(buf);
+        const view = new ViewWrapper(buf, false);
 
         const result = Calendar.deserialize(view);
 
