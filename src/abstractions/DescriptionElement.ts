@@ -33,7 +33,6 @@ export const DescriptionElementList: Serializer<IDescriptionElement[]> = {
 export const DescriptionElement: Serializer<IDescriptionElement> = {
     // TODO: not make this finicky
     serialize(view, data) {
-        // make this a binary string
         view.writeString(data.xmlKey);
 
         // instead of writing data.param length make a type

@@ -7,9 +7,9 @@ export const DialogueEvent = {
         const memory = data.memory === undefined ? 0 : (data.memory === "day" ? 1 : 2);
         view.write("setUint8", (memory << 6) | (data.value & 0b111111));
 
-        if (EventTypeChecker.isLocation(data)) view.writeString(data.location);
-        else if (EventTypeChecker.isUndergroundMine(data)) view.write("setUint8", data.mine);
-        else if (EventTypeChecker.isNPCHouse(data)) view.writeString(data.npc)
+        if (isLocation(data)) view.writeString(data.location);
+        else if (isUndergroundMine(data)) view.write("setUint8", data.mine);
+        else if (isNPCHouse(data)) view.writeString(data.npc)
     },
 
     deserialize(view: ViewWrapper): AnyEvent {
@@ -140,16 +140,14 @@ export const DialogueEvents: Serializer<AnyEvent[]> = {
     },
 }
 
-export namespace EventTypeChecker {
-    export function isLocation(event: AnyEvent): event is VisitLocation {
-        return event.eventType === EventType.location;
-    }
+function isLocation(event: AnyEvent): event is VisitLocation {
+    return event.eventType === EventType.location;
+}
 
-    export function isNPCHouse(event: AnyEvent): event is NPCHouse {
-        return event.eventType === EventType.NPCHouse;
-    }
+function isNPCHouse(event: AnyEvent): event is NPCHouse {
+    return event.eventType === EventType.NPCHouse;
+}
 
-    export function isUndergroundMine(event: AnyEvent): event is UndergroundMine {
-        return event.eventType === EventType.undergroundMine
-    }
+function isUndergroundMine(event: AnyEvent): event is UndergroundMine {
+    return event.eventType === EventType.undergroundMine
 }

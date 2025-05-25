@@ -30,7 +30,7 @@ export const Quest: Serializer<IAnyQuest> = {
         view.write("setInt16", data.id ?? -1);
         view.write("setUint8", data.nextQuests?.length ?? 0);
 
-        if (data.nextQuests) {
+        if (data.nextQuests?.length !== undefined) {
             for (const quest of data.nextQuests)
                 view.write("setInt16", quest);
         }
@@ -44,7 +44,6 @@ export const Quest: Serializer<IAnyQuest> = {
     },
 
     deserialize(view) {
-        // TODO: implement
         const final: IAnyQuest = {
             questType: view.read("getUint8"),
             currentObjective: view.readString(),
@@ -71,7 +70,7 @@ export const Quest: Serializer<IAnyQuest> = {
 
     parse(json) {
         const questType = json.questType as QuestType;
-        const base = {
+        const base: IQuest = {
             currentObjective: StringTable.addString(json["_currentObjective"])!,
             description: StringTable.addString(json["_questDescription"])!,
             title: StringTable.addString(json.questTitle)!,
@@ -89,8 +88,16 @@ export const Quest: Serializer<IAnyQuest> = {
             daysQuestAccepted: json.dayQuestAccepted,
             rewardDescription: json?.rewardDescription,
             id: json?.id,
-            nextQuests: json?.nextQuests,
-        } satisfies IQuest;
+        };
+
+        if (Object.keys(json.nextQuests).length > 0) {
+            base.nextQuests = [];
+            for (const key of Object.keys(json.nextQuests)) {
+                const item = json.nextQuests[key];
+                if (!item) continue;
+                base.nextQuests.push(item);
+            }
+        }
 
         switch (questType) {
             default:
@@ -136,5 +143,41 @@ export const Quest: Serializer<IAnyQuest> = {
                     objective: DescriptionElement.parse(json.objective),
                 } satisfies quest.IResourceCollectionQuest
         }
+    },
+}
+
+export const Quests: Serializer<IAnyQuest[]> = {
+    serialize(view, data) {
+        console.log(data);
+        view.write("setUint16", data.length);
+        for (const item of data) {
+            Quest.serialize(view, item);
+        }
+    },
+
+    deserialize(view) {
+        const total = view.read("getUint16");
+        const final: IAnyQuest[] = [];
+
+        for (let i = 0; i < total; i++) {
+            final.push(Quest.deserialize(view));
+        }
+
+        return final;
+    },
+
+    parse(json) {
+        const final: IAnyQuest[] = [];
+
+        if (Array.isArray(json)) {
+            for (const quest of json) {
+                const res = Quest.parse(quest);
+                if (!res) continue;
+
+                final.push(res);
+            }
+        }
+
+        return final;
     },
 }
