@@ -37,7 +37,7 @@ export function serialize(saveInfo: SaveInfo) {
     Quests.serialize(writer, saveInfo.QuestLog);
 
     // string table offset is derived from this in usage
-    writer.writeSize(writer.offset - 14, 14);
+    writer.writeSize(writer.offset, 14);
 
     // write string table
     StringTable.write(writer);

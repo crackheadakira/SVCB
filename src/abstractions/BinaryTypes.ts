@@ -1,5 +1,3 @@
-import { ViewWrapper } from "@models";
-
 export type StardewString = string | BinaryString;
 
 export class BinaryString {

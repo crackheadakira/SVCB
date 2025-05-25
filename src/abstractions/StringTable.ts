@@ -17,6 +17,13 @@ export class StringTable {
         return this.stringMap;
     }
 
+    public static reset() {
+        this.stringMap = new Map();
+        this.stringList = [];
+        this.binaryStrings = [];
+        this.offset = 0;
+    }
+
     private static addBinaryString(value: string) {
         if (!value || value === "") return;
 
