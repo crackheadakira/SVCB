@@ -6,7 +6,7 @@ export interface ISkill {
     experiencePoints: number // u16
 }
 
-export interface Friendship {
+export interface IFriendship {
     points: number // u16
     giftsThisWeek: number // u8
     giftsToday: number // u8

@@ -128,9 +128,7 @@ export class ViewWrapper {
             const value = data[key];
             if (value === undefined) continue;
 
-            const encoded = ViewWrapper.encoder.encode(key);
-            this.write("setUint16", encoded.byteLength);
-            this.writeBytes(encoded);
+            this.writeString(key);
             this.write("setUint8", value);
         }
     }

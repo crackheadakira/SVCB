@@ -11,3 +11,4 @@ export * from "./DescriptionElement";
 export * from "./Quests";
 export * from "./DialogueEvent";
 export * from "./StardewPosition";
+export * from "./Friendship";

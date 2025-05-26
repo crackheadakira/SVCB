@@ -1,4 +1,4 @@
-import type { IAnyQuest, ICalendar, Direction, ISkill, IStardewPosition, AnyEvent } from "@models"
+import type { IAnyQuest, ICalendar, Direction, ISkill, IStardewPosition, AnyEvent, IFriendship } from "@models"
 
 export interface SaveInfo {
     /** First two bytes to verify that file is a valid save file */
@@ -93,7 +93,7 @@ export interface SaveInfo {
     // craftingRecipes: Record<string, number>
 
     // /** Friendship information for NPCs */
-    // friendshipData: Record<string, Friendship>,
+    friendshipData: Record<string, IFriendship>,
 
     // /** Keys of mail farmer has received */
     // mailReceived: string[],
