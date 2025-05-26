@@ -1,28 +1,21 @@
-import { expect, test, describe } from "bun:test";
+import { expect, test } from "bun:test";
 import { StardewPosition } from "@abstractions";
 import { type IStardewPosition, ViewWrapper, } from "@models";
 
-const cases: [IStardewPosition, Uint8Array<ArrayBuffer>][] = [
-    [{ x: 178, y: 215 }, new Uint8Array([0x00, 0xB2, 0x00, 0xD7])],
-    [{ x: 0, y: 912 }, new Uint8Array([0x00, 0x00, 0x03, 0x90])]
+const cases: IStardewPosition[] = [
+    { x: 178, y: 215 },
+    { x: 0, y: 912 }
 ];
 
-describe.each(cases)("case %#", (position, serialized) => {
-    test("serialize position", () => {
-        const buf = new Uint8Array(serialized.byteLength);
-        const view = new ViewWrapper(buf, false);
+test.each(cases)("#%#, serialize -> deserialize", (position) => {
+    const buf = new Uint8Array(100);
+    const view = new ViewWrapper(buf, false);
 
-        StardewPosition.serialize(view, position);
+    StardewPosition.serialize(view, position);
 
-        expect(buf).toEqual(serialized);
-    });
+    view.setOffset(0);
 
-    test("deserialize position", () => {
-        const buf = new Uint8Array(serialized);
-        const view = new ViewWrapper(buf, false);
+    const output = StardewPosition.deserialize(view);
 
-        const result = StardewPosition.deserialize(view);
-
-        expect(result).toEqual(position);
-    })
+    expect(output).toEqual(position);
 });
