@@ -40,7 +40,7 @@ export function serialize(saveInfo: SaveInfo) {
     writer.writeSize(writer.offset, 14);
 
     // write string table
-    StringTable.write(writer);
+    StringTable.write(writer, writer.offset);
 
     return buffer.slice(0, writer.offset);
 }
@@ -75,5 +75,6 @@ export function deserialize(buffer: ArrayBuffer): SaveInfo {
         activeDialogueEvents: DialogueEvents.deserialize(reader),
         previousActiveDialogueEvents: DialogueEvents.deserialize(reader),
         QuestLog: Quests.deserialize(reader),
+        friendshipData: {},
     };
 };

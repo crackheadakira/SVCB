@@ -5,7 +5,6 @@ export class StringTable {
     private static stringMap: Map<string, number> = new Map();
     private static stringList: string[] = [];
     private static binaryStrings: BinaryString[] = [];
-    private static offset: number = 0;
 
     public static get strings(): readonly string[] {
         return this.stringList;
@@ -21,14 +20,10 @@ export class StringTable {
         this.stringMap = new Map();
         this.stringList = [];
         this.binaryStrings = [];
-        this.offset = 0;
     }
 
     private static addBinaryString(value: string) {
-        if (!value || value === "") return;
-
-        const binary = BinaryString.fromString(this.offset + 2, value);
-        this.offset += binary.length;
+        const binary = BinaryString.fromString(value);
 
         this.binaryStrings.push(binary);
 
@@ -36,6 +31,7 @@ export class StringTable {
     }
 
     public static addString(value: string) {
+        if (!value || value == "") return ""
         if (this.stringMap.has(value)) return this.getBinaryString(value)!;
 
         this.stringMap.set(value, this.stringList.length);
@@ -66,21 +62,40 @@ export class StringTable {
         this.binaryStrings = [];
         const enc = new TextEncoder();
 
-        this.offset = 0;
         for (const value of this.stringList) {
             const encoded = enc.encode(value);
-            this.binaryStrings.push(new BinaryString(this.offset, encoded, value));
-
-            this.offset += encoded.byteLength;
+            this.binaryStrings.push(new BinaryString(encoded, value));
         }
     }
 
-    public static write(view: ViewWrapper) {
+    public static write(view: ViewWrapper, offset: number) {
         view.write("setUint16", this.stringList.length);
+        offset += 2;
+
+        // add total header size to offset for it to be absolute
+        offset += this.stringList.length * 6;
 
         for (let i = 0; i < this.stringList.length; i++) {
             const string = this.binaryStrings[i];
-            if (!string) continue;
+
+            if (!string) {
+                console.log(this.binaryStrings);
+                throw new Error(`Got undefined binary string at idx ${i}`);
+            }
+
+            view.write("setUint32", offset);
+            view.write("setUint16", string.length);
+
+            offset += string.length;
+        }
+
+        for (let i = 0; i < this.stringList.length; i++) {
+            const string = this.binaryStrings[i];
+
+            if (!string) {
+                console.log(this.binaryStrings);
+                throw new Error(`Got undefined binary string at idx ${i}`);
+            }
 
             for (const byte of string.content) {
                 view.write("setUint8", byte);

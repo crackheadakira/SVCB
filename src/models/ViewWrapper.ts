@@ -1,4 +1,4 @@
-import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle, type StardewString } from "@abstractions";
+import { BinaryString, makeBitFlags, parseBitFlags, StardewPosition, StardewRectangle, StringTable, type StardewString } from "@abstractions";
 
 type FunctionKeys<T> = {
     [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
@@ -90,8 +90,9 @@ export class ViewWrapper {
         const maxLength = length ? length : this.STRING_LENGTH;
 
         if (text instanceof BinaryString) {
-            this.write("setUint32", text.offset);
-            this.write("setUint16", text.length);
+            const index = StringTable.indexMap.get(text.original);
+            if (index === undefined) throw new Error("BinaryString did not exist in StringTable")
+            this.write("setUint16", index);
             return;
         }
 
@@ -154,8 +155,17 @@ export class ViewWrapper {
         let str = '';
 
         if (!length) {
-            offset = this.read("getUint32") + this.dataSize;
-            length = this.read("getUint16");
+            // get string table index
+            const index = this.read("getUint16");
+
+            // calculate header offset (+2 because of totalStrings);
+            const headerOffset = this.dataSize + 2 + index * 6;
+
+            const stringOffset = this.read("getUint32", undefined, headerOffset);
+            const stringLength = this.read("getUint16", undefined, headerOffset + 4);
+
+            offset = stringOffset;
+            length = stringLength;
         }
 
         for (let i = 0; i < length; i++) {
