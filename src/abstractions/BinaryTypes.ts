@@ -1,13 +1,11 @@
 export type StardewString = string | BinaryString;
 
 export class BinaryString {
-    readonly offset: number;
     readonly length: number;
     readonly content: Uint8Array;
     readonly original: string;
 
-    constructor(offset: number, content: Uint8Array, original: string) {
-        this.offset = offset;
+    constructor(content: Uint8Array, original: string) {
         this.content = content;
         this.length = content.byteLength;
 
@@ -27,9 +25,9 @@ export class BinaryString {
         return serializedArray;
     }
 
-    public static fromString(offset: number, value: string) {
+    public static fromString(value: string) {
         const encoded = new TextEncoder().encode(value);
-        return new BinaryString(offset, encoded, value);
+        return new BinaryString(encoded, value);
     }
 
     public static serialize(content: Uint8Array) {

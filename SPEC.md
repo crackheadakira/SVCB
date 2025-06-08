@@ -108,10 +108,15 @@ All strings are UTF-8 encoded and prefixed with a `u16` length. Strings may or m
 -   Fixed-size fields (e.g., `name`, `farmName`) are right-padded with null bytes (`0x00`) to the defined length.
 -   Variable-length strings are length-prefixed only and not padded.
 
-| Field     | Type       | Notes                      |
-| --------- | ---------- | -------------------------- |
-| `length`  | `u16`      |                            |
-| `content` | `variable` | Preceded by `length` (u16) |
+| Field   | Type  | Notes                               |
+| ------- | ----- | ----------------------------------- |
+| `index` | `u16` | Index to use in string table header |
+
+### String Table
+
+| Field   | Type  | Notes                               |
+| ------- | ----- | ----------------------------------- |
+| `index` | `u16` | Index to use in string table header |
 
 ## Dialogue Event Layout
 
