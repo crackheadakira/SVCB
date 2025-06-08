@@ -61,8 +61,7 @@ All numeric fields (`u16`, `u32`, `f32`, etc.) are stored in big-endian format.
 | 93           | --- START OF VARIABLE REGION --- |                      |             |                                                 |
 | 93           | `activeDialogueEvents`           | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
 | ...          | `previousActiveDialogueEvents`   | `event`              | variable    | [Dialogue Event Layout](#dialogue-event-layout) |
-| dataSize     | `stringTable.length`             | `u16`                | 2 bytes     |                                                 |
-| dataSize + 2 | `stringTable`                    | stream of `u8`       | variable    | Contains the data pointed to by BinaryString    |
+| dataSize + 2 | `stringTable`                    | stream of `u8`       | variable    | [String Table Layout](#string-table)            |
 
 Fixed byte size:
 
@@ -114,9 +113,12 @@ All strings are UTF-8 encoded and prefixed with a `u16` length. Strings may or m
 
 ### String Table
 
-| Field   | Type  | Notes                               |
-| ------- | ----- | ----------------------------------- |
-| `index` | `u16` | Index to use in string table header |
+| Field                | Type           | Size     | Notes                                |
+| -------------------- | -------------- | -------- | ------------------------------------ |
+| `totalStrings`       | `u16`          | 2 bytes  | How many strings exists in the table |
+| `stringHeader`       | `u32 + u16`    | 6 bytes  |                                      |
+| `stringTable.length` | `u16`          | 2 bytes  |
+| `stringData`         | stream of `u8` | variable | Bytes that make up the strings       |
 
 ## Dialogue Event Layout
 
